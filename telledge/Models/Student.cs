@@ -8,7 +8,7 @@ namespace telledge.Models
 {
     public class Student : Controller
     {
-        public int id {get;}
+        public int id { get; set; }
         public String name { get; set;}
         public String mailaddress { get; set; }
         public String skypeId { get; set; }
