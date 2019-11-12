@@ -8,7 +8,7 @@ namespace telledge.Models
     public class Teacher
     {
         //講師ID
-        public int id { get; }
+        public int id { set; get; }
 
         //講師名
         public String name { set; get; }
