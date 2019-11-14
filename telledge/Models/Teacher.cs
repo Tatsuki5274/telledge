@@ -53,5 +53,9 @@ namespace telledge.Models
             SHA256 sha = new SHA256CryptoServiceProvider();
             passwordDigest = sha.ComputeHash(input);
         }
+        public static Teacher currentUser()
+        {
+            return (Teacher)HttpContext.Current.Session["Teacher"];
+        }
     }
 }
