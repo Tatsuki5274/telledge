@@ -18,7 +18,7 @@ namespace telledge.Models
         //生徒スカイプID
         public String skypeId { get; set; }
         //パスワードダイジェスト
-        public int passwordDigest { get; set; }
+        public byte[] passwordDigest { get; set; }
         //二段階認証の有無
         public bool is2FA { get; set; }
         //ポイント

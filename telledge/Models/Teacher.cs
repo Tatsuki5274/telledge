@@ -22,7 +22,7 @@ namespace telledge.Models
         //講師自己紹介
         public String intoroduction { set; get; }
         //講師のパスワードのダイジェスト
-        public int passwordDigest { set; get; }
+        public byte[] passwordDigest { set; get; }
         //講師メールアドレス
         public String mailaddress { set; get; }
         //講師保有ポイント
