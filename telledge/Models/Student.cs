@@ -37,6 +37,13 @@ namespace telledge.Models
         //生徒退会日
         public DateTime inactiveDate {get; set;}
 
+        public bool logout()
+        {
+            bool ret;
+            if(ret = HttpContext.Current.Session["Student"] != null) HttpContext.Current.Session["Student"] = null;
+            return ret;
+        }
+
         public static Student login(String mailaddress, String password) 
         {
             Student retStudent = null;

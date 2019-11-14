@@ -40,6 +40,13 @@ namespace telledge.Models
         //講師退会日
         public DateTime inactivedate { set; get; }
 
+        public bool logout()
+        {
+            bool ret;
+            if (ret = HttpContext.Current.Session["Teacher"] != null) HttpContext.Current.Session["Teacher"] = null;
+            return ret;
+        }
+
         public void setPassword(String passwordRow)
         {
             byte[] input = Encoding.ASCII.GetBytes(passwordRow);
