@@ -37,9 +37,14 @@ namespace telledge.Tests.Models
             //controllerContext.Setup(p => p.HttpContext.Session).Returns(session.Object); 
             Student ret = Student.login("name", "password");
             Assert.IsNotNull(ret);
-            //Assert.AreEqual(ret,
-            
-           
+            //Assert.AreEqual(ret,       
+        }
+
+        [TestMethod]
+        public void SetPassWordTest()
+        {
+            Student student = new Student();
+            student.setPassword("password");
         }
     }
 }

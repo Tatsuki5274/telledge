@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace telledge.Models
 {
@@ -35,5 +39,12 @@ namespace telledge.Models
         public String nationality { set; get; }
         //講師退会日
         public DateTime inactivedate { set; get; }
+
+        public void setPassword(String passwordRow)
+        {
+            byte[] input = Encoding.ASCII.GetBytes(passwordRow);
+            SHA256 sha = new SHA256CryptoServiceProvider();
+            passwordDigest = sha.ComputeHash(input);
+        }
     }
 }

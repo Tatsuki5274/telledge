@@ -73,6 +73,14 @@ namespace telledge.Models
                 }
             }
         }
+
+        public void setPassword(String passwordRow)
+        {
+            byte[] input = Encoding.ASCII.GetBytes(passwordRow);
+            SHA256 sha = new SHA256CryptoServiceProvider();
+            passwordDigest = sha.ComputeHash(input);
+        }
+
         /*public static  Student currentUser()
         {
             Student s = new Student();
