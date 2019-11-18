@@ -1,18 +1,17 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace telledge
 {
-    // ãƒ¡ãƒ¢: IIS6 ã¾ãŸã¯ IIS7 ã®ã‚¯ãƒ©ã‚·ãƒƒã‚¯ ãƒ¢ãƒ¼ãƒ‰ã®è©³ç´°ã«ã¤ã„ã¦ã¯ã€
-    // http://go.microsoft.com/?LinkId=9394801 ã‚’å‚ç…§ã—ã¦ãã ã•ã„
-    // https://stackoverflow.com/questions/19777880/controller-with-same-name-as-an-area-asp-net-mvc4 ã‚’å‚è€ƒ
-
     public class MvcApplication : System.Web.HttpApplication
     {
+        /*
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -23,18 +22,20 @@ namespace telledge
                 new[] { "telledge.Controllers.Student" }
             );
             routes.MapRoute(
-                "Default", // ãƒ«ãƒ¼ãƒˆå
-                "{controller}/{action}/{id}", // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ä»˜ãã® URL
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã®æ—¢å®šå€¤
+                "Default", // ƒ‹[ƒg–¼
+                "teacher/{controller}/{action}/{id}", // ƒpƒ‰ƒ[ƒ^[•t‚«‚Ì URL
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // ƒpƒ‰ƒ[ƒ^[‚ÌŠù’è’l
             );
 
         }
-
+        */
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
-            RegisterRoutes(RouteTable.Routes);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

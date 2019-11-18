@@ -1,9 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "telledge", "telledge\telledge.csproj", "{77B5EF2F-7D0C-47D2-81BF-04657337B1B3}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "telledge", "telledge\telledge.csproj", "{EB8B78CF-6C84-4B69-81EE-658ECA283DC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "telledge.Tests", "telledge.Tests\telledge.Tests.csproj", "{AD71755F-0687-4429-B989-1D12B2AC153B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{F0F41532-83E9-461F-9FAB-0CCA623ED68A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,16 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{77B5EF2F-7D0C-47D2-81BF-04657337B1B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77B5EF2F-7D0C-47D2-81BF-04657337B1B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77B5EF2F-7D0C-47D2-81BF-04657337B1B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77B5EF2F-7D0C-47D2-81BF-04657337B1B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD71755F-0687-4429-B989-1D12B2AC153B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD71755F-0687-4429-B989-1D12B2AC153B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD71755F-0687-4429-B989-1D12B2AC153B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD71755F-0687-4429-B989-1D12B2AC153B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB8B78CF-6C84-4B69-81EE-658ECA283DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB8B78CF-6C84-4B69-81EE-658ECA283DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB8B78CF-6C84-4B69-81EE-658ECA283DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB8B78CF-6C84-4B69-81EE-658ECA283DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F41532-83E9-461F-9FAB-0CCA623ED68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F41532-83E9-461F-9FAB-0CCA623ED68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F41532-83E9-461F-9FAB-0CCA623ED68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F41532-83E9-461F-9FAB-0CCA623ED68A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96292EEA-AC7E-4539-9AB5-BC31AD31FD94}
 	EndGlobalSection
 EndGlobal
