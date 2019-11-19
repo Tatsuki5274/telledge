@@ -95,3 +95,5 @@ telledge/.vs/telledge/v15/Server/sqlite3/
 
 .vs/telledge/v15/Server/sqlite3/
 UnitTest/App.config
+
+.vs/config/applicationhost.config
