@@ -92,6 +92,35 @@ namespace telledge.Models
         {
             return (Student)HttpContext.Current.Session["Student"];
         }
+
+        public bool create()
+        {
+            bool check = false;
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = connection.CreateCommand())
+            {
+                String sql = "Insert Into Student Values (@name,@mailaddress,@profileImage,@skypeId,@passwordDigest,@is2FA,@point)";
+                command.Parameter.Add(new SqlParameter("@name",name));
+                command.Parameter.Add(new SqlParameter("@mailaddress", mailaddress));
+                command.Parameter.Add(new SqlParameter("@profileImage", profileImage));
+                command.Parameter.Add(new SqlParameter("@skypeId", skypeId));
+                command.Parameter.Add(new SqlParameter("@passwordDigest", passwordDigest));
+                command.Parameter.Add(new SqlParameter("@is2FA", is2FA));
+                command.Parameter.Add(new SqlParameter("@point", point));
+                int cnt = command.ExecuteNonQuery();
+                if(cnt == 0)
+                {
+                    //Errorの構文を記述する
+                }
+                else
+                {
+                    check = true;
+                }
+                connection.Close();
+            }
+            return check;
+        }
     }
 }
  //引数に渡されたメールアドレスを持つ生徒のパスワードダイジェストと引数の平文パスワードをSHA256でダイジェスト化したものを比較し、

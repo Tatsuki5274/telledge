@@ -57,5 +57,39 @@ namespace telledge.Models
         {
             return (Teacher)HttpContext.Current.Session["Teacher"];
         }
+
+        public bool create()
+        {
+            bool check = false;
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = connection.CreateCommand())
+            {
+                String sql = "Insert Into Student Values (@name,@sex,@profileImage,@age,@language,@intoroduction,@passwordDigest,@mailaddress,@point,@address,@id2FA,@nationality)";
+                command.Parameter.Add(new SqlParameter("@name", name));
+                command.Parameter.Add(new SqlParameter("@sex", sex));
+                command.Parameter.Add(new SqlParameter("@profileImage", profileImage));
+                command.Parameter.Add(new SqlParameter("@age", age));
+                command.Parameter.Add(new SqlParameter("@language", language));
+                command.Parameter.Add(new SqlParameter("@intoroduction", intoroduction));
+                command.Parameter.Add(new SqlParameter("@passwordDigest", passwordDigest));
+                command.Parameter.Add(new SqlParameter("@mailaddress", mailaddress));
+                command.Parameter.Add(new SqlParameter("@point", point));
+                command.Parameter.Add(new SqlParameter("@address", address));
+                command.Parameter.Add(new SqlParameter("@is2FA", is2FA));
+                command.Parameter.Add(new SqlParameter("@nationality", nationality));
+                int cnt = command.ExecuteNonQuery();
+                if (cnt == 0)
+                {
+                    //Errorの構文を記述する
+                }
+                else
+                {
+                    check = true;
+                }
+                connection.Close();
+            }
+            return check;
+        }
     }
 }
