@@ -1,15 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Web;
-using System.Web.Mvc;
-using System;
-using System.ComponentModel;
+
 using System.Data;
-using System.Drawing;
-using System.Linq;
+
 using System.Text;
-using System.Threading.Tasks;
+
 using System.Security.Cryptography;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -21,7 +17,7 @@ namespace telledge.Models
         //生徒ID
         public int id { get; set; }
         //生徒名
-        public String name { get; set;}
+        public String name { get; set; }
         //生徒メールアドレス
         public String mailaddress { get; set; }
         //生徒プロフィール画像
@@ -35,16 +31,16 @@ namespace telledge.Models
         //ポイント
         public int point { get; set; }
         //生徒退会日
-        public DateTime inactiveDate {get; set;}
+        public DateTime inactiveDate { get; set; }
 
         public bool logout()
         {
             bool ret;
-            if(ret = HttpContext.Current.Session["Student"] != null) HttpContext.Current.Session["Student"] = null;
+            if (ret = HttpContext.Current.Session["Student"] != null) HttpContext.Current.Session["Student"] = null;
             return ret;
         }
 
-        public static Student login(String mailaddress, String password) 
+        public static Student login(String mailaddress, String password)
         {
             Student retStudent = null;
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
@@ -55,11 +51,12 @@ namespace telledge.Models
                     return null;
                 }
                 string sql = "select * from Student where id = @id";
-                SqlDataAdapter adapter = new SqlDataAdapter(sql,connection);
-                adapter.SelectCommand.Parameters.Add("@id",SqlDbType.VarChar);
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+                adapter.SelectCommand.Parameters.Add("@id", SqlDbType.VarChar);
                 DataSet ds = new DataSet();
-                int cnt = adapter.Fill(ds,"Student");
-                if(cnt != 0){
+                int cnt = adapter.Fill(ds, "Student");
+                if (cnt != 0)
+                {
                     retStudent = new Student();
                     DataTable dt = ds.Tables["Student"];
                     retStudent.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
@@ -88,12 +85,13 @@ namespace telledge.Models
             passwordDigest = sha.ComputeHash(input);
         }
 
-        public static  Student currentUser()
+        public static Student currentUser()
         {
             return (Student)HttpContext.Current.Session["Student"];
         }
-
-        public bool create()
+    }
+}
+       /* public bool create()
         {
             bool check = false;
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
@@ -122,7 +120,7 @@ namespace telledge.Models
             return check;
         }
     }
-}
+}*/
  //引数に渡されたメールアドレスを持つ生徒のパスワードダイジェストと引数の平文パスワードをSHA256でダイジェスト化したものを比較し、
         //等しければ対応するStudentクラスのオブジェクトを返しセッション変数名"Student"のセッションにオブジェクトを登録する。
         //等しくなければnullを返し、セッションへの登録は行わない。 また、退会日がnull以外の場合は無条件にnullを返す。

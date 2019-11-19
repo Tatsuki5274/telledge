@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -57,8 +55,9 @@ namespace telledge.Models
         {
             return (Teacher)HttpContext.Current.Session["Teacher"];
         }
-
-        public bool create()
+    }
+}
+        /*public bool create()
         {
             bool check = false;
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
@@ -92,4 +91,4 @@ namespace telledge.Models
             return check;
         }
     }
-}
+}*/
