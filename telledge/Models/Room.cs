@@ -39,5 +39,10 @@ namespace telledge.Models
                 return false;
             }
         }
+        public void close()
+        {
+            DateTime dt = DateTime.Now;
+            endTime = dt;
+        }
     }
 }
