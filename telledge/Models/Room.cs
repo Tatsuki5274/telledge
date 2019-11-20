@@ -28,5 +28,16 @@ namespace telledge.Models
         //通話終了時刻
         public DateTime endTime { get; set; }
 
+        public bool isClosed()
+        {
+            if (endTime == null)
+            {
+                return ture;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
