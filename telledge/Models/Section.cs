@@ -18,7 +18,7 @@ namespace telledge.Models
         public int roomId { get; set; }
         public int studentId { get; set; }
         public String request { get; set; }
-        public int valuation { get; set; }
+        public int? valuation { get; set; }
         public int order { get; set; }
         public DateTime beginTime { get; set; }
         public int talkTime { get; set; }
@@ -88,6 +88,45 @@ namespace telledge.Models
                 }
             }
             return retStudent;
+        }
+        public bool create()
+        {
+            bool check = false;
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (var connection = new SqlConnection(cstr))
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    connection.Open();
+                    command.CommandText = "Insert Into Section Values (@roomId,@studentId,@request,@valuation,@beginTime,@talkTime)";
+                    command.Parameters.Add(new SqlParameter("@roomId", roomId));
+                    command.Parameters.Add(new SqlParameter("@studentId", studentId));
+                    command.Parameters.Add(new SqlParameter("@request", request));
+                    if (valuation != null)
+                    {
+                        command.Parameters.Add(new SqlParameter("@valuation", valuation));
+                    }
+                    else
+                    {
+                        command.Parameters.Add(new SqlParameter("@valuation", DBNull.Value));
+                    }
+                    command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
+                    command.Parameters.Add(new SqlParameter("@talkTime", talkTime));
+                    int cnt = command.ExecuteNonQuery();
+                    if (cnt != 0)
+                    {
+                        check = true;
+                    }
+                    connection.Close();
+                }
+                catch (SqlException e)
+                {
+                    //入力情報が足りないメッセージを吐く
+                    return false;
+                }
+            }
+            return check;
         }
     }
 }

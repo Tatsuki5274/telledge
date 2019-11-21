@@ -15,6 +15,7 @@ namespace UnitTest.Sections
             Room room = section.getRoom();
             Assert.IsNotNull(room);
         }
+        [TestMethod]
         public void failed()
         {
             Section section = new Section();

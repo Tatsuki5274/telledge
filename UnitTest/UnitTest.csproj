@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Room\Create.cs" />
+    <Compile Include="Section\Create.cs" />
     <Compile Include="Room\getRooms.cs" />
     <Compile Include="Section\getStudent.cs" />
     <Compile Include="Student\Create.cs" />
