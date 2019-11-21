@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using telledge.Models;
 
-namespace telledge.Tests.Models
+namespace UnitTest.Students
 {
     [TestClass]
     public class StudentLogin

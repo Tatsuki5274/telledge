@@ -118,11 +118,7 @@ namespace telledge.Models
                     connection.Open();
                     int cnt = command.ExecuteNonQuery();
                     connection.Close();
-                    if (cnt == 0)
-                    {
-                        //Errorの構文を記述する
-                    }
-                    else
+                    if (cnt != 0)
                     {
                         check = true;
                     }

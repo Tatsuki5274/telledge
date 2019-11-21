@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Room\Create.cs" />
     <Compile Include="Student\Create.cs" />
     <Compile Include="Student\SetPassWord.cs" />
     <Compile Include="Student\Login.cs" />

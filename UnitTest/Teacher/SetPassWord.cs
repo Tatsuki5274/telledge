@@ -5,7 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using telledge.Models;  //プロジェクトのテスト対象
 
-namespace telledge.Tests.Models
+namespace UnitTest.Teachers
 {
     [TestClass]
     public class SetPassWord

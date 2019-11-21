@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -45,6 +47,42 @@ namespace telledge.Models
         {
             DateTime dt = DateTime.Now;
             endTime = dt;
+        }
+        public bool create()
+        {
+            bool check = false;
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (var connection = new SqlConnection(cstr))
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    connection.Open();
+                    command.CommandText = "Insert Into Room Values (@teacherId,@roomName,@tag,@description,@worstTime,@extensionTime,@point,@endScheduleTime,@beginTime,@endTime)";
+                    command.Parameters.Add(new SqlParameter("@teacherId", teacherId));
+                    command.Parameters.Add(new SqlParameter("@roomName", roomName));
+                    command.Parameters.Add(new SqlParameter("@tag", tag));
+                    command.Parameters.Add(new SqlParameter("@description", description));
+                    command.Parameters.Add(new SqlParameter("@worstTime", worstTime));
+                    command.Parameters.Add(new SqlParameter("@extensionTime", extensionTime));
+                    command.Parameters.Add(new SqlParameter("@point", point));
+                    command.Parameters.Add(new SqlParameter("@endScheduleTime", endScheduleTime));
+                    command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
+                    command.Parameters.Add(new SqlParameter("@endTime",DBNull.Value));
+                    int cnt = command.ExecuteNonQuery();
+                    if (cnt != 0)
+                    {
+                        check = true;
+                    }
+                    connection.Close();
+                }
+                catch (SqlException e)
+                {
+                    //入力情報が足りないメッセージを吐く
+                    return false;
+                }
+            }
+            return check;
         }
     }
 }
