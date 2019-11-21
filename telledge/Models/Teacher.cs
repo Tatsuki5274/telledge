@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Data;
+using System.Linq;
 
 namespace telledge.Models
 {
@@ -44,7 +46,60 @@ namespace telledge.Models
             if (ret = HttpContext.Current.Session["Teacher"] != null) HttpContext.Current.Session["Teacher"] = null;
             return ret;
         }
-
+        public static Teacher login(String mailaddress, String password)
+        {
+            Teacher retTeacher = null;
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "select * from Student where mailaddress = @mailaddress";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+                adapter.SelectCommand.Parameters.Add("@mailaddress", SqlDbType.VarChar);
+                adapter.SelectCommand.Parameters["@mailaddress"].Value = mailaddress;
+                DataSet ds = new DataSet();
+                int cnt = adapter.Fill(ds, "Teacher");
+                if (cnt != 0)
+                {
+                    retTeacher = new Teacher();
+                    DataTable dt = ds.Tables["Teacher"];
+                    retTeacher.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
+                    retTeacher.mailaddress = dt.Rows[0]["mailaddress"].ToString();
+                }
+                else
+                {
+                    return null;
+                }
+                if (retTeacher.inactiveDate == null)
+                {
+                    byte[] input = Encoding.ASCII.GetBytes(password);
+                    SHA256 sha = new SHA256CryptoServiceProvider();
+                    byte[] hash_sha256 = sha.ComputeHash(input);
+                    if (retTeacher.passwordDigest.SequenceEqual(hash_sha256))
+                    {
+                        DataTable dt = ds.Tables["Teacher"];
+                        retTeacher.id = (int)dt.Rows[0]["id"];
+                        retTeacher.name = dt.Rows[0]["name"].ToString();
+                        retTeacher.sex = (int)dt.Rows[0]["sex"];
+                        retTeacher.profileImage = dt.Rows[0]["profileImage"].ToString();
+                        retTeacher.mailaddress = dt.Rows[0]["mailaddress"].ToString();
+                        retTeacher.age = (int)dt.Rows[0]["age"];
+                        retTeacher.language = dt.Rows[0]["language"].ToString();
+                        retTeacher.intoroduction = dt.Rows[0]["introduction"].ToString();
+                        retTeacher.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
+                        retTeacher.nationality = dt.Rows[0]["nationality"].ToString();
+                        retTeacher.is2FA = (bool)dt.Rows[0]["is2FA"];
+                        retTeacher.point = (int)dt.Rows[0]["point"];
+                        if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
+                        {
+                            retTeacher.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+                        }
+                        HttpContext.Current.Session["Teacher"] = retTeacher;
+                    }
+                    return retTeacher;
+                }
+                return null;
+            }
+        }
         public void setPassword(String passwordRow)
         {
             byte[] input = Encoding.ASCII.GetBytes(passwordRow);

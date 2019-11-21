@@ -9,6 +9,7 @@ using System.Text;
 using System.Security.Cryptography;
 
 using System.Configuration;
+using System.Linq;
 
 namespace telledge.Models
 {
@@ -46,13 +47,10 @@ namespace telledge.Models
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cstr))
             {
-                if (retStudent.inactiveDate != null)
-                {
-                    return null;
-                }
-                string sql = "select * from Student where id = @id";
+                string sql = "select * from Student where mailaddress = @mailaddress";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
-                adapter.SelectCommand.Parameters.Add("@id", SqlDbType.VarChar);
+                adapter.SelectCommand.Parameters.Add("@mailaddress", SqlDbType.VarChar);
+                adapter.SelectCommand.Parameters["@mailaddress"].Value = mailaddress;
                 DataSet ds = new DataSet();
                 int cnt = adapter.Fill(ds, "Student");
                 if (cnt != 0)
@@ -60,24 +58,39 @@ namespace telledge.Models
                     retStudent = new Student();
                     DataTable dt = ds.Tables["Student"];
                     retStudent.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
-                    //retStudent.inactiveDate = (DateTime)dt.Rows[0]["inactiveDate"]; 
-                }
-
-                byte[] input = Encoding.ASCII.GetBytes(password);
-                SHA256 sha = new SHA256CryptoServiceProvider();
-                byte[] hash_sha256 = sha.ComputeHash(input);
-                if (retStudent.passwordDigest == hash_sha256)
-                {
-                    HttpContext.Current.Session["Student"] = retStudent;
-                    return retStudent;
+                    retStudent.mailaddress = dt.Rows[0]["mailaddress"].ToString();
                 }
                 else
                 {
                     return null;
                 }
+                if (retStudent.inactiveDate == null)
+                {
+                    byte[] input = Encoding.ASCII.GetBytes(password);
+                    SHA256 sha = new SHA256CryptoServiceProvider();
+                    byte[] hash_sha256 = sha.ComputeHash(input);
+                    if (retStudent.passwordDigest.SequenceEqual(hash_sha256))
+                    {
+                        DataTable dt = ds.Tables["Student"];
+                        retStudent.id = (int)dt.Rows[0]["id"];
+                        retStudent.name = dt.Rows[0]["name"].ToString();
+                        retStudent.mailaddress = dt.Rows[0]["mailaddress"].ToString();
+                        retStudent.profileImage = dt.Rows[0]["profileImage"].ToString();
+                        retStudent.skypeId = dt.Rows[0]["skypeId"].ToString();
+                        retStudent.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
+                        retStudent.is2FA = (bool)dt.Rows[0]["is2FA"];
+                        retStudent.point = (int)dt.Rows[0]["point"];
+                        if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
+                        {
+                            retStudent.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+                        }
+                        HttpContext.Current.Session["Student"] = retStudent;
+                    }
+                    return retStudent;
+                }
+                return null;
             }
         }
-
         public void setPassword(String passwordRow)
         {
             byte[] input = Encoding.ASCII.GetBytes(passwordRow);
