@@ -32,11 +32,11 @@ namespace telledge.Models
         //講師住所
         public String address { set; get; }
         //二段階認証の有無
-        public Boolean id2FA { set; get; }
+        public Boolean is2FA { set; get; }
         //講師の在住国籍
         public String nationality { set; get; }
         //講師退会日
-        public DateTime inactivedate { set; get; }
+        public DateTime? inactivedate { set; get; }
 
         public bool logout()
         {
@@ -55,40 +55,46 @@ namespace telledge.Models
         {
             return (Teacher)HttpContext.Current.Session["Teacher"];
         }
-    }
-}
-        /*public bool create()
+         public bool create()
         {
             bool check = false;
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(cstr))
             using (var command = connection.CreateCommand())
             {
-                String sql = "Insert Into Student Values (@name,@sex,@profileImage,@age,@language,@intoroduction,@passwordDigest,@mailaddress,@point,@address,@id2FA,@nationality)";
-                command.Parameter.Add(new SqlParameter("@name", name));
-                command.Parameter.Add(new SqlParameter("@sex", sex));
-                command.Parameter.Add(new SqlParameter("@profileImage", profileImage));
-                command.Parameter.Add(new SqlParameter("@age", age));
-                command.Parameter.Add(new SqlParameter("@language", language));
-                command.Parameter.Add(new SqlParameter("@intoroduction", intoroduction));
-                command.Parameter.Add(new SqlParameter("@passwordDigest", passwordDigest));
-                command.Parameter.Add(new SqlParameter("@mailaddress", mailaddress));
-                command.Parameter.Add(new SqlParameter("@point", point));
-                command.Parameter.Add(new SqlParameter("@address", address));
-                command.Parameter.Add(new SqlParameter("@is2FA", is2FA));
-                command.Parameter.Add(new SqlParameter("@nationality", nationality));
-                int cnt = command.ExecuteNonQuery();
-                if (cnt == 0)
+                try
                 {
-                    //Errorの構文を記述する
+                    connection.Open();
+                    command.CommandText = "Insert Into Teacher Values (@name,@sex,@profileImage,@age,@language,@intoroduction,@passwordDigest,@mailaddress,@point,@address,@is2FA,@nationality,@inactiveDate)";
+                    command.Parameters.Add(new SqlParameter("@name", name));
+                    command.Parameters.Add(new SqlParameter("@sex", sex));
+                    command.Parameters.Add(new SqlParameter("@profileImage", profileImage));
+                    command.Parameters.Add(new SqlParameter("@age", age));
+                    command.Parameters.Add(new SqlParameter("@language", language));
+                    command.Parameters.Add(new SqlParameter("@intoroduction", intoroduction));
+                    command.Parameters.Add(new SqlParameter("@passwordDigest", passwordDigest));
+                    command.Parameters.Add(new SqlParameter("@mailaddress", mailaddress));
+                    command.Parameters.Add(new SqlParameter("@point", point));
+                    command.Parameters.Add(new SqlParameter("@address", address));
+                    command.Parameters.Add(new SqlParameter("@is2FA", is2FA));
+                    command.Parameters.Add(new SqlParameter("@nationality", nationality));
+                    command.Parameters.Add(new SqlParameter("@inactiveDate", DBNull.Value));
+                    int cnt = command.ExecuteNonQuery();
+                    if (cnt == 0)
+                    {
+                        //Errorの構文を記述する
+                    }
+                    else
+                    {
+                        check = true;
+                    }
+                    connection.Close();
+                }catch(SqlException e){
+                    //入力情報が足りないメッセージを吐く
+                    return false;
                 }
-                else
-                {
-                    check = true;
-                }
-                connection.Close();
             }
             return check;
         }
     }
-}*/
+}
