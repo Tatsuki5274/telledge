@@ -128,5 +128,33 @@ namespace telledge.Models
             }
             return check;
         }
+
+        public bool delete()
+        {
+            bool check = false;
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (var connection = new SqlConnection(cstr))
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    connection.Open();
+                    command.CommandText = "DELETE FROM Section WHERE roomId = @roomId AND studentId = @studentID";
+                    command.Parameters.Add(new SqlParameter("@roomId", roomId));
+                    command.Parameters.Add(new SqlParameter("@studentId", studentId));
+                    int cnt = command.ExecuteNonQuery();
+                    if (cnt != 0)
+                    {
+                        check = true;
+                    }
+                    connection.Close();
+                }
+                catch (SqlException e)
+                {
+                    return false;
+                }
+            }
+            return check;
+        }
     }
 }
