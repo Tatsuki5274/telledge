@@ -181,8 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Teachers\" />
+    <Folder Include="TemplateModel\" />
     <Folder Include="Views\Students\" />
+    <Folder Include="Views\Teachers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
