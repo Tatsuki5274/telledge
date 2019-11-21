@@ -32,7 +32,7 @@ namespace telledge.Models
         {
             if (endTime == null)
             {
-                return ture;
+                return true;
             }
             else
             {
