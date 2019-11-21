@@ -38,7 +38,7 @@ namespace telledge.Models
         //講師の在住国籍
         public String nationality { set; get; }
         //講師退会日
-        public DateTime? inactivedate { set; get; }
+        public DateTime? inactiveDate { set; get; }
 
         public bool logout()
         {
