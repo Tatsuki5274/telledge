@@ -4,6 +4,9 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace telledge.Models
 {
@@ -83,6 +86,41 @@ namespace telledge.Models
                 }
             }
             return check;
+        }
+        public static Room[] getRooms()
+        {
+            Room[] retRooms = null; //配列オブジェクトの参照先をnullとする
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "select * from Room";
+                DataSet ds = new DataSet();
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+                int cnt = adapter.Fill(ds, "Room");
+                DataTable dt = ds.Tables["Room"];
+                if(cnt != 0) { 
+                    retRooms = new Room[cnt];   //配列オブジェクトとして一件以上の要素を返すことが確定したためRoomインスタンスへの参照を保存する領域を生成する
+                    for (int i = 0; i < cnt; i++)
+                    {
+                        retRooms[i] = new Room();   //引数なしコンストラクタで初期化し、戻したい値を格納する領域を生成する
+                        retRooms[i].id = (int)dt.Rows[i]["id"];
+                        retRooms[i].teacherId = (int)dt.Rows[i]["teacherId"];
+                        retRooms[i].roomName = (String)dt.Rows[i]["roomName"];
+                        retRooms[i].tag = (String)dt.Rows[i]["tag"];
+                        retRooms[i].description = (String)dt.Rows[i]["description"];
+                        retRooms[i].worstTime = (int)dt.Rows[i]["worstTime"];
+                        retRooms[i].extensionTime = (int)dt.Rows[i]["extensionTime"];
+                        retRooms[i].point = (int)dt.Rows[i]["point"];
+                        retRooms[i].beginTime = DateTime.Parse(dt.Rows[i]["beginTime"].ToString());
+                        if (dt.Rows[i]["endTime"] != DBNull.Value)
+                        {
+                            retRooms[i].endTime = DateTime.Parse(dt.Rows[i]["endTime"].ToString());
+                        }
+                        retRooms[i].endScheduleTime = DateTime.Parse(dt.Rows[i]["endScheduleTime"].ToString());
+                    }
+                }
+                return retRooms;
+            }
         }
     }
 }

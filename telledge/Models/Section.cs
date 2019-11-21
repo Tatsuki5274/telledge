@@ -48,7 +48,7 @@ namespace telledge.Models
                     retRoom.extensionTime = (int)dt.Rows[0]["extensionTime"];
                     retRoom.point = (int)dt.Rows[0]["point"];
                     retRoom.beginTime = DateTime.Parse(dt.Rows[0]["beginTime"].ToString());
-                    if (dt.Rows[0]["endTime"].ToString() == null)
+                    if (dt.Rows[0]["endTime"] != DBNull.Value)
                     {
                         retRoom.endTime = DateTime.Parse(dt.Rows[0]["endTime"].ToString());
                     }
@@ -63,9 +63,10 @@ namespace telledge.Models
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cstr))
             {
-                string sql = "select * from Student where roomId = @roomid";
+                string sql = "select * from Student where id = @id";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
                 adapter.SelectCommand.Parameters.Add("@id", SqlDbType.VarChar);
+                adapter.SelectCommand.Parameters["@id"].Value = this.studentId;
                 DataSet ds = new DataSet();
                 int cnt = adapter.Fill(ds, "Student");
                 if (cnt != 0)
@@ -73,7 +74,10 @@ namespace telledge.Models
                     DataTable dt = ds.Tables["Student"];
                     retStudent = new Student();
                     retStudent.id = (int)dt.Rows[0]["id"];
-                    retStudent.inactiveDate = (DateTime)dt.Rows[0]["inactiveDate"];
+                    if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
+                    {
+                        retStudent.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+                    }
                     retStudent.is2FA = (bool)dt.Rows[0]["is2FA"];
                     retStudent.mailaddress = dt.Rows[0]["mailaddress"].ToString();
                     retStudent.name = dt.Rows[0]["name"].ToString();

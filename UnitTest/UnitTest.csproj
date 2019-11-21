@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Room\Create.cs" />
+    <Compile Include="Room\getRooms.cs" />
+    <Compile Include="Section\getStudent.cs" />
     <Compile Include="Student\Create.cs" />
     <Compile Include="Student\SetPassWord.cs" />
     <Compile Include="Student\Login.cs" />

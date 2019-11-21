@@ -3,11 +3,11 @@ using System;
 using System.Web;
 
 using System.Data;
-
+using System.Data.SqlClient;
 using System.Text;
 
 using System.Security.Cryptography;
-using System.Data.SqlClient;
+
 using System.Configuration;
 
 namespace telledge.Models
