@@ -55,41 +55,35 @@ namespace telledge.Models
                 int cnt = adapter.Fill(ds, "Student");
                 if (cnt != 0)
                 {
-                    retStudent = new Student();
+                   
                     DataTable dt = ds.Tables["Student"];
-                    retStudent.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
-                    retStudent.mailaddress = dt.Rows[0]["mailaddress"].ToString();
-                }
-                else
-                {
-                    return null;
-                }
-                if (retStudent.inactiveDate == null)
-                {
-                    byte[] input = Encoding.ASCII.GetBytes(password);
-                    SHA256 sha = new SHA256CryptoServiceProvider();
-                    byte[] hash_sha256 = sha.ComputeHash(input);
-                    if (retStudent.passwordDigest.SequenceEqual(hash_sha256))
+                    Byte[] passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
+                    if(dt.Rows[0]["inactiveDate"] == DBNull.Value)
                     {
-                        DataTable dt = ds.Tables["Student"];
-                        retStudent.id = (int)dt.Rows[0]["id"];
-                        retStudent.name = dt.Rows[0]["name"].ToString();
-                        retStudent.mailaddress = dt.Rows[0]["mailaddress"].ToString();
-                        retStudent.profileImage = dt.Rows[0]["profileImage"].ToString();
-                        retStudent.skypeId = dt.Rows[0]["skypeId"].ToString();
-                        retStudent.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
-                        retStudent.is2FA = (bool)dt.Rows[0]["is2FA"];
-                        retStudent.point = (int)dt.Rows[0]["point"];
-                        if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
+                        byte[] input = Encoding.ASCII.GetBytes(password);
+                        SHA256 sha = new SHA256CryptoServiceProvider();
+                        byte[] hash_sha256 = sha.ComputeHash(input);
+                        if (passwordDigest.SequenceEqual(hash_sha256))
                         {
-                            retStudent.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+                            retStudent = new Student();
+                            retStudent.id = (int)dt.Rows[0]["id"];
+                            retStudent.name = dt.Rows[0]["name"].ToString();
+                            retStudent.mailaddress = dt.Rows[0]["mailaddress"].ToString();
+                            retStudent.profileImage = dt.Rows[0]["profileImage"].ToString();
+                            retStudent.skypeId = dt.Rows[0]["skypeId"].ToString();
+                            retStudent.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
+                            retStudent.is2FA = (bool)dt.Rows[0]["is2FA"];
+                            retStudent.point = (int)dt.Rows[0]["point"];
+                            if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
+                            {
+                                retStudent.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+                            }
+                            HttpContext.Current.Session["Student"] = retStudent;
                         }
-                        HttpContext.Current.Session["Student"] = retStudent;
                     }
-                    return retStudent;
                 }
-                return null;
             }
+            return retStudent;
         }
         public void setPassword(String passwordRow)
         {
