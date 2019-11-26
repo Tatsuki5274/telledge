@@ -132,6 +132,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Students\RoomsController.cs" />
+    <Compile Include="Controllers\Students\SessionsController.cs" />
+    <Compile Include="Controllers\Teachers\SessionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,8 +185,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Teachers\" />
     <Folder Include="TemplateModel\" />
+    <Folder Include="Views\Sessions\" />
     <Folder Include="Views\Students\" />
     <Folder Include="Views\Teachers\" />
   </ItemGroup>
