@@ -185,12 +185,12 @@
     <Content Include="Views\Shared\teacherMenu.cshtml" />
     <Content Include="Views\Shared\studentMenu.cshtml" />
     <Content Include="Views\Students\Sessions\create.cshtml" />
+    <Content Include="Views\Teachers\Sessions\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="TemplateModel\" />
     <Folder Include="Views\Sessions\" />
-    <Folder Include="Views\Teachers\Sessions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
