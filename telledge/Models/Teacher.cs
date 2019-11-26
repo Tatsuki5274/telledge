@@ -52,7 +52,7 @@ namespace telledge.Models
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cstr))
             {
-                string sql = "select * from Student where mailaddress = @mailaddress";
+                string sql = "select * from Teacher where mailaddress = @mailaddress";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
                 adapter.SelectCommand.Parameters.Add("@mailaddress", SqlDbType.VarChar);
                 adapter.SelectCommand.Parameters["@mailaddress"].Value = mailaddress;
