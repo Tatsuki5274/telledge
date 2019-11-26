@@ -191,6 +191,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="TemplateModel\" />
     <Folder Include="Views\Sessions\" />
+    <Folder Include="Views\Students\Rooms\" />
+    <Folder Include="Views\Teachers\Sessions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
