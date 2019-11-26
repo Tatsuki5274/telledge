@@ -16,7 +16,13 @@ namespace telledge
                 "Student",
                 "student/{controller}/{action}/{id}",
                 new { id = UrlParameter.Optional },
-                new[] { "telledge.Controllers.Student" }
+                new[] { "telledge.Controllers.Students" }
+            );
+            routes.MapRoute(
+                "Teacher",
+                "teacher/{controller}/{action}/{id}",
+                new { id = UrlParameter.Optional },
+                new[] { "telledge.Controllers.Teachers" }
             );
             routes.MapRoute(
                 name: "Default",

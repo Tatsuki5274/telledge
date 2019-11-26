@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace telledge.Controllers.Student
+namespace telledge.Controllers.Students
 {
     public class RoomsController : Controller
     {
