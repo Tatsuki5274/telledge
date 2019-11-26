@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="TeacherMenu.css">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <div class="headerTitle">
+            <p>Telledge</p>
+        </div>
+    </header>
+    <div class="clearfix">
+        <div class="box1">
+            <div>
+                <div class="menu_box">
+                    マイページ
+                </div>
+                <div class="menu_box">
+                    ポイント管理
+                </div>
+                <div class="menu_box">
+                    ルーム管理
+                </div>
+                <div class="menu_box">
+                    ブラックリスト管理
+                </div>
+                <div class="menu_box">
+                    ルールとマナー
+                </div>
+            </div>
+        </div>
+        <div class="box2">
+            <span class="render">
+                @RenderBody()
+            </span>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <p class="font-space">
+                <font size="5">About Contact us</font>
+            </p>
+        </div>
+
+        <div>
+            <p class="font-space_under">
+                <font size="3"></font>
+                agreement
+                pravancy
+                copylight
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
