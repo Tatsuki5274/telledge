@@ -29,5 +29,11 @@ namespace telledge.Controllers.Teachers
             return View("new");
 
         }
+        [HttpDelete]
+        public ActionResult Delete()
+        {
+            Teacher.logout();
+            return RedirectToAction("index", "teacher/rooms");
+        }
     }
 }

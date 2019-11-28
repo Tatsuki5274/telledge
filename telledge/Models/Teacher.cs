@@ -40,7 +40,7 @@ namespace telledge.Models
         //講師退会日
         public DateTime? inactiveDate { set; get; }
 
-        public bool logout()
+        public static bool logout()
         {
             bool ret;
             if (ret = HttpContext.Current.Session["Teacher"] != null) HttpContext.Current.Session["Teacher"] = null;

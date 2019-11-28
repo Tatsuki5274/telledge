@@ -24,10 +24,16 @@ namespace telledge.Controllers.Students
             Student ret = Student.login(mailaddress, password);
             if(ret != null)
             {
-                RedirectToAction("Index", "Rooms");
+                return RedirectToAction("Index", "Rooms");
             }
             return View("new");
 
+        }
+        [HttpDelete]
+        public ActionResult Delete()
+        {
+            Student.logout();
+            return RedirectToAction("index", "student/rooms");
         }
     }
 }
