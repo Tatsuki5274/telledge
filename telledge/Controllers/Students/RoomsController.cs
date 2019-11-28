@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using telledge.Models;
 
 namespace telledge.Controllers.Students
 {
@@ -13,7 +14,8 @@ namespace telledge.Controllers.Students
 
         public ActionResult Index()
         {
-            return View();
+            var model = Room.getRooms();
+            return View("/Views/Students/Rooms/index.cshtml", model);
         }
 
         //

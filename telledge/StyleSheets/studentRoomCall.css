@@ -1,0 +1,79 @@
+﻿.clearfix::after {
+
+  content: "";
+
+  display: block;
+
+  clear: both;
+
+}
+
+body {
+    margin: 0;
+}
+#main-left{
+	width: 70%;
+	height: 1000px;
+}
+
+#main-right{
+	width: 30%;
+	height: 300px;
+}
+
+
+#room-name{
+	margin: 50px 0;
+}
+#room-tag{
+	margin-bottom: 50px;
+}
+#room-description{
+	margin-bottom: 50px;
+}
+#room-detail{
+
+}
+
+#room-detail table{
+	line-height: 250%;
+}
+#call table{
+	line-height: 300%;
+}
+
+#call{
+    padding-left: 40px;
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#image{
+	height: 100px;
+	width: 100px;
+	background-color: red;
+	margin: 0 auto;
+}
+
+.center{
+	text-align: center;
+}
+.border{
+	border: solid;
+}
+.float{
+	float: left;
+}
+.left-margin{
+	padding-left: 15%;
+	box-sizing: border-box;
+}
+.boxes{
+	box-sizing: border-box;
+}
+
+.divide{
+    background-color: #dddddd;
+}
