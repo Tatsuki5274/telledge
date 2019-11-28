@@ -1,0 +1,95 @@
+﻿@model IEnumerable<telledge.Models.Room>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.teacherId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roomName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.worstTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.extensionTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.point)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.endScheduleTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beginTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.endTime)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.teacherId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roomName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.worstTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.extensionTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.point)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endScheduleTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.beginTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

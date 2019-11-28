@@ -1,0 +1,188 @@
+﻿#body {
+    border: 1px solid black;
+}
+
+#room {
+    text-align: center;
+    padding-left: 10px;
+    width: 40%;
+    height: 40%;
+    padding: 10px;
+}
+
+#room-detail {
+    margin-right: 15%;
+    margin-bottom: 10%;
+}
+
+body {
+    margin: 0;
+}
+
+#main-left {
+    width: 70%;
+    height: 1000px;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+body {
+    margin: 0;
+}
+
+#main-left {
+    width: 70%;
+    height: 1000px;
+}
+
+#main-right {
+    width: 30%;
+    /*height: 300px;*/
+}
+
+
+#room-name {
+    margin: 50px 0;
+}
+
+#room-desc {
+    margin-bottom: 50px;
+}
+
+#room-buttom {
+    margin-bottom: 60px;
+}
+
+#room-detail {
+}
+
+    #room-detail table {
+        line-height: 250%;
+    }
+
+#call table {
+    line-height: 300%;
+}
+
+#call {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#room--list {
+    padding-left: 30px;
+}
+
+#image {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.border {
+    border: solid;
+}
+
+.float {
+    float: left;
+}
+
+.left-margin {
+    padding-left: 45%;
+    box-sizing: border-box;
+}
+
+.boxes {
+    box-sizing: border-box;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 22pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 12px;
+    background: #999999;
+    color: #000000;
+    line-height: 1em;
+    transition: .3s;
+    box-shadow: 6px 6px 3px #666666;
+    border: 2px solid #999999;
+}
+
+    .button:hover {
+        box-shadow: none;
+        color: #999999;
+        background: #000000;
+    }
+
+.button-cancel {
+    display: inline-block;
+    font-size: 18pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 12px;
+    background: #990000;
+    color: #000000;
+    line-height: 1em;
+    transition: .3s;
+    box-shadow: 6px 6px 3px #666666;
+    border: 2px solid #990000;
+}
+
+.button:hover {
+    box-shadow: none;
+    color: #990000;
+    background: #000000;
+}
+
+.list-margin {
+    margin-left: 20%;
+    margin-bottom: 100px;
+}
+
+#button-blacklist {
+    display: inline-block;
+    font-size: 18pt; /* 文字サイズ */
+    text-align: center; /* 文字位置   */
+    cursor: pointer; /* カーソル   */
+    padding: 12px 12px; /* 余白       */
+    background: #000000; /* 背景色     */
+    color: #ffffff; /* 文字色     */
+    line-height: 1em; /* 1行の高さ  */
+    transition: .3s; /* なめらか変化 */
+    box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+    border: 2px solid #000000; /* 枠の指定 */
+}
+
+#button:hover {
+    box-shadow: none; /* カーソル時の影消去 */
+    color: #000000; /* 背景色     */
+    background: #990000; /* 文字色     */
+}
+
+#margin-bottom {
+    padding-bottom: 200px;
+}
+
+#margin-bottomm {
+    padding-bottom: 40px;
+    padding-left: 40%;
+}
+
+#margin-bottommm {
+    padding-bottom: 40px;
+    padding-left: 30%;
+}

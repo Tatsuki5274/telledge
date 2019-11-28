@@ -166,7 +166,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="StyleSheets\Roomsindex.css" />
+    <Content Include="StyleSheets\StudentLogin.css" />
     <Content Include="StyleSheets\studentMenuStyle.css" />
+    <Content Include="StyleSheets\TeacherLogin.css" />
+    <Content Include="StyleSheets\TeacherRoomcall.css" />
+    <Content Include="StyleSheets\TeacherRoomnew.css" />
+    <Content Include="Views\Rooms\index.aspx" />
     <Content Include="StyleSheets\studentRoomCall.css" />
     <Content Include="StyleSheets\studentRoomIndex.css" />
     <Content Include="Web.config" />
@@ -186,11 +192,16 @@
     <Content Include="Views\Shared\teacherMenu.cshtml" />
     <Content Include="Views\Shared\studentMenu.cshtml" />
     <Content Include="Views\Students\Sessions\create.cshtml" />
-    <Content Include="Views\Teachers\Sessions\create.cshtml" />
     <Content Include="Views\Students\Rooms\index.cshtml" />
+    <Content Include="Views\Teachers\Rooms\index.cshtml" />
+    <Content Include="Views\Teachers\Sessions\Create.cshtml" />
+    <Content Include="Views\Teachers\Rooms\call.cshtml" />
+    <Content Include="Views\Teachers\Rooms\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="TemplateModel\" />
+    <Folder Include="Views\Sessions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

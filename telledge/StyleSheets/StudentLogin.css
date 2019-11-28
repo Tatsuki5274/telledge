@@ -1,0 +1,118 @@
+﻿#room-name {
+    margin: 50px;
+}
+
+.center {
+    text-align: center;
+}
+
+.example {
+    margin: 10px auto;
+    font-size: large;
+    margin-left: 15%;
+}
+
+.Room-buttom {
+    display: inline-block;
+    border-radius: 5%; /* 角丸       */
+    font-size: 18pt; /* 文字サイズ */
+    text-align: center; /* 文字位置   */
+    cursor: pointer; /* カーソル   */
+    padding: 12px 12px; /* 余白       */
+    background: #66ff66; /* 背景色     */
+    color: #000000; /* 文字色     */
+    line-height: 1em; /* 1行の高さ  */
+    transition: .3s; /* なめらか変化 */
+    box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+    border: 2px solid #66ff66; /* 枠の指定 */
+}
+
+#Room-buttom {
+}
+
+#margin-bottom {
+    padding-top: 50px;
+    padding-left: 45%;
+}
+
+.room-font {
+    padding-left: 20%;
+}
+
+.margin {
+    margin-left: 25%;
+}
+
+.room-font2 {
+    padding-left: 20%;
+    padding-top: 20px;
+}
+
+.room-button-left {
+    margin-left: 30%;
+    display: inline-block;
+    border-radius: 7%; /* 角丸       */
+    font-size: 26pt; /* 文字サイズ */
+    text-align: center; /* 文字位置   */
+    cursor: pointer; /* カーソル   */
+    padding: 12px 12px; /* 余白       */
+    background: #ffff1a; /* 背景色     */
+    color: #000000; /* 文字色     */
+    line-height: 1em; /* 1行の高さ  */
+    transition: .3s; /* なめらか変化 */
+    box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+    border: 2px solid #ffff1a; /* 枠の指定 */
+}
+
+.room-button-right {
+    margin-left: -30%;
+    display: inline-block;
+    border-radius: 7%; /* 角丸       */
+    font-size: 26pt; /* 文字サイズ */
+    text-align: center; /* 文字位置   */
+    cursor: pointer; /* カーソル   */
+    padding: 12px 12px; /* 余白       */
+    background: #ffff1a; /* 背景色     */
+    color: #000000; /* 文字色     */
+    line-height: 1em; /* 1行の高さ  */
+    transition: .3s; /* なめらか変化 */
+    box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+    border: 2px solid #ffff1a; /* 枠の指定 */
+}
+
+.password {
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.color {
+    margin-left: 30%;
+    display: inline-block;
+    border-radius: 7%; /* 角丸       */
+    font-size: 26pt; /* 文字サイズ */
+    text-align: center; /* 文字位置   */
+    cursor: pointer; /* カーソル   */
+    padding: 12px 12px; /* 余白       */
+    background: #00FF00; /* 背景色     */
+    color: #000000; /* 文字色     */
+    line-height: 1em; /* 1行の高さ  */
+    transition: .3s; /* なめらか変化 */
+    box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+    border: 2px solid #ffff1a; /* 枠の指定 */
+}
+
+.long {
+    margin-left: 60%;
+}
+
+.small {
+    margin-right: 60%;
+}
+
+.room-boxes {
+    width: 50%;
+    padding: 50px 100px;
+    margin: 30px auto;
+    background-color: #CCFF99;
+    border: solid;
+}
