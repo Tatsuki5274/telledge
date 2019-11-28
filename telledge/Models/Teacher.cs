@@ -60,45 +60,38 @@ namespace telledge.Models
                 int cnt = adapter.Fill(ds, "Teacher");
                 if (cnt != 0)
                 {
-                    retTeacher = new Teacher();
                     DataTable dt = ds.Tables["Teacher"];
-                    retTeacher.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
-                    retTeacher.mailaddress = dt.Rows[0]["mailaddress"].ToString();
-                }
-                else
-                {
-                    return null;
-                }
-                if (retTeacher.inactiveDate == null)
-                {
-                    byte[] input = Encoding.ASCII.GetBytes(password);
-                    SHA256 sha = new SHA256CryptoServiceProvider();
-                    byte[] hash_sha256 = sha.ComputeHash(input);
-                    if (retTeacher.passwordDigest.SequenceEqual(hash_sha256))
+                    Byte[] passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
+                    if (dt.Rows[0]["inactiveDate"] == DBNull.Value)
                     {
-                        DataTable dt = ds.Tables["Teacher"];
-                        retTeacher.id = (int)dt.Rows[0]["id"];
-                        retTeacher.name = dt.Rows[0]["name"].ToString();
-                        retTeacher.sex = (int)dt.Rows[0]["sex"];
-                        retTeacher.profileImage = dt.Rows[0]["profileImage"].ToString();
-                        retTeacher.mailaddress = dt.Rows[0]["mailaddress"].ToString();
-                        retTeacher.age = (int)dt.Rows[0]["age"];
-                        retTeacher.language = dt.Rows[0]["language"].ToString();
-                        retTeacher.intoroduction = dt.Rows[0]["introduction"].ToString();
-                        retTeacher.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
-                        retTeacher.nationality = dt.Rows[0]["nationality"].ToString();
-                        retTeacher.is2FA = (bool)dt.Rows[0]["is2FA"];
-                        retTeacher.point = (int)dt.Rows[0]["point"];
-                        if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
+                        byte[] input = Encoding.ASCII.GetBytes(password);
+                        SHA256 sha = new SHA256CryptoServiceProvider();
+                        byte[] hash_sha256 = sha.ComputeHash(input);
+                        if (passwordDigest.SequenceEqual(hash_sha256))
                         {
-                            retTeacher.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+                            retTeacher = new Teacher();
+                            retTeacher.id = (int)dt.Rows[0]["id"];
+                            retTeacher.name = dt.Rows[0]["name"].ToString();
+                            retTeacher.sex = (int)dt.Rows[0]["sex"];
+                            retTeacher.profileImage = dt.Rows[0]["profileImage"].ToString();
+                            retTeacher.mailaddress = dt.Rows[0]["mailaddress"].ToString();
+                            retTeacher.age = (int)dt.Rows[0]["age"];
+                            retTeacher.language = dt.Rows[0]["language"].ToString();
+                            retTeacher.intoroduction = dt.Rows[0]["introduction"].ToString();
+                            retTeacher.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
+                            retTeacher.nationality = dt.Rows[0]["nationality"].ToString();
+                            retTeacher.is2FA = (bool)dt.Rows[0]["is2FA"];
+                            retTeacher.point = (int)dt.Rows[0]["point"];
+                            if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
+                            {
+                                retTeacher.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+                            }
+                            HttpContext.Current.Session["Teacher"] = retTeacher;
                         }
-                        HttpContext.Current.Session["Teacher"] = retTeacher;
-                    }
-                    return retTeacher;
-                }
-                return null;
+                    }                   
+                }               
             }
+            return retTeacher;
         }
         public void setPassword(String passwordRow)
         {

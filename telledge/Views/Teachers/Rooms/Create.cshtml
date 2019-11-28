@@ -12,10 +12,10 @@
     <title>Create</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
             <h4>Room</h4>
             <hr />
@@ -27,7 +27,7 @@
                     @Html.ValidationMessageFor(model => model.teacherId, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.roomName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -35,7 +35,7 @@
                     @Html.ValidationMessageFor(model => model.roomName, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.tag, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -43,7 +43,7 @@
                     @Html.ValidationMessageFor(model => model.tag, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -51,7 +51,7 @@
                     @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.worstTime, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -59,7 +59,7 @@
                     @Html.ValidationMessageFor(model => model.worstTime, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.extensionTime, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -67,7 +67,7 @@
                     @Html.ValidationMessageFor(model => model.extensionTime, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.point, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -75,7 +75,7 @@
                     @Html.ValidationMessageFor(model => model.point, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.endScheduleTime, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -83,7 +83,7 @@
                     @Html.ValidationMessageFor(model => model.endScheduleTime, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.beginTime, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -91,7 +91,7 @@
                     @Html.ValidationMessageFor(model => model.beginTime, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.endTime, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -99,17 +99,16 @@
                     @Html.ValidationMessageFor(model => model.endTime, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+    } 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 </body>
 </html>

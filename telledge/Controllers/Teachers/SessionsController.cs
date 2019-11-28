@@ -24,7 +24,7 @@ namespace telledge.Controllers.Teachers
             Teacher ret = Teacher.login(mailaddress, password);
             if (ret != null)
             {
-                RedirectToAction("Index", "Rooms");
+                return RedirectToAction("Index", "Rooms");
             }
             return View("new");
 
