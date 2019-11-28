@@ -163,5 +163,41 @@ namespace telledge.Models
             }
             return retTeacher;
         }
+
+        public static Room find(int id)
+        {
+            Room retRoom = null;
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "select * from Room where id = @id";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+                adapter.SelectCommand.Parameters.Add("@id", SqlDbType.VarChar);
+                adapter.SelectCommand.Parameters["@id"].Value = id;
+                DataSet ds = new DataSet();
+                int cnt = adapter.Fill(ds, "Room");
+                if (cnt != 0)
+                {
+                    DataTable dt = ds.Tables["Room"];
+                    retRoom = new Room();
+                    retRoom.id = (int)dt.Rows[0]["id"];
+                    retRoom.teacherId = (int)dt.Rows[0]["teacherId"];
+                    retRoom.roomName = (String)dt.Rows[0]["roomName"];
+                    retRoom.tag = (String)dt.Rows[0]["tag"];
+                    retRoom.description = (String)dt.Rows[0]["description"];
+                    retRoom.worstTime = (int)dt.Rows[0]["worstTime"];
+                    retRoom.extensionTime = (int)dt.Rows[0]["extensionTime"];
+                    retRoom.point = (int)dt.Rows[0]["point"];
+                    retRoom.beginTime = DateTime.Parse(dt.Rows[0]["beginTime"].ToString());
+                    if (dt.Rows[0]["endTime"] != DBNull.Value)
+                    {
+                        retRoom.endTime = DateTime.Parse(dt.Rows[0]["endTime"].ToString());
+                    }
+                    retRoom.endScheduleTime = DateTime.Parse(dt.Rows[0]["endScheduleTime"].ToString());
+
+                }
+            }
+            return retRoom;
+        }
     }
 }
