@@ -1,0 +1,26 @@
+﻿.Textbox {
+}
+
+.box1 {
+}
+
+
+.image {
+    background-image: url(/Asserts/Picture/Test.jpg);
+    height: auto;
+    width: auto;
+}
+
+.bkRGBA {
+    /* 背景画像の透過用css */
+    height: 100%;
+    background: rgba(255,255,255,0.4);
+}
+
+.background {
+}
+
+.Text {
+    opacity: 0.7;
+    text-align: center;
+}

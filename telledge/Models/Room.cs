@@ -34,7 +34,6 @@ namespace telledge.Models
         public DateTime beginTime { get; set; }
         //通話終了時刻
         public DateTime endTime { get; set; }
-
         public bool isClosed()
         {
             if (endTime == null)

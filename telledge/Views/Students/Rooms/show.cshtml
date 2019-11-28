@@ -1,0 +1,72 @@
+﻿@model telledge.Models.Room
+
+@{
+    ViewBag.Title = "show";
+    Layout = "~/Views/Shared/studentMenu.cshtml";
+}
+
+<main>
+        <div class="image">
+            <div class="bkRGBA">
+                <div class="Text">
+                    <p>
+                        ルーム名
+                        @(Model.roomName)
+                    </p>
+                    <p>
+                        講師タグ
+                        @(Model.tag)
+                    </p>
+                    <p>
+                        画像
+                        @(Model.getTeacher().profileImage)
+                    </p>
+                    <p>
+                        講師名
+                        @(Model.getTeacher().name)
+                    </p>
+                    <p>
+                        評価
+                        4
+                    </p>
+                    <p>
+                        開始時間
+                        @(Model.beginTime)
+                    </p>
+                    <p>
+                        終了予定時刻
+                        @(Model.endScheduleTime)
+                    </p>
+                    <p>
+                        料金
+                        @(Model.point)
+                    </p>
+                    <p>
+                        待機人数
+                        5
+                    </p>
+                    <p>
+                        最低通話時間
+                        @(Model.worstTime)
+                    </p>
+                    <p>
+                        最大延長時間
+                        @(Model.extensionTime)
+                    </p>
+                    <p>
+                        予想待ち時間
+                    </p>
+                    <hr wight="70%" />
+                    <p>
+                        講師からのメッセージ
+                    </p>
+                    <p>
+                        講師本文
+                        @(Model.description)
+                    </p>
+                    <input type="button" value="戻る" onclick="">
+                    <input type="button" value="参加" onclick="">
+                </div>
+            </div>
+        </div>
+</main>
