@@ -60,7 +60,6 @@
     <Compile Include="Teacher\SetPassWord.cs" />
     <Compile Include="Teacher\Create.cs" />
     <Compile Include="Section\getRoom.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
