@@ -19,15 +19,5 @@ namespace telledge.Controllers.Teachers
             return View("//Create");
 
         }
-        [HttpGet]
-        public ActionResult Call(int roomid)
-        {
-
-        }
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return View("");
-        }
     }
 }
