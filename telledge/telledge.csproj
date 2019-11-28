@@ -197,6 +197,7 @@
     <Content Include="Views\Teachers\Sessions\Create.cshtml" />
     <Content Include="Views\Teachers\Rooms\call.cshtml" />
     <Content Include="Views\Teachers\Rooms\Create.cshtml" />
+    <Content Include="Views\Students\Rooms\call.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
