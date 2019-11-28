@@ -122,5 +122,46 @@ namespace telledge.Models
                 return retRooms;
             }
         }
+
+        private Teacher cachedGetTeacher = null;
+        public Teacher getTeacher()
+        {
+            if (this.cachedGetTeacher != null) return this.cachedGetTeacher;
+            Teacher retTeacher = null;
+            string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "select * from Teacher where id = @id";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+                adapter.SelectCommand.Parameters.Add("@id", SqlDbType.VarChar);
+                adapter.SelectCommand.Parameters["@id"].Value = this.teacherId;
+                DataSet ds = new DataSet();
+                int cnt = adapter.Fill(ds, "Teacher");
+                if (cnt != 0)
+                {
+                    DataTable dt = ds.Tables["Teacher"];
+                    retTeacher = new Teacher();
+                    retTeacher.address = dt.Rows[0]["address"].ToString();
+                    retTeacher.age = (int)dt.Rows[0]["age"];
+                    retTeacher.id = (int)dt.Rows[0]["id"];
+                    if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
+                    {
+                        retTeacher.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+                    }
+                    retTeacher.intoroduction = dt.Rows[0]["introduction"].ToString();
+                    retTeacher.is2FA = (bool)dt.Rows[0]["is2FA"];
+                    retTeacher.language = dt.Rows[0]["language"].ToString();
+                    retTeacher.mailaddress = dt.Rows[0]["mailaddress"].ToString();
+                    retTeacher.name = dt.Rows[0]["name"].ToString();
+                    retTeacher.nationality = dt.Rows[0]["nationality"].ToString();
+                    retTeacher.sex = (int)dt.Rows[0]["sex"];
+                    retTeacher.passwordDigest = (byte[])dt.Rows[0]["passwordDigest"];
+                    retTeacher.point = (int)dt.Rows[0]["point"];
+                    retTeacher.profileImage = dt.Rows[0]["profileImage"].ToString();
+                    this.cachedGetTeacher = retTeacher; //次回のリクエストに高速で返答するために値をキャッシュしておく
+                }
+            }
+            return retTeacher;
+        }
     }
 }
