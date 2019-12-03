@@ -6,67 +6,85 @@
 }
 
 <main>
-        <div class="image">
-            <div class="bkRGBA">
-                <div class="Text">
-                    <p>
-                        ルーム名
-                        @(Model.roomName)
-                    </p>
-                    <p>
-                        講師タグ
-                        @(Model.tag)
-                    </p>
-                    <p>
-                        画像
-                        @(Model.getTeacher().profileImage)
-                    </p>
-                    <p>
-                        講師名
-                        @(Model.getTeacher().name)
-                    </p>
-                    <p>
-                        評価
-                        4
-                    </p>
-                    <p>
-                        開始時間
-                        @(Model.beginTime)
-                    </p>
-                    <p>
-                        終了予定時刻
-                        @(Model.endScheduleTime)
-                    </p>
-                    <p>
-                        料金
-                        @(Model.point)
-                    </p>
-                    <p>
-                        待機人数
-                        5
-                    </p>
-                    <p>
-                        最低通話時間
-                        @(Model.worstTime)
-                    </p>
-                    <p>
-                        最大延長時間
-                        @(Model.extensionTime)
-                    </p>
-                    <p>
-                        予想待ち時間
-                    </p>
-                    <hr wight="70%" />
-                    <p>
-                        講師からのメッセージ
-                    </p>
-                    <p>
-                        講師本文
-                        @(Model.description)
-                    </p>
-                    <input type="button" value="戻る" onclick="">
-                    <input type="button" value="参加" onclick="">
-                </div>
+    <header>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="~/Scripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+        <link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
+    </header>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#readOnlyTags").tagit({
+                readOnly: true
+            }).ready(function () {
+                $(this).find('.tagit-new').css('display', 'none')
+            });
+        });
+
+    </script>
+    <div class="image">
+        <div class="bkRGBA">
+            <div class="Text">
+                <p>
+                    ルーム名
+                    @(Model.roomName)
+                </p>
+                    <ul class="tagFlex" id="readOnlyTags">
+                        @foreach (var tag in Model.tag.Split(','))
+                        {
+                            <li>@(tag)</li>
+                        }
+                    </ul>
+                <p>
+                    画像
+                    @(Model.getTeacher().profileImage)
+                </p>
+                <p>
+                    講師名
+                    @(Model.getTeacher().name)
+                </p>
+                <p>
+                    評価
+                    4
+                </p>
+                <p>
+                    開始時間
+                    @(Model.beginTime)
+                </p>
+                <p>
+                    終了予定時刻
+                    @(Model.endScheduleTime)
+                </p>
+                <p>
+                    料金
+                    @(Model.point)
+                </p>
+                <p>
+                    待機人数
+                    5
+                </p>
+                <p>
+                    最低通話時間
+                    @(Model.worstTime)
+                </p>
+                <p>
+                    最大延長時間
+                    @(Model.extensionTime)
+                </p>
+                <p>
+                    予想待ち時間
+                </p>
+                <hr wight="70%" />
+                <p>
+                    講師からのメッセージ
+                </p>
+                <p>
+                    @(Model.description)
+                </p>
+                <input type="button" value="戻る" onclick="">
+                <input type="button" value="参加" onclick="">
             </div>
         </div>
+    </div>
 </main>
