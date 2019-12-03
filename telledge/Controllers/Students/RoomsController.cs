@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -113,5 +113,17 @@ namespace telledge.Controllers.Students
                 return View();
             }
         }
+		[HttpPost]
+		public ActionResult join(int id, string request)
+		{
+			if (Student.currentUser() == null) return RedirectToAction("create", "sessions");
+			Section section = new Section();
+			section.roomId = id;
+			section.studentId = Student.currentUser().id;
+			section.request = request;
+			section.beginTime = DateTime.Now;
+			section.create();
+			return RedirectToAction("call", "rooms", new { Id = Convert.ToInt32(id) });
+		}
     }
 }

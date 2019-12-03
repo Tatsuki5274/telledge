@@ -87,4 +87,12 @@
             </div>
         </div>
     </div>
+	<div class="modal">
+		<form action="/student/rooms/join" method="post">
+			<h3>講師への要望</h3>
+			<input type="hidden" name="id" value="@Model.id" />
+			<input type="text" name="request" />
+			<input type="submit" value="参加" />
+		</form>
+	</div>
 </main>
