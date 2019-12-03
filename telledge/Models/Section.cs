@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using System.Web;
 
@@ -129,7 +129,47 @@ namespace telledge.Models
             return check;
         }
 
-        public bool delete()
+		public bool update()
+		{
+			bool check = false;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (var connection = new SqlConnection(cstr))
+			using (var command = connection.CreateCommand())
+			{
+				try
+				{
+					connection.Open();
+					command.CommandText = "update Section set request = @request, valuation = @valuation, beginTime = @beginTime, talkTime=@talkTime where roomId = @roomId and studentId = @studentId";
+					command.Parameters.Add(new SqlParameter("@roomId", roomId));
+					command.Parameters.Add(new SqlParameter("@studentId", studentId));
+					command.Parameters.Add(new SqlParameter("@request", request));
+					if (valuation != null)
+					{
+						command.Parameters.Add(new SqlParameter("@valuation", valuation));
+					}
+					else
+					{
+						command.Parameters.Add(new SqlParameter("@valuation", DBNull.Value));
+					}
+					command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
+					command.Parameters.Add(new SqlParameter("@talkTime", talkTime));
+					int cnt = command.ExecuteNonQuery();
+					if (cnt != 0)
+					{
+						check = true;
+					}
+					connection.Close();
+				}
+				catch (SqlException e)
+				{
+					//入力情報が足りないメッセージを吐く
+					return false;
+				}
+			}
+			return check;
+		}
+
+		public bool delete()
         {
             bool check = false;
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;

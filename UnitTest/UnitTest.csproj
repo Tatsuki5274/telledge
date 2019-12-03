@@ -52,6 +52,7 @@
     <Compile Include="Room\Create.cs" />
     <Compile Include="Room\getTeacher.cs" />
     <Compile Include="Room\find.cs" />
+    <Compile Include="Section\update.cs" />
     <Compile Include="Section\Delete.cs" />
     <Compile Include="Section\Create.cs" />
     <Compile Include="Room\getRooms.cs" />
