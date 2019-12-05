@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -198,5 +198,41 @@ namespace telledge.Models
             }
             return retRoom;
         }
+
+        public int getWaitCount()
+        {
+			int cnt = 0;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "SELECT COUNT(studentId) as count From Section WHERE roomId = @Id";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				adapter.Fill(ds, "Room");
+				DataTable dt = ds.Tables["Room"];
+				cnt = Int32.Parse(dt.Rows[0]["count"].ToString());
+			}
+			return cnt;
+		}
+
+		public int getWaitTime()
+		{
+			int cnt = 0;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "SELECT(worstTime + extensionTime) / 2 * (SELECT COUNT(studentId) as time From Section WHERE roomId = @id) FROM Room WHERE Id = @id";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				adapter.Fill(ds, "Room");
+				DataTable dt = ds.Tables["Room"];
+				cnt = Int32.Parse(dt.Rows[0]["count"].ToString());
+			}
+			return cnt;
+		}
     }
 }
