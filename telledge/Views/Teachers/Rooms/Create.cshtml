@@ -1,114 +1,61 @@
-﻿@model telledge.Models.Room
-
+﻿@model IEnumerable<telledge.Models.Room>
 @{
-    Layout = null;
+	Layout = "~/Views/Shared/teacherMenu.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>Room</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.teacherId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.teacherId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.teacherId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.roomName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.roomName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.roomName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.tag, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.tag, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.tag, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.worstTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.worstTime, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.worstTime, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.extensionTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.extensionTime, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.extensionTime, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.point, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.point, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.point, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.endScheduleTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.endScheduleTime, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.endScheduleTime, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.beginTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.beginTime, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.beginTime, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.endTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.endTime, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.endTime, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    } 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-</body>
-</html>
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet" href="~/StyleSheets/TeacherRoomnew.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<main class="clearfix">
+	<div id="room-name" class="center example">
+		<span>ルーム作成</span>
+	</div>
+	<form action="/teacher/Rooms/index" method="post" name="Teacher">
+		<table class="example">
+			<col span="1" width="180px">
+			<tr>
+				<td class="room-font">ルーム名</td>
+				<td><input type="text" name="roomName" value=""></td>
+			</tr>
+			<tr>
+				<td>タグ</td>
+				<td><input type="text" name="tag" value=""></td>
+			</tr>
+			<tr>
+				<td>ルーム説明</td>
+				<td>
+					<textarea name="description" cols="30" rows="7"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>最低保障時間</td>
+				<td><input type="text" name="worstTime" value=""></td>
+			</tr>
+			<tr>
+				<td>最大延長時間</td>
+				<td><input type="text" name="extensionTime" value=""></td>
+			</tr>
+			<tr>
+				<td>ポイント</td>
+				<td><input type="text" name="point" value=""></td>
+			</tr>
+			<tr>
+				<td>通話終了予定時刻</td>
+				<td><input type="text" name="endScheduleTime" value=""></td>
+			</tr>
+			<tr>
+				<td>通話開始時刻</td>
+				<td><input type="text" name="beginTime" value=""></td>
+			</tr>
+			<tr>
+				<td>通話終了時刻</td>
+				<td><input type="text" name="endTimes" value=""></td>
+			</tr>
+			<tr>
+				<td id="margin-bottom"><input type="submit" class="Room-buttom" id="Room-buttom" name="submit" value="ルーム作成"></td>
+			</tr>
+		</table>
+	</form>
+</main>
