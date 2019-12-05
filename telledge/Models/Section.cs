@@ -13,9 +13,15 @@ using telledge.Models;
 
 namespace telledge.Models
 {
-    public class Section
+
+	public class Section
     {
-        public int roomId { get; set; }
+		public enum KeyTarget
+		{
+			roomId,
+			studentId
+		}
+		public int roomId { get; set; }
         public int studentId { get; set; }
         public String request { get; set; }
         public int? valuation { get; set; }
@@ -196,5 +202,38 @@ namespace telledge.Models
             }
             return check;
         }
+		public static bool delete(int id, KeyTarget target)
+		{
+			bool check = false;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (var connection = new SqlConnection(cstr))
+			using (var command = connection.CreateCommand())
+			{
+				try
+				{
+					connection.Open();
+					if (target == KeyTarget.roomId)
+					{
+						command.CommandText = "DELETE FROM Section WHERE roomId = @id";
+						command.Parameters.Add(new SqlParameter("@id", id));
+
+					}
+					else if (target == KeyTarget.studentId)
+					{
+						command.CommandText = "DELETE FROM Section WHERE studentId = @id";
+						command.Parameters.Add(new SqlParameter("@id", id));
+					}
+					else return false;
+
+					check = command.ExecuteNonQuery() != 0;
+					connection.Close();
+				}
+				catch (SqlException e)
+				{
+					return false;
+				}
+			}
+			return check;
+		}
     }
 }
