@@ -179,7 +179,6 @@
     <Content Include="StyleSheets\TeacherLogin.css" />
     <Content Include="StyleSheets\TeacherRoomcall.css" />
     <Content Include="StyleSheets\TeacherRoomnew.css" />
-    <Content Include="Views\Rooms\index.aspx" />
     <Content Include="StyleSheets\studentRoomCall.css" />
     <Content Include="StyleSheets\studentRoomIndex.css" />
     <Content Include="Web.config" />
@@ -210,7 +209,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="TemplateModel\" />
-    <Folder Include="Views\Sessions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
