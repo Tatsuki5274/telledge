@@ -79,9 +79,9 @@ _[Ss]cripts
 ## addition settings 
 .DS_Store 
 /.vs/telledge/xs/ 
-/telledge/Web.config 
 /telledge.Tests/App.config
-UnitTest/App.config
 /telledge/.vs/
+/telledge/Authentication.config
 /.vs/
 *.lock
+/UnitTest/App.config
