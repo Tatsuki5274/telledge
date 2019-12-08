@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,9 +24,9 @@ namespace telledge.Controllers.Teachers
             Teacher ret = Teacher.login(mailaddress, password);
             if (ret != null)
             {
-                return RedirectToAction("Index", "Rooms");
-            }
-            return View("new");
+				return RedirectToRoute("Teacher", new { controller = "Rooms", Action = "Index" });
+			}
+            return View("/Views/Teachers/Sessions/create.cshtml");
 
         }
         [HttpDelete]

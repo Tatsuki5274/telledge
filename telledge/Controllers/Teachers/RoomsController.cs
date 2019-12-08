@@ -9,11 +9,6 @@ namespace telledge.Controllers.Teachers
 {
     public class RoomsController : Controller
     {
-        // GET: Rooms
-        public ActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
         public ActionResult Create()
         {
@@ -24,7 +19,7 @@ namespace telledge.Controllers.Teachers
         public ActionResult index()
         {
             var model = Room.getRooms();
-            return View("/Views/Teachers/Rooms/call.cshtml", model);
+            return View("/Views/Teachers/Rooms/index.cshtml", model);
         }
 		public ActionResult call(int id)
 		{
