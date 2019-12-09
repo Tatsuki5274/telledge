@@ -1,95 +1,40 @@
-﻿@model IEnumerable<telledge.Models.Room>
+@model IEnumerable<telledge.Models.Room>
 
 @{
-    Layout = null;
+	Layout = "~/Views/Shared/teacherMenu.cshtml";
 }
 
-<!DOCTYPE html>
+	
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.teacherId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.roomName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tag)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.worstTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.extensionTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.point)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.endScheduleTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.beginTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.endTime)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.teacherId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.roomName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tag)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.worstTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.extensionTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.point)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.endScheduleTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.beginTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.endTime)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="~/StyleSheets/TeacherRoomsindex.css">
+<main>
+	<form action="/teacher/Rooms/create" method="post" name="Teacher">
+		<a href="/teacher/Rooms/Create">ルーム作成</a>
+	</form>
+	@foreach (var item in Model)
+	{
+		<div class="room-boxes">
+			<h2 class="room-title">@item.roomName</h2>
+			<h3 class="room-title">@item.description</h3>
+			<div class="flex">
+			</div>
+			<div class="room-detail" class="float">
+				<table class="rooms-table">
+					<col span="2" width="300px">
+					<tbody>
+						<tr>
+							<td><h3>タグ</h3></td>
+							<td><h3>@item.tag</h3></td>
+						</tr>
+						<tr>
+							<td><h3>獲得ポイント数</h3></td>
+							<td><h3>@item.point</h3></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	}
+</main>
+
