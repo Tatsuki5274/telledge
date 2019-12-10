@@ -25,6 +25,30 @@ namespace telledge.Controllers.Teachers
 		{
 			var model = Room.find(id);
 			return View("/Views/Teachers/Rooms/call.cshtml", model);
+        }
+		[HttpPost]
+		public ActionResult Create(String roomName,String tag,String description,int worstTime,int extensionTime,int point,DateTime endScheduleTime)
+		{
+			Room room = new Room();
+			room.teacherId = Teacher.currentUser().id;
+			room.roomName = roomName;
+			room.tag = tag;
+			room.description = description;
+			room.worstTime = worstTime;
+			room.extensionTime = extensionTime;
+			room.point = point;
+			room.endScheduleTime = endScheduleTime;
+			room.beginTime = DateTime.Now;
+			room.endTime = null;
+			
+			bool ret = room.create();
+			if(ret == true)
+			{
+				return RedirectToRoute("Teacher", new { controller = "Rooms", Action = "index" });
+			}else
+			{
+				return View("/Views/Teachers/Sessions/create.cshtml");
+			}
 		}
-	}
+    }
 }

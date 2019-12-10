@@ -1,4 +1,4 @@
-﻿@model IEnumerable<telledge.Models.Room>
+@model IEnumerable<telledge.Models.Room>
 @{
 	Layout = "~/Views/Shared/teacherMenu.cshtml";
 }
@@ -12,7 +12,7 @@
 	<div id="room-name" class="center example">
 		<span>ルーム作成</span>
 	</div>
-	<form action="/teacher/Rooms/index" method="post" name="Teacher">
+	<form action="/teacher/Rooms/Create" method="post" name="Teacher">
 		<table class="example">
 			<col span="1" width="180px">
 			<tr>
