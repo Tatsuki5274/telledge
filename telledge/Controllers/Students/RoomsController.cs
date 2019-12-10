@@ -33,6 +33,7 @@ namespace telledge.Controllers.Students
 
         public ActionResult call(int id)
         {
+			if (Student.currentUser() == null) return RedirectToRoute("Student", new { controller = "Sessions", action = "Create" });
             var model = Room.find(id);
             return View("/Views/Students/Rooms/call.cshtml", model);
         }

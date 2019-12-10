@@ -1,8 +1,11 @@
-﻿@model telledge.Models.Room
+@model telledge.Models.Room
+
 
 @{
     Layout = null;
 }
+
+@using telledge.Models;
 
 <!DOCTYPE html>
 <html>
@@ -28,12 +31,14 @@
 			<div id="room-tag" class="center">
 				<span>@Model.tag</span>
 			</div>
-			<hr width="70%" />
+			<hr/>
 			<div id="room-description" class="left-margin">
+				<h3 class="center">ルーム説明</h3>
 				<span>@Model.description</span>
 			</div>
-			<hr width="70%" />
+			<hr />
 			<div id="room-detail">
+				<h3 class="center">ルーム詳細</h3>
 				<table class="left-margin">
 					<col span="1" width="200px">
 					<tr>
@@ -45,6 +50,12 @@
 						<td>@Model.endScheduleTime</td>
 					</tr>
 				</table>
+			</div>
+			<hr />
+			<div id="room-request">
+				<h3 class="center">要望</h3>
+				<p>@Section.find(Model.id, Student.currentUser().id).request</p>
+
 			</div>
 		</div>
 		<div id="main-right" class="boxes float">

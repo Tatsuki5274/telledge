@@ -1,4 +1,4 @@
-﻿.clearfix::after {
+.clearfix::after {
 
   content: "";
 
@@ -14,6 +14,7 @@ body {
 #main-left{
 	width: 70%;
 	height: 1000px;
+	padding: 0 10%;
 }
 
 #main-right{
@@ -67,7 +68,7 @@ body {
 	float: left;
 }
 .left-margin{
-	padding-left: 15%;
+	/*padding-left: 15%; */
 	box-sizing: border-box;
 }
 .boxes{
