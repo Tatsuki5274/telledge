@@ -24,20 +24,21 @@ body {
     height: 1000px;
 }
 
+#content-box{
+	width: 70%;
+	margin: 0 auto;
+}
+
 .clearfix::after {
-    content: "";
-    display: block;
-    clear: both;
+	content: "";
+	display: block;
+	clear: both;
 }
 
 body {
     margin: 0;
 }
 
-#main-left {
-    width: 70%;
-    height: 1000px;
-}
 
 #main-right {
     width: 30%;
@@ -60,9 +61,9 @@ body {
 #room-detail {
 }
 
-    #room-detail table {
-        line-height: 250%;
-    }
+#room-detail table {
+    line-height: 250%;
+}
 
 #call table {
     line-height: 300%;
@@ -148,10 +149,6 @@ body {
     background: #000000;
 }
 
-.list-margin {
-    margin-left: 20%;
-    margin-bottom: 100px;
-}
 
 #button-blacklist {
     display: inline-block;

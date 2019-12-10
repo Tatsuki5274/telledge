@@ -16,9 +16,6 @@
 
 </head>
 <body>
-	<div class="content">
-		@*<a class="js-modal-open" href=""></a>*@
-	</div>
 	<div class="modal js-modal">
 		<div class="modal__bg js-modal-close"></div>
 		<div class="modal__content">
@@ -44,56 +41,56 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="~/Content/bootstrap.min.css">
 	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
 	<main class="clearfix">
 		<div id="main-left" class="boxes border float">
-			<div id="room-name" class="center">
-				<span>@Model.roomName</span>
+			<div id="content-box">
+				<div id="room-name" class="center">
+					<span>@Model.roomName</span>
+				</div>
+				<div id="room-desc" class="center">
+					<span>@Model.description</span>
+				</div>
+				<div id="room-detail">
+					<table class="left-margin">
+						<col span="1" width="200px">
+						<tr>
+							<td>通話待ち人数</td>
+							<td>50人</td>
+						</tr>
+						<tr>
+							<td>通話合計時間</td>
+							<td>２時間</td>
+						</tr>
+					</table>
+				</div>
+				@*@foreach (var item in Model)*@
+				@*{*@
+				<div id="room--list">
+					<table border="1" class="list-margin">
+						<col span="5" width="200px">
+						<tr>
+							<td>順番</td>
+							<td>名前</td>
+							<td>要望</td>
+							<td>対応不可</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>小暮</td>
+							<td>プログラム教えてください</td>
+							<td>
+								<button class="btn btn-danger">キャンセル</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+				@*  *@
 			</div>
-			<div id="room-desc" class="center">
-				<span>@Model.description</span>
-			</div>
-			<div id="room-buttom" class="left-margin">
-				<input type="submit" id="submit_button" class="button" name="finishRoom" value="ルーム終了">
-			</div>
-			<div id="room-detail">
-				<table class="left-margin">
-					<col span="1" width="200px">
-					<tr>
-						<td>通話待ち人数</td>
-						<td>50人</td>
-					</tr>
-					<tr>
-						<td>通話合計時間</td>
-						<td>２時間</td>
-					</tr>
-				</table>
-			</div>
-			@*@foreach (var item in Model)*@
-			@*{*@
-			<div id="room--list">
-				<table border="1" class="list-margin">
-					<col span="5" width="200px">
-					<tr>
-						<td>順番</td>
-						<td>名前</td>
-						<td>要望</td>
-						<td>対応不可</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>小暮</td>
-						<td>プログラム教えてください</td>
-						<td><input type="submit" class="button-cancel" name="cancel" value="キャンセル"></td>
-					</tr>
-				</table>
-			</div>
-			@*  *@}
 		</div>
 
 		<div id="main-right" class="boxes float">
@@ -117,15 +114,21 @@
 							<td id="margin-bottom">要望</td>
 							<td id="margin-bottom">教えて</td>
 						</tr>
-						<tr>
-							<td id="margin-bottomm"><input type="submit" class="button-cancel js-modal-open" name="submit" value="通話終了" /></td>
-						</tr>
-						<tr>
-							<td id="margin-bottommm"><input type="submit" id="button-blacklist" name="submit" value="ブラックリスト"></td>
-						</tr>
+
 					</tbody>
 				</table>
+				<div>
+					<button class="btn btn-success js-modal-open">通話終了</button>
+					<button class="btn btn-success" disabled="disabled">通話終了</button>
+					<button class="btn btn-danger">ルーム終了</button>
+
+				</div>
+				<div>
+					<td id="margin-bottommm"><input type="submit" id="button-blacklist" name="submit" value="ブラックリスト"></td>
+				</div>
+
 			</div>
 		</div>
+	</main>
 </body>
 </html>
