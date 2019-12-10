@@ -78,3 +78,8 @@ body {
 .divide{
     background-color: #dddddd;
 }
+
+.tagFlex {
+	display: flex;
+	justify-content: center;
+}

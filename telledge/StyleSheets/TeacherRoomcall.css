@@ -1,4 +1,4 @@
-﻿#body {
+#body {
     border: 1px solid black;
 }
 
@@ -185,4 +185,9 @@ body {
 #margin-bottommm {
     padding-bottom: 40px;
     padding-left: 30%;
+}
+
+.tagFlex {
+	display: flex;
+	justify-content: center;
 }
