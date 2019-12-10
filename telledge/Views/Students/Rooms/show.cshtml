@@ -61,7 +61,7 @@
                 </p>
                 <p>
                     待機人数
-                    5
+                    @(Model.getWaitCount())
                 </p>
                 <p>
                     最低通話時間
@@ -73,6 +73,7 @@
                 </p>
                 <p>
                     予想待ち時間
+					@(Model.getWaitTime())
                 </p>
                 <hr wight="70%" />
                 <p>

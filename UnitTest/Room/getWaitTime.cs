@@ -12,14 +12,14 @@ namespace UnitTest.Rooms
 		{
 			Room room = new Room();
 			room.id = 2;
-			Assert.AreNotEqual(0,room.getWaitCount());
+			Assert.AreNotEqual(0,room.getWaitTime());
 		}
         [TestMethod]
 		public void failed()
 		{
 			Room room = new Room();
 			room.id = 3;
-			Assert.AreEqual(0, room.getWaitCount());
+			Assert.AreEqual(0, room.getWaitTime());
 		}
 	}
 }
