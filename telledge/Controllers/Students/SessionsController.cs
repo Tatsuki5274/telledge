@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,10 +14,7 @@ namespace telledge.Controllers.Students
         {
             return View("/Views/Students/Sessions/create.cshtml");
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
+
         [HttpPost]
         public ActionResult Create(String mailaddress, String password)
         {
@@ -26,7 +23,7 @@ namespace telledge.Controllers.Students
             {
                 return RedirectToAction("Index", "Rooms");
             }
-            return View("new");
+            return View("/Views/Students/Sessions/create.cshtml");
 
         }
         [HttpDelete]
