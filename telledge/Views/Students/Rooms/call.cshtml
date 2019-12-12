@@ -14,6 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 	<link rel="stylesheet" href="~/StyleSheets/studentRoomCall.css">
+	<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -100,7 +101,14 @@
 							<td>@Model.endScheduleTime</td>
 						</tr>
 						<tr>
-							<td><a ></td>
+							<td>
+								<a href="/student/rooms/leave/@(Model.id)">
+									<button class="btn btn-danger">ルーム退出</button>
+								</a>
+								<a href="/student/rooms/end/@(Model.id)">
+									<button class="btn btn-danger" formmethod="get" formaction="/student/rooms/end/@(Model.id)">通話終了</button>
+								</a>
+							</td>
 						</tr>
 					</tbody>
 				</table>
