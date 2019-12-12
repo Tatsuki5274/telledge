@@ -126,5 +126,24 @@ namespace telledge.Controllers.Students
 			section.create();
 			return RedirectToAction("call", "rooms", new { Id = Convert.ToInt32(id) });
 		}
-    }
+
+		[HttpDelete]
+		public ActionResult leave()
+		{
+			//ルームから退出する処理
+			if (Student.currentUser() == null) return RedirectToAction("create", "sessions");
+			Section.delete(Student.currentUser().id, Section.KeyTarget.studentId);
+			return RedirectToAction("index", "rooms");
+		}
+		[HttpPut]
+		public ActionResult end(int id)
+		{
+			if (Student.currentUser() == null) return RedirectToAction("create", "sessions");
+			Section section = Section.find(id, Student.currentUser().id);
+			TimeSpan span = DateTime.Now - section.beginTime;
+			section.talkTime = span.Minutes + span.Hours * 60;
+			section.update();
+			return RedirectToAction("index", "rooms");
+		}
+	}
 }

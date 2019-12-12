@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -13,12 +13,17 @@ namespace telledge
 
             // Web API ルート
             config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
+			config.Routes.MapHttpRoute(
+				name: "SectionApi",
+				routeTemplate: "api/sections/",
+				defaults: new { controller = "sections"}
+			);
+			config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
         }
     }
 }
