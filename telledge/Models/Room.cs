@@ -50,9 +50,9 @@ namespace telledge.Models
             DateTime dt = DateTime.Now;
             endTime = dt;
         }
-        public bool create()
+        public int create()
         {
-            bool check = false;
+			int cnt = 0;
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
             using (var connection = new SqlConnection(cstr))
             using (var command = connection.CreateCommand())
@@ -60,7 +60,8 @@ namespace telledge.Models
                 try
                 {
                     connection.Open();
-                    command.CommandText = "Insert Into Room Values (@teacherId,@roomName,@tag,@description,@worstTime,@extensionTime,@point,@endScheduleTime,@beginTime,@endTime)";
+                    command.CommandText = "Insert Into Room Values (@teacherId,@roomName,@tag,@description,@worstTime,@extensionTime,@point,@endScheduleTime,@beginTime,@endTime); " +
+											" SELECT @@IDENTITY;";
                     command.Parameters.Add(new SqlParameter("@teacherId", teacherId));
                     command.Parameters.Add(new SqlParameter("@roomName", roomName));
                     command.Parameters.Add(new SqlParameter("@tag", tag));
@@ -71,21 +72,18 @@ namespace telledge.Models
                     command.Parameters.Add(new SqlParameter("@endScheduleTime", endScheduleTime));
                     command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
                     command.Parameters.Add(new SqlParameter("@endTime",DBNull.Value));
-                    int cnt = command.ExecuteNonQuery();
-                    if (cnt != 0)
-                    {
-                        check = true;
-                    }
+                    cnt = int.Parse(command.ExecuteScalar().ToString());
                     connection.Close();
                 }
                 catch (SqlException e)
                 {
                     //入力情報が足りないメッセージを吐く
-                    return false;
+                    return cnt;
                 }
             }
-            return check;
+            return cnt;
         }
+
         public static Room[] getRooms()
         {
             Room[] retRooms = null; //配列オブジェクトの参照先をnullとする

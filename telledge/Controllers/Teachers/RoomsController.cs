@@ -41,10 +41,10 @@ namespace telledge.Controllers.Teachers
 			room.beginTime = DateTime.Now;
 			room.endTime = null;
 			
-			bool ret = room.create();
-			if(ret == true)
+			int ret = room.create();
+			if(ret != 0)
 			{
-				return RedirectToRoute("Teacher", new { controller = "Rooms", Action = "index" });
+				return RedirectToRoute("Teacher", new { controller = "Rooms", Action = "call" , id = ret });
 			}else
 			{
 				return View("/Views/Teachers/Sessions/create.cshtml");
