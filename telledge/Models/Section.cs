@@ -118,7 +118,7 @@ namespace telledge.Models
                         command.Parameters.Add(new SqlParameter("@valuation", DBNull.Value));
                     }
                     command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
-                    command.Parameters.Add(new SqlParameter("@talkTime", talkTime));
+					command.Parameters.Add(new SqlParameter("@talkTime", DBNull.Value));
                     int cnt = command.ExecuteNonQuery();
                     if (cnt != 0)
                     {
@@ -257,8 +257,11 @@ namespace telledge.Models
 					retSection.request = dt.Rows[0]["request"].ToString();
 					retSection.roomId = (int)dt.Rows[0]["roomId"];
 					retSection.studentId = (int)dt.Rows[0]["studentId"];
-					retSection.talkTime = (int)dt.Rows[0]["talkTime"];
-					if(dt.Rows[0]["valuation"] != DBNull.Value)
+					if (dt.Rows[0]["talkTime"] != DBNull.Value)
+					{
+						retSection.talkTime = (int)dt.Rows[0]["talkTime"];
+					}
+					if (dt.Rows[0]["valuation"] != DBNull.Value)
 					{
 						retSection.valuation = (int)dt.Rows[0]["valuation"];
 					}
