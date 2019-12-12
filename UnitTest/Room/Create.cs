@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using telledge.Models;
 
@@ -20,8 +20,8 @@ namespace UnitTest.Rooms
             room.point = 2000;
             room.endScheduleTime = DateTime.Parse("2010-01-10 10:30:00.000");
             room.beginTime = DateTime.Parse("2010-01-10 10:30:00.000");
-            bool test = room.create();
-            Assert.IsTrue(test);
+            int test = room.create();
+            Assert.AreNotEqual(0,test);
         }
         [TestMethod]
         public void TestCreateFailed()
@@ -34,8 +34,8 @@ namespace UnitTest.Rooms
             room.point = 2000;
             room.endScheduleTime = DateTime.Parse("2010-01-10 10:30:00.000");
             room.beginTime = DateTime.Parse("2010-01-10 10:30:00.000");
-            bool test = room.create();
-            Assert.IsFalse(test);
+            int test = room.create();
+            Assert.AreEqual(0,test);
         }
     }
 }
