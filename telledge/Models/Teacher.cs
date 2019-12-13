@@ -1,15 +1,15 @@
-﻿using System;
-using System.Web;
+using System;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Data;
-using System.Linq;
+using System.Web;
 
 namespace telledge.Models
 {
-    public class Teacher
+	public class Teacher
     {
         //講師ID
         public int id { set; get; }
@@ -140,5 +140,46 @@ namespace telledge.Models
             }
             return check;
         }
-    }
+		public bool delete()
+		{
+			bool check = false;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "select * from teacher where id = @id";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "teacher");
+				if (cnt != 0)
+				{
+					DataTable dt = ds.Tables["teacher"];
+					if (dt.Rows[0]["inactiveDate"] == DBNull.Value)
+					{
+						this.inactiveDate = DateTime.Now;
+						sql = "UPDATE teacher SET inactiveDate = @inactiveDate WHERE  id = @id";
+						SqlCommand command = new SqlCommand(sql, connection);
+						connection.Open();
+						command.Parameters.Add("@id", SqlDbType.Int);
+						command.Parameters["@id"].Value = id;
+						command.Parameters.Add("@inactiveDate", SqlDbType.DateTime);
+						command.Parameters["@inactiveDate"].Value = DateTime.Today;
+						cnt = command.ExecuteNonQuery();
+						connection.Close();
+						if (cnt != 0)
+						{
+							check = true;
+						}
+						else
+						{
+							return check;
+						}
+
+					}
+				}
+			}
+			return check;
+		}
+	}
 }
