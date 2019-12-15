@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -41,6 +42,27 @@ namespace telledge.Models
 					//入力情報が足りないメッセージを吐く
 					return check;
 				}
+			}
+			return check;
+		}
+		public bool delete()
+		{
+			bool check = false;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				String sql = "delete from faq where id = @id";
+				SqlCommand command = new SqlCommand(sql, connection);
+				connection.Open();
+				command.Parameters.Add("@id", SqlDbType.Int);
+				command.Parameters["@id"].Value = id;
+				int cnt = command.ExecuteNonQuery();
+				connection.Close();
+				if (cnt != 0)
+				{
+					check = true;
+				}
+
 			}
 			return check;
 		}

@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using telledge.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTest.FAQ
+namespace UnitTest.FAQs
 {
-	class Delete
+	[TestClass]
+	public class Faqdelete
 	{
+		[TestMethod]
+		public void TestDelete()
+		{
+			FAQ faq = new FAQ();
+			faq.id = 1;
+			bool test = faq.delete();
+			Assert.IsTrue(test);
+		}
+		[TestMethod]
+		public void TestDeleteFailed()
+		{
+			FAQ faq = new FAQ();
+			faq.id = 1;
+			bool test = faq.delete();
+			Assert.IsFalse(test);
+		}
 	}
 }
