@@ -6,93 +6,107 @@
 }
 
 <main>
-    <header>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="~/Scripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
-        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
-        <link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
-    </header>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#readOnlyTags").tagit({
-                readOnly: true
-            }).ready(function () {
-                $(this).find('.tagit-new').css('display', 'none')
-            });
-        });
-    </script>
-    <div>
-        <div class="bkRGBA">
-            <div class="Text">
-                <p>
-                    ルーム名
-                    @(Model.roomName)
-                </p>
-                    <ul class="tagFlex" id="readOnlyTags">
-                        @foreach (var tag in Model.tag.Split(','))
-                        {
-                            <li>@(tag)</li>
-                        }
-                    </ul>
-                <p>
-                    画像
-                    @(Model.getTeacher().profileImage)
-                </p>
-                <p>
-                    講師名
-                    @(Model.getTeacher().name)
-                </p>
-                <p>
-                    評価
-                    4
-                </p>
-                <p>
-                    開始時間
-                    @(Model.beginTime)
-                </p>
-                <p>
-                    終了予定時刻
-                    @(Model.endScheduleTime)
-                </p>
-                <p>
-                    料金
-                    @(Model.point)
-                </p>
-                <p>
-                    待機人数
-                    @(Model.getWaitCount())
-                </p>
-                <p>
-                    最低通話時間
-                    @(Model.worstTime)
-                </p>
-                <p>
-                    最大延長時間
-                    @(Model.extensionTime)
-                </p>
-                <p>
-                    予想待ち時間
+	<header>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="~/Scripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+		<link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
+		<script src="~/Scripts/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+	</header>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#readOnlyTags").tagit({
+				readOnly: true
+			}).ready(function () {
+				$(this).find('.tagit-new').css('display', 'none')
+			});
+		});
+	</script>
+	<div>
+		<div class="bkRGBA">
+			<div class="Text">
+				<p>
+					ルーム名
+					@(Model.roomName)
+				</p>
+				<ul class="tagFlex" id="readOnlyTags">
+					@foreach (var tag in Model.tag.Split(','))
+					{
+						<li>@(tag)</li>
+					}
+				</ul>
+				<p>
+					画像
+					@(Model.getTeacher().profileImage)
+				</p>
+				<p>
+					講師名
+					@(Model.getTeacher().name)
+				</p>
+				<p>
+					評価
+					4
+				</p>
+				<p>
+					開始時間
+					@(Model.beginTime)
+				</p>
+				<p>
+					終了予定時刻
+					@(Model.endScheduleTime)
+				</p>
+				<p>
+					料金
+					@(Model.point)
+				</p>
+				<p>
+					待機人数
+					@(Model.getWaitCount())
+				</p>
+				<p>
+					最低通話時間
+					@(Model.worstTime)
+				</p>
+				<p>
+					最大延長時間
+					@(Model.extensionTime)
+				</p>
+				<p>
+					予想待ち時間
 					@(Model.getWaitTime())
-                </p>
-                <hr wight="70%" />
-                <p>
-                    講師からのメッセージ
-                </p>
-                <p>
-                    @(Model.description)
-                </p>
-                <input type="button" value="戻る" onclick="">
-                <input type="button" value="参加" onclick="">
-            </div>
-        </div>
-    </div>
-	<div class="modal">
-		<form action="/student/rooms/join" method="post">
-			<h3>講師への要望</h3>
-			<input type="hidden" name="id" value="@Model.id" />
-			<input type="text" name="request" />
-			<input type="submit" value="参加" />
-		</form>
+				</p>
+				<hr wight="70%" />
+				<p>
+					講師からのメッセージ
+				</p>
+				<p>
+					@(Model.description)
+				</p>
+				<input type="button" value="戻る" onclick="">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinModal">要望入力</button>
+			</div>
+		</div>
 	</div>
+	<div class="modal fade" id="joinModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="/student/rooms/join" method="post">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+						<h4 class="modal-title">講師への要望</h4>
+					</div>
+					<div class="modal-body">
+						<input type="text" name="request" />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+						<input type="submit" class="btn btn-primary" value="参加" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 </main>
