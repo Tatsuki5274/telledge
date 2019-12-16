@@ -53,6 +53,7 @@
     <Compile Include="FAQ\Delete.cs" />
     <Compile Include="Inquiry\Create.cs" />
     <Compile Include="Inquiry\Delete.cs" />
+    <Compile Include="Inquiry\find.cs" />
     <Compile Include="Room\getWaitTime.cs" />
     <Compile Include="Room\getWaitCount.cs" />
     <Compile Include="Room\Create.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Student\SetPassWord.cs" />
     <Compile Include="Student\Login.cs" />
     <Compile Include="Teacher\delete.cs" />
+    <Compile Include="Teacher\isDeleted.cs" />
     <Compile Include="Teacher\SetPassWord.cs" />
     <Compile Include="Teacher\Create.cs" />
     <Compile Include="Section\getRoom.cs" />
