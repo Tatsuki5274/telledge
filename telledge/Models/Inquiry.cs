@@ -52,10 +52,9 @@ namespace telledge.Models
 						check = true;
 					}
 				}
-				catch (SqlException e)
+				catch (SqlException)
 				{
 					//入力情報が足りないメッセージを吐く
-					return check;
 				}
 			}
 			return check;

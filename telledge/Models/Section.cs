@@ -126,10 +126,9 @@ namespace telledge.Models
                     }
                     connection.Close();
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
                     //入力情報が足りないメッセージを吐く
-                    return false;
                 }
             }
             return check;
@@ -166,10 +165,9 @@ namespace telledge.Models
 					}
 					connection.Close();
 				}
-				catch (SqlException e)
+				catch (SqlException)
 				{
 					//入力情報が足りないメッセージを吐く
-					return false;
 				}
 			}
 			return check;
@@ -195,9 +193,9 @@ namespace telledge.Models
                     }
                     connection.Close();
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
-                    return false;
+
                 }
             }
             return check;
@@ -228,9 +226,9 @@ namespace telledge.Models
 					check = command.ExecuteNonQuery() != 0;
 					connection.Close();
 				}
-				catch (SqlException e)
+				catch (SqlException)
 				{
-					return false;
+
 				}
 			}
 			return check;

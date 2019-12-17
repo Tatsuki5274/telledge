@@ -5,8 +5,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
 
 namespace telledge.Models
 {
@@ -75,10 +73,9 @@ namespace telledge.Models
                     cnt = int.Parse(command.ExecuteScalar().ToString());
                     connection.Close();
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
                     //入力情報が足りないメッセージを吐く
-                    return cnt;
                 }
             }
             return cnt;
