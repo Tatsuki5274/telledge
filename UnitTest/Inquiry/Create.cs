@@ -26,7 +26,7 @@ namespace UnitTest.Inquirys
 			inquiry.inquiryContent = "InquiryContent";
 			inquiry.inquiryTime = DateTime.Now;
 			inquiry.replierId = null;
-			inquiry.replierContent = null;
+			inquiry.repliersContent = null;
 			inquiry.isReplied = false;
 			bool check = inquiry.create();
 			Assert.IsFalse(check);
