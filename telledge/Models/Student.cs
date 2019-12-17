@@ -178,6 +178,46 @@ namespace telledge.Models
 			}
 			return check;
 		}
+		public Section[] GetSection()
+		{
+			Section[] section = null;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "select * from Section where studentid = @id";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "Student");
+				if(cnt != 0)
+				{
+					section = new Section[cnt];
+					DataTable dt = ds.Tables["Student"];
+					for(int i = 0;i < cnt; i++)
+					{
+						section[i] = new Section();
+						section[i].roomId = int.Parse(dt.Rows[i]["roomId"].ToString());
+						section[i].studentId = int.Parse(dt.Rows[i]["studentId"].ToString());
+						section[i].request = dt.Rows[i]["request"].ToString();
+						if (dt.Rows[i]["valuation"] != DBNull.Value)
+						{
+							section[i].valuation = int.Parse(dt.Rows[i]["valuation"].ToString());
+						}
+						section[i].order = int.Parse(dt.Rows[i]["order"].ToString());
+						if (dt.Rows[i]["beginTime"] != DBNull.Value)
+						{
+							section[i].beginTime = DateTime.Parse(dt.Rows[i]["beginTime"].ToString());
+						}
+						if (dt.Rows[i]["talkTime"] != DBNull.Value)
+						{
+							section[i].talkTime = int.Parse(dt.Rows[i]["talkTime"].ToString());
+						}
+					}
+				}
+			}
+			return section;
+		}
 	}
 }
 	 //引数に渡されたメールアドレスを持つ生徒のパスワードダイジェストと引数の平文パスワードをSHA256でダイジェスト化したものを比較し、
