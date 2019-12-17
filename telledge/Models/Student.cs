@@ -217,6 +217,20 @@ namespace telledge.Models
 			}
 			return section;
 		}
+		public bool changePassword(String oldPasswordRaw, String newPasswordRaw)
+		{
+			bool check = false;
+			SHA256 sha = new SHA256CryptoServiceProvider();
+			byte[] input = Encoding.ASCII.GetBytes(oldPasswordRaw);
+			byte[] CheckPasswordDigest = sha.ComputeHash(input);
+			if (passwordDigest.SequenceEqual(CheckPasswordDigest))
+			{
+				input = Encoding.ASCII.GetBytes(newPasswordRaw);
+				passwordDigest = input;
+				check = true;
+			}
+			return check;
+		}
 	}
 }
 	 //引数に渡されたメールアドレスを持つ生徒のパスワードダイジェストと引数の平文パスワードをSHA256でダイジェスト化したものを比較し、
