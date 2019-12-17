@@ -16,10 +16,13 @@
 	<link rel="stylesheet" href="~/StyleSheets/studentRoomCall.css">
 	<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+
 	<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="~/Scripts/JqueryUI/jquery-ui-1.8.12.min.js"></script>
+	<script src="~/Scripts/raty/jquery.raty.js"></script>
 	<script src="~/Scripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
+	<script src="~/Scripts/Telledge/studentRoomsCall.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
 	<link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript">
@@ -51,7 +54,7 @@
 					}
 				</ul>
 			</div>
-			<hr/>
+			<hr />
 			<div id="room-description" class="left-margin">
 				<h3 class="center">ルーム説明</h3>
 				<span>@Model.description</span>
@@ -75,7 +78,6 @@
 			<div id="room-request">
 				<h3 class="center">要望</h3>
 				<p>@Section.find(Model.id, Student.currentUser().id).request</p>
-
 			</div>
 		</div>
 		<div id="main-right" class="boxes float">
@@ -105,9 +107,8 @@
 								<a href="/student/rooms/leave/@(Model.id)">
 									<button class="btn btn-danger">ルーム退出</button>
 								</a>
-								<a href="/student/rooms/end/@(Model.id)">
-									<button class="btn btn-danger" formmethod="get" formaction="/student/rooms/end/@(Model.id)">通話終了</button>
-								</a>
+
+								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#review-modal">通話終了</button>
 							</td>
 						</tr>
 					</tbody>
@@ -115,6 +116,28 @@
 			</div>
 		</div>
 	</main>
+
+	<div class="modal fade" id="review-modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="/student/rooms/end" method="post" >
+					<input name="id" type="hidden" value="@(Model.id)" />
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+						<h4 class="modal-title">講師の評価をお願いします</h4>
+					</div>
+					<div class="modal-body">
+						<div id="raty">
+							<p>評価: <span id="review"></span></p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-primary" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<script>
 		var con = new Timer('#timer', mintime, overtime);
 		con.setTimerAsEssential();	//最低通話として処理

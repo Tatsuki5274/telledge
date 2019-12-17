@@ -138,13 +138,14 @@ namespace telledge.Controllers.Students
 			section.delete();
 			return RedirectToAction("index", "rooms");
 		}
-		[HttpGet]
-		public ActionResult end(int id)
+		[HttpPost]
+		public ActionResult end(int id, int score)
 		{
 			if (Student.currentUser() == null) return RedirectToAction("create", "sessions");
 			Section section = Section.find(id, Student.currentUser().id);
 			TimeSpan span = DateTime.Now - section.beginTime;
 			section.talkTime = span.Minutes + span.Hours * 60;
+			section.valuation = score;
 			section.update();
 			return RedirectToAction("index", "rooms");
 		}

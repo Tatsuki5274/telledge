@@ -153,6 +153,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.raty.css" />
     <Content Include="Content\jquery.tagit.css" />
     <Content Include="Content\tagit.ui-zendesk.css" />
     <Content Include="favicon.ico" />
@@ -178,8 +179,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\raty\fonts\raty.svg" />
+    <Content Include="Assets\raty\cancel-off.png" />
+    <Content Include="Assets\raty\cancel-on.png" />
+    <Content Include="Assets\raty\star-half.png" />
+    <Content Include="Assets\raty\star-off.png" />
+    <Content Include="Assets\raty\star-on.png" />
+    <Content Include="Scripts\raty\jquery.raty.css" />
+    <Content Include="Scripts\raty\jquery.raty.js" />
     <Content Include="Scripts\tag-it.js" />
     <Content Include="Scripts\tag-it.min.js" />
+    <Content Include="Scripts\Telledge\studentRoomsCall.js" />
     <Content Include="Scripts\Timer.js" />
     <Content Include="StyleSheets\TeacherRoomsindex.css" />
     <Content Include="StyleSheets\StudentLogin.css" />
@@ -214,6 +224,9 @@
     <Content Include="Views\Teachers\Rooms\Create.cshtml" />
     <Content Include="Views\Students\Rooms\call.cshtml" />
     <Content Include="Views\Students\Rooms\show.cshtml" />
+    <Content Include="Scripts\raty\fonts\raty.eot" />
+    <Content Include="Scripts\raty\fonts\raty.ttf" />
+    <Content Include="Scripts\raty\fonts\raty.woff" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
