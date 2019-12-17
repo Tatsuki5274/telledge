@@ -23,7 +23,7 @@ namespace telledge.Models
 		//返信者ID
 		public int? replierId { get; set; }
 		//返信内容
-		public string replierContent { get; set; }
+		public string repliersContent { get; set; }
 		//問い合わせ返信有無
 		public Boolean isReplied { get; set; }
 
@@ -37,13 +37,13 @@ namespace telledge.Models
 				try
 				{
 					connection.Open();
-					command.CommandText = "Insert Into Inquiry Values (@inquiryContent,@inquiryTime,@senderName,@senderContent,@replierId,@replierContent,@isReplied) ";
+					command.CommandText = "Insert Into Inquiry Values (@inquiryContent,@inquiryTime,@senderName,@senderContent,@replierId,@repliersContent,@isReplied) ";
 					command.Parameters.Add(new SqlParameter("@inquiryContent", inquiryContent));
 					command.Parameters.Add(new SqlParameter("@inquiryTime", inquiryTime));
 					command.Parameters.Add(new SqlParameter("@senderName", senderName));
 					command.Parameters.Add(new SqlParameter("@senderContent", senderContent));
 					command.Parameters.Add(new SqlParameter("@replierId", DBNull.Value));
-					command.Parameters.Add(new SqlParameter("@replierContent", DBNull.Value));
+					command.Parameters.Add(new SqlParameter("@repliersContent", DBNull.Value));
 					command.Parameters.Add(new SqlParameter("@isReplied", false));
 					int cnt = command.ExecuteNonQuery();
 					connection.Close();
@@ -66,7 +66,7 @@ namespace telledge.Models
 			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
 			using (SqlConnection connection = new SqlConnection(cstr))
 			{
-				String sql = "delete from inquery where id = @id";
+				String sql = "delete from inquiry where id = @id";
 				SqlCommand command = new SqlCommand(sql, connection);
 				connection.Open();
 				command.Parameters.Add("@id", SqlDbType.Int);
