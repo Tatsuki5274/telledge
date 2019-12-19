@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="FAQ\Create.cs" />
     <Compile Include="FAQ\Delete.cs" />
+    <Compile Include="FAQ\getAll.cs" />
     <Compile Include="Inquiry\Create.cs" />
     <Compile Include="Inquiry\Delete.cs" />
     <Compile Include="Inquiry\find.cs" />

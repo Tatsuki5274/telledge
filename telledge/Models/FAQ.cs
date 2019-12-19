@@ -65,5 +65,30 @@ namespace telledge.Models
 			}
 			return check;
 		}
+		public FAQ[] getAll()
+		{
+			FAQ[] retFaq = null;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				String sql = "select * from FAQ";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "FAQ");
+				if(cnt != 0)
+				{
+					retFaq = new FAQ[cnt];
+					for (int i = 0; i < cnt; i++)
+					{
+						DataTable dt = ds.Tables["FAQ"];
+						retFaq[i] = new FAQ();
+						retFaq[i].id = (int)dt.Rows[i]["id"];
+						retFaq[i].question = (String)dt.Rows[i]["question"];
+						retFaq[i].answer = (String)dt.Rows[i]["answer"];
+					}
+				}
+			}
+			return retFaq;
+		}
 	}
 }
