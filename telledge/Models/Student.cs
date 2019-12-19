@@ -240,6 +240,17 @@ namespace telledge.Models
 			}
 			return check;
 		}
+		public bool Pay(int point)
+		{
+			bool check = false;
+			int cnt = this.point - point;
+			if(cnt >= 0)
+			{
+				this.point = cnt;
+				check = true;
+			}
+			return check;
+		}
 	}
 }
 	 //引数に渡されたメールアドレスを持つ生徒のパスワードダイジェストと引数の平文パスワードをSHA256でダイジェスト化したものを比較し、

@@ -71,6 +71,7 @@
     <Compile Include="Student\Create.cs" />
     <Compile Include="Student\delete.cs" />
     <Compile Include="Student\IsDeleted.cs" />
+    <Compile Include="Student\Pay.cs" />
     <Compile Include="Student\SetPassWord.cs" />
     <Compile Include="Student\Login.cs" />
     <Compile Include="Teacher\delete.cs" />
