@@ -231,6 +231,15 @@ namespace telledge.Models
 			}
 			return check;
 		}
+		public bool isDeleted()
+		{
+			bool check = false;
+			if (this.inactiveDate != null)
+			{
+				check = true;
+			}
+			return check;
+		}
 	}
 }
 	 //引数に渡されたメールアドレスを持つ生徒のパスワードダイジェストと引数の平文パスワードをSHA256でダイジェスト化したものを比較し、
