@@ -190,6 +190,7 @@
     <Content Include="Scripts\tag-it.js" />
     <Content Include="Scripts\tag-it.min.js" />
     <Content Include="Scripts\Telledge\studentRoomsCall.js" />
+    <Content Include="Scripts\Telledge\teacherRoomCall.js" />
     <Content Include="Scripts\Timer.js" />
     <Content Include="StyleSheets\TeacherRoomsindex.css" />
     <Content Include="StyleSheets\StudentLogin.css" />

@@ -11,8 +11,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" href="~/StyleSheets/ModalWindow.css">
 	<link rel="stylesheet" href="~/StyleSheets/TeacherRoomcall.css">
-	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script src="~/Scripts/ModalWindow.js"></script>
+	<script>
+		mintime = @(Model.worstTime);
+		overtime = @(Model.extensionTime);
+	</script>
+	<script src="~/Scripts/Timer.js"></script>
+	<script src="~/Scripts/Telledge/teacherRoomCall.js"></script>
 
 </head>
 <body>
@@ -103,12 +109,8 @@
 							<td>佐藤</td>
 						</tr>
 						<tr>
-							<td>残り時間</td>
-							<td>５０分</td>
-						</tr>
-						<tr>
-							<td>最大残り時間</td>
-							<td>１００分</td>
+							<td id="timer-title">残り時間</td>
+							<td id="timer-count"></td>
 						</tr>
 						<tr>
 							<td id="margin-bottom">要望</td>
@@ -118,9 +120,9 @@
 					</tbody>
 				</table>
 				<div>
-					<button class="btn btn-success js-modal-open">通話終了</button>
-					<button class="btn btn-success" disabled="disabled">通話終了</button>
-					<button class="btn btn-danger">ルーム終了</button>
+					<button id="call-end" class="btn btn-success js-modal-open">通話終了</button>
+					<button id="disabled-call-end" class="btn btn-success" disabled="disabled">通話終了</button>
+					<button id="room-end" class="btn btn-danger">ルーム終了</button>
 
 				</div>
 				<div>
@@ -129,6 +131,10 @@
 
 			</div>
 		</div>
+		<script>
+			timer.setState(Status.Essential);	//最低通話として処理
+
+		</script>
 	</main>
 </body>
 </html>
