@@ -1,4 +1,4 @@
-﻿@model telledge.Models.Room
+@model telledge.Models.Room
 
 @{
 	Layout = null;
@@ -81,7 +81,7 @@
 							<td>要望</td>
 							<td>対応不可</td>
 						</tr>
-						@foreach (var section in Model.GetSections())
+						@foreach (var section in Model.getSections())
 						{
 							<tr>
 								<td>@(section.getStudent().name)</td>

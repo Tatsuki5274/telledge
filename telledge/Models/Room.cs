@@ -266,7 +266,7 @@ namespace telledge.Models
 				return section;
 		}
       
-		public Section[] GetSections()
+		public Section[] getSections()
 		{
 			Section[] retSections = null;
 			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
