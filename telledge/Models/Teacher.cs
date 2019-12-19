@@ -189,5 +189,32 @@ namespace telledge.Models
 			}
 			return check;
 		}
+		public double getValuation()
+		{
+			double valuation = 0;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "SELECT valuation FROM teacher T " +
+								"INNER JOIN Room R ON T.id = R.teacherId " +
+								"INNER JOIN Section S ON R.id = S.roomId " +
+								"WHERE T.id = @id AND valuation IS NOT NULL ";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "teacher");
+				if (cnt != 0)
+				{
+					DataTable dt = ds.Tables["teacher"];
+					for(int i = 0;i < cnt; i++)
+					{
+						valuation += (int)dt.Rows[i]["valuation"];
+					}
+					valuation /= cnt;
+				}
+			}
+			return valuation;
+		}
 	}
 }
