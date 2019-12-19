@@ -22,7 +22,6 @@
 	<script src="~/Scripts/JqueryUI/jquery-ui-1.8.12.min.js"></script>
 	<script src="~/Scripts/raty/jquery.raty.js"></script>
 	<script src="~/Scripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
-	<script src="~/Scripts/Telledge/studentRoomsCall.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
 	<link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript">
@@ -30,15 +29,8 @@
 		let overtime= @Model.extensionTime;
 	</script>
 	<script type="text/javascript" src="~/Scripts/Timer.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$("#readOnlyTags").tagit({
-				readOnly: true
-			}).ready(function () {
-				$(this).find('.tagit-new').css('display', 'none')
-			});
-		});
-	</script>
+	<script src="~/Scripts/Telledge/studentRoomsCall.js"></script>
+
 </head>
 <body>
 	<main class="clearfix">
@@ -138,11 +130,5 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		var con = new Timer('#timer', mintime, overtime);
-		con.setTimerAsEssential();	//最低通話として処理
-		con.setTimer()
-
-	</script>
 </body>
 </html>
