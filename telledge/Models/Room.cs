@@ -345,5 +345,30 @@ namespace telledge.Models
 				return retRooms;
 			}
 		}
+		public double getValuation()
+		{
+			double valuation = -1;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "SELECT AVG(cast(valuation as float)) as avgVal FROM Room R " +
+								"INNER JOIN Section S ON R.id = S.roomId " +
+								"WHERE S.roomid = @id AND valuation IS NOT NULL ";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "Room");
+				if (cnt != 0)
+				{
+					DataTable dt = ds.Tables["Room"];
+					if (dt.Rows[0]["avgVal"] != DBNull.Value)
+					{
+						valuation = Convert.ToDouble(dt.Rows[0]["avgVal"]);
+					}
+				}
+			}
+			return valuation;
+		}
 	}
 }

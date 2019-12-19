@@ -55,6 +55,7 @@
     <Compile Include="Inquiry\Delete.cs" />
     <Compile Include="Inquiry\find.cs" />
     <Compile Include="Room\getRooms.Stringtag.cs" />
+    <Compile Include="Room\getValuation.cs" />
     <Compile Include="Room\getSection.cs" />
     <Compile Include="Room\GetSections.cs" />
     <Compile Include="Room\getWaitTime.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Room\getRooms.cs" />
     <Compile Include="Section\getStudent.cs" />
     <Compile Include="Student\changePassword.cs" />
+    <Compile Include="Student\Update.cs" />
     <Compile Include="Student\GetSection.cs" />
     <Compile Include="Student\Create.cs" />
     <Compile Include="Student\delete.cs" />

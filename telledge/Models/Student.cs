@@ -251,6 +251,43 @@ namespace telledge.Models
 			}
 			return check;
 		}
+		public bool Update()
+		{
+			bool check = false;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (var connection = new SqlConnection(cstr))
+			using (var command = connection.CreateCommand())
+			{
+				try
+				{
+					connection.Open();
+					command.CommandText = "Update Student Set name = @name,mailaddress = @mailaddress,profileImage = @profileImage,skypeId = @skypeId,passwordDigest = @passwordDigest,is2FA = @is2FA,point = @point,inactiveDate = @inactiveDate where id = @id";
+					command.Parameters.Add(new SqlParameter("@id", id));
+					if(name != null) command.Parameters.Add(new SqlParameter("@name", name));
+					else command.Parameters.Add(new SqlParameter("@name", DBNull.Value));
+					command.Parameters.Add(new SqlParameter("@mailaddress", mailaddress));
+					if (profileImage != null) command.Parameters.Add(new SqlParameter("@profileImage", profileImage));
+					else command.Parameters.Add(new SqlParameter("@profileImage", DBNull.Value));
+					command.Parameters.Add(new SqlParameter("@skypeId", skypeId));
+					command.Parameters.Add(new SqlParameter("@passwordDigest", passwordDigest));
+					command.Parameters.Add(new SqlParameter("@is2FA", is2FA));
+					command.Parameters.Add(new SqlParameter("@point", point));
+					if (inactiveDate != null) command.Parameters.Add(new SqlParameter("@inactiveDate", inactiveDate));
+					else command.Parameters.Add(new SqlParameter("@inactiveDate", DBNull.Value)); 
+					int cnt = command.ExecuteNonQuery();
+					if (cnt != 0)
+					{
+						check = true;
+					}
+					connection.Close();
+				}catch (SqlException){
+					//エラー
+					connection.Close();
+					return check;
+				}
+			}
+			return check;
+		}
 	}
 }
 	 //引数に渡されたメールアドレスを持つ生徒のパスワードダイジェストと引数の平文パスワードをSHA256でダイジェスト化したものを比較し、

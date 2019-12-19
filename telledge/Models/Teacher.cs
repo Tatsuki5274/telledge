@@ -191,11 +191,11 @@ namespace telledge.Models
 		}
 		public double getValuation()
 		{
-			double valuation = 0;
+			double valuation = -1;
 			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
 			using (SqlConnection connection = new SqlConnection(cstr))
 			{
-				string sql = "SELECT valuation FROM teacher T " +
+				string sql = "SELECT AVG(cast(valuation as float)) as avgVal FROM teacher T " +
 								"INNER JOIN Room R ON T.id = R.teacherId " +
 								"INNER JOIN Section S ON R.id = S.roomId " +
 								"WHERE T.id = @id AND valuation IS NOT NULL ";
@@ -207,11 +207,10 @@ namespace telledge.Models
 				if (cnt != 0)
 				{
 					DataTable dt = ds.Tables["teacher"];
-					for(int i = 0;i < cnt; i++)
+					if(dt.Rows[0]["avgVal"] != DBNull.Value)
 					{
-						valuation += (int)dt.Rows[i]["valuation"];
+						valuation = Convert.ToDouble(dt.Rows[0]["avgVal"]);
 					}
-					valuation /= cnt;
 				}
 			}
 			return valuation;

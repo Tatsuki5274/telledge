@@ -25,7 +25,7 @@ namespace UnitTest.Teachers
 			Teacher teacher = new Teacher();
 			teacher.id = 3;
 			double valuation = teacher.getValuation();
-			Assert.AreEqual(valuation, 0);
+			Assert.AreEqual(valuation,-1);
 		}
 	}
 }
