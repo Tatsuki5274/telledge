@@ -1,4 +1,4 @@
-@model telledge.Models.Room
+﻿@model telledge.Models.Room
 
 @{
 	Layout = null;
@@ -66,33 +66,31 @@
 						<col span="1" width="200px">
 						<tr>
 							<td>通話待ち人数</td>
-							<td>50人</td>
+							<td>@(Model.getWaitCount())人</td>
 						</tr>
 						<tr>
-							<td>通話合計時間</td>
-							<td>２時間</td>
+							<td>予想通話時間</td>
+							<td>@(Model.getWaitTime())分</td>
 						</tr>
 					</table>
 				</div>
-				@*@foreach (var item in Model)*@
-				@*{*@
 				<div id="room--list">
-					<table border="1" class="list-margin">
-						<col span="5" width="200px">
+					<table border="1" class="table  table-striped">
 						<tr>
-							<td>順番</td>
 							<td>名前</td>
 							<td>要望</td>
 							<td>対応不可</td>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td>小暮</td>
-							<td>プログラム教えてください</td>
-							<td>
-								<button class="btn btn-danger">キャンセル</button>
-							</td>
-						</tr>
+						@foreach (var section in Model.GetSections())
+						{
+							<tr>
+								<td>@(section.getStudent().name)</td>
+								<td>@(section.request)</td>
+								<td>
+									<button class="btn btn-danger">キャンセル</button>
+								</td>
+							</tr>
+						}
 					</table>
 				</div>
 				@*  *@
@@ -106,7 +104,7 @@
 					<tbody>
 						<tr>
 							<td>生徒名</td>
-							<td>佐藤</td>
+							<td>@(Model.getSection().getStudent().name)</td>
 						</tr>
 						<tr>
 							<td id="timer-title">残り時間</td>
@@ -114,7 +112,7 @@
 						</tr>
 						<tr>
 							<td id="margin-bottom">要望</td>
-							<td id="margin-bottom">教えて</td>
+							<td id="margin-bottom">@(Model.getSection().request)</td>
 						</tr>
 
 					</tbody>
@@ -124,9 +122,6 @@
 					<button id="disabled-call-end" class="btn btn-success" disabled="disabled">通話終了</button>
 					<button id="room-end" class="btn btn-danger">ルーム終了</button>
 
-				</div>
-				<div>
-					<td id="margin-bottommm"><input type="submit" id="button-blacklist" name="submit" value="ブラックリスト"></td>
 				</div>
 
 			</div>
