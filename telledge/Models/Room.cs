@@ -265,5 +265,43 @@ namespace telledge.Models
 			}
 				return section;
 		}
-    }
+		public static Room[] getRooms(String tag)
+		{
+			Room[] retRooms = null;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "SELECT * FROM Room WHERE tag LIKE '%'+ @tag + '%'";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@tag", SqlDbType.NVarChar);
+				adapter.SelectCommand.Parameters["@tag"].Value = tag;
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "Room");
+				DataTable dt = ds.Tables["Room"];
+				if (cnt != 0)
+				{
+					retRooms = new Room[cnt];
+					for (int i = 0; i < cnt; i++)
+					{
+						retRooms[i] = new Room();
+						retRooms[i].id = (int)dt.Rows[i]["id"];
+						retRooms[i].teacherId = (int)dt.Rows[i]["teacherId"];
+						retRooms[i].roomName = (String)dt.Rows[i]["roomName"];
+						retRooms[i].tag = (String)dt.Rows[i]["tag"];
+						retRooms[i].description = (String)dt.Rows[i]["description"];
+						retRooms[i].worstTime = (int)dt.Rows[i]["worstTime"];
+						retRooms[i].extensionTime = (int)dt.Rows[i]["extensionTime"];
+						retRooms[i].point = (int)dt.Rows[i]["point"];
+						retRooms[i].beginTime = DateTime.Parse(dt.Rows[i]["beginTime"].ToString());
+						if (dt.Rows[i]["endTime"] != DBNull.Value)
+						{
+							retRooms[i].endTime = DateTime.Parse(dt.Rows[i]["endTime"].ToString());
+						}
+						retRooms[i].endScheduleTime = DateTime.Parse(dt.Rows[i]["endScheduleTime"].ToString());
+					}
+				}
+				return retRooms;
+			}
+		}
+	}
 }
