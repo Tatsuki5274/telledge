@@ -265,6 +265,48 @@ namespace telledge.Models
 			}
 				return section;
 		}
+      
+		public Section[] GetSections()
+		{
+			Section[] retSections = null;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "SELECT * FROM Section WHERE roomId = @id And talkTime IS NULL order by [order] asc";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "Room");
+				if (cnt != 0)
+				{
+					retSections = new Section[cnt];
+					for (int i = 0; i < cnt; i++)
+					{
+						retSections[i] = new Section();
+						DataTable dt = ds.Tables["Room"];
+						retSections[i].order = (int)dt.Rows[i]["order"];
+						retSections[i].request = dt.Rows[i]["request"].ToString();
+						retSections[i].roomId = (int)dt.Rows[i]["roomId"];
+						retSections[i].studentId = (int)dt.Rows[i]["studentId"];
+						if (dt.Rows[i]["talkTime"] != DBNull.Value)
+						{
+							retSections[i].talkTime = (int)dt.Rows[i]["talkTime"];
+						}
+						if (dt.Rows[i]["valuation"] != DBNull.Value)
+						{
+							retSections[i].valuation = (int)dt.Rows[i]["valuation"];
+						}
+						if (dt.Rows[i]["beginTime"] != DBNull.Value)
+						{
+							retSections[i].beginTime = DateTime.Parse(dt.Rows[i]["beginTime"].ToString());
+						}
+					}
+				}
+			}
+			return retSections;
+		}
+      
 		public static Room[] getRooms(String tag)
 		{
 			Room[] retRooms = null;

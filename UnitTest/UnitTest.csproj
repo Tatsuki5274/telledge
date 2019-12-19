@@ -56,6 +56,7 @@
     <Compile Include="Inquiry\find.cs" />
     <Compile Include="Room\getRooms.Stringtag.cs" />
     <Compile Include="Room\getSection.cs" />
+    <Compile Include="Room\GetSections.cs" />
     <Compile Include="Room\getWaitTime.cs" />
     <Compile Include="Room\getWaitCount.cs" />
     <Compile Include="Room\Create.cs" />
