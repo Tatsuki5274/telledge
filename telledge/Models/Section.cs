@@ -157,7 +157,14 @@ namespace telledge.Models
 						command.Parameters.Add(new SqlParameter("@valuation", DBNull.Value));
 					}
 					command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
-					command.Parameters.Add(new SqlParameter("@talkTime", talkTime));
+					if (talkTime != null)
+					{
+						command.Parameters.Add(new SqlParameter("@talkTime", talkTime));
+					}
+					else
+					{
+						command.Parameters.Add(new SqlParameter("@talkTime", DBNull.Value));
+					}
 					int cnt = command.ExecuteNonQuery();
 					if (cnt != 0)
 					{
@@ -168,6 +175,8 @@ namespace telledge.Models
 				catch (SqlException)
 				{
 					//入力情報が足りないメッセージを吐く
+					connection.Close();
+					return check;
 				}
 			}
 			return check;

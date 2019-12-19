@@ -108,5 +108,42 @@ namespace telledge.Models
 			}
 			return retinquiry;
 		}
+		public bool update()
+		{
+			bool check = false;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (var connection = new SqlConnection(cstr))
+			using (var command = connection.CreateCommand())
+			{
+				try
+				{
+					connection.Open();
+					command.CommandText = "Update inquiry Set inquiryContent = @inquiryContent,inquiryTime = @inquiryTime,senderName = @senderName,senderContent = @senderContent,replierId = @replierId,repliersContent = @repliersContent,isReplied = @isReplied where id = @id";
+					command.Parameters.Add(new SqlParameter("@id", id));
+					command.Parameters.Add(new SqlParameter("@inquiryContent", inquiryContent));
+					command.Parameters.Add(new SqlParameter("@inquiryTime", inquiryTime));
+					command.Parameters.Add(new SqlParameter("@senderName", senderName));
+					command.Parameters.Add(new SqlParameter("@senderContent", senderContent));
+					if (replierId != null) command.Parameters.Add(new SqlParameter("@replierId", replierId));
+					else command.Parameters.Add(new SqlParameter("@replierId", DBNull.Value));
+					if (repliersContent != null) command.Parameters.Add(new SqlParameter("@repliersContent", repliersContent));
+					else command.Parameters.Add(new SqlParameter("@repliersContent", DBNull.Value));
+					command.Parameters.Add(new SqlParameter("@isReplied", isReplied));
+					int cnt = command.ExecuteNonQuery();
+					if (cnt != 0)
+					{
+						check = true;
+					}
+					connection.Close();
+				}
+				catch (SqlException e)
+				{
+					//エラー
+					connection.Close();
+					return check;
+				}
+			}
+			return check;
+		}
 	}
 }
