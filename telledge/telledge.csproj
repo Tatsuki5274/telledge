@@ -130,10 +130,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomesController.cs" />
+    <Compile Include="Controllers\InquiryController.cs" />
+    <Compile Include="Controllers\Students\HomesController.cs" />
+    <Compile Include="Controllers\Students\PasswordsController.cs" />
+    <Compile Include="Controllers\Students\PointsController.cs" />
+    <Compile Include="Controllers\Students\RegistrationsController.cs" />
     <Compile Include="Controllers\Students\RoomsController.cs" />
     <Compile Include="Api\SectionsController.cs" />
     <Compile Include="Controllers\Students\SessionsController.cs" />
+    <Compile Include="Controllers\Students\TeachersController.cs" />
+    <Compile Include="Controllers\Teachers\HomesController.cs" />
+    <Compile Include="Controllers\Teachers\PasswordsController.cs" />
+    <Compile Include="Controllers\Teachers\PointsController.cs" />
+    <Compile Include="Controllers\Teachers\RegistrationsController.cs" />
     <Compile Include="Controllers\Teachers\RoomsController.cs" />
     <Compile Include="Controllers\Teachers\SessionsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -212,9 +222,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Homes\About.cshtml" />
+    <Content Include="Views\Homes\Contact.cshtml" />
+    <Content Include="Views\Homes\Index.cshtml" />
     <Content Include="Views\Shared\teacherMenu.cshtml" />
     <Content Include="Views\Shared\studentMenu.cshtml" />
     <Content Include="Views\Students\Sessions\create.cshtml" />
@@ -231,7 +241,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="TemplateModel\" />
+    <Folder Include="Views\Inquiry\" />
+    <Folder Include="Views\Students\Homes\" />
+    <Folder Include="Views\Students\Passwords\" />
+    <Folder Include="Views\Students\Points\" />
+    <Folder Include="Views\Students\Registrations\" />
+    <Folder Include="Views\Teachers\Homes\" />
+    <Folder Include="Views\Teachers\Passwords\" />
+    <Folder Include="Views\Teachers\Points\" />
+    <Folder Include="Views\Teachers\Registrations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
