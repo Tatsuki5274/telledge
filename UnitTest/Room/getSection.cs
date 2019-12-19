@@ -12,7 +12,7 @@ namespace UnitTest.Rooms
         {
             Room room = new Room();
 			room.id = 1;
-			Section seciton = room.GetSection();
+			Section seciton = room.getSection();
             Assert.IsNotNull(seciton);
         }
 		[TestMethod]
@@ -20,7 +20,7 @@ namespace UnitTest.Rooms
 		{
 			Room room = new Room();
 			room.id = 3;
-			Section seciton = room.GetSection();
+			Section seciton = room.getSection();
 			Assert.IsNull(seciton);
 		}
 	}

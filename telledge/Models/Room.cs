@@ -229,7 +229,7 @@ namespace telledge.Models
 			}
 			return cnt;
 		}
-		public Section GetSection()
+		public Section getSection()
 		{
 			Section section = null;
 			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
