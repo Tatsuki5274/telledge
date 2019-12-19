@@ -229,5 +229,41 @@ namespace telledge.Models
 			}
 			return cnt;
 		}
+		public Section GetSection()
+		{
+			Section section = null;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "SELECT * FROM Section WHERE roomId = @id And talkTime IS NULL order by [order] asc";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.Int);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "Room");
+				if(cnt != 0)
+				{
+					DataTable dt = ds.Tables["Room"];
+					section = new Section();
+					section.order = (int)dt.Rows[0]["order"];
+					section.request = dt.Rows[0]["request"].ToString();
+					section.roomId = (int)dt.Rows[0]["roomId"];
+					section.studentId = (int)dt.Rows[0]["studentId"];
+					if (dt.Rows[0]["talkTime"] != DBNull.Value)
+					{
+						section.talkTime = (int)dt.Rows[0]["talkTime"];
+					}
+					if (dt.Rows[0]["valuation"] != DBNull.Value)
+					{
+						section.valuation = (int)dt.Rows[0]["valuation"];
+					}
+					if (dt.Rows[0]["beginTime"] != DBNull.Value)
+					{
+						section.beginTime = DateTime.Parse(dt.Rows[0]["beginTime"].ToString());
+					}
+				}
+			}
+				return section;
+		}
     }
 }

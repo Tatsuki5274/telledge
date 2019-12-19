@@ -53,6 +53,8 @@
     <Compile Include="FAQ\Delete.cs" />
     <Compile Include="Inquiry\Create.cs" />
     <Compile Include="Inquiry\Delete.cs" />
+    <Compile Include="Inquiry\find.cs" />
+    <Compile Include="Room\getSection.cs" />
     <Compile Include="Room\getWaitTime.cs" />
     <Compile Include="Room\getWaitCount.cs" />
     <Compile Include="Room\Create.cs" />

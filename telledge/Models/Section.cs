@@ -27,7 +27,7 @@ namespace telledge.Models
         public int? valuation { get; set; }
         public int order { get; set; }
         public DateTime beginTime { get; set; }
-        public int talkTime { get; set; }
+        public int? talkTime { get; set; }
 
         public Room getRoom()
         {
