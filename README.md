@@ -24,7 +24,7 @@ The next studnet waiting your class.
 ## Usage for student
 Login as a studnet.
 Select a room that you are interested from a list of rooms, or search by specific tags or something options from there.
-After joined a room, wait until your teacher start calling.
+After joined a room, wait until your teacher start calling with you.
 If you prefer the teacher, put on five stars at valuaton page :)
 
 ## License
