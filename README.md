@@ -3,7 +3,7 @@
 
 
 ## Why using Telledge?
-The system provide a opportunities to be a teacher to everyone.
+The system provide many opportunities to be a teacher to everyone.
 Or, can be learning skills a lot as student.
 Our skills will be beyond previous!
 
