@@ -28,3 +28,4 @@ After joined a room, wait until your teacher start calling with you.
 If you prefer the teacher, put on five stars at valuaton page :)
 
 ## License
+The license is written in `LICENSE`.
