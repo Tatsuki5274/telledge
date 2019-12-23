@@ -11,11 +11,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" href="~/StyleSheets/ModalWindow.css">
 	<link rel="stylesheet" href="~/StyleSheets/TeacherRoomcall.css">
-	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
 	<script src="~/Scripts/ModalWindow.js"></script>
 	<script>
 		mintime = @(Model.worstTime);
 		overtime = @(Model.extensionTime);
+		roomId = @(Model.id);
 	</script>
 	<script src="~/Scripts/Timer.js"></script>
 	<script src="~/Scripts/Telledge/teacherRoomCall.js"></script>
@@ -81,16 +83,24 @@
 							<td>要望</td>
 							<td>対応不可</td>
 						</tr>
-						@foreach (var section in Model.getSections())
-						{
-							<tr>
-								<td>@(section.getStudent().name)</td>
-								<td>@(section.request)</td>
-								<td>
-									<button class="btn btn-danger">キャンセル</button>
-								</td>
-							</tr>
+						@{
+							telledge.Models.Section[] sections;
+							if ((sections = Model.getSections()) != null)
+							{
+								foreach (var scn in Model.getSections())
+								{
+									<!--- student-x というidはWebSocketでの識別子として利用 -->
+									<tr id="student-@(scn.studentId)">
+										<td>@(scn.getStudent().name)</td>
+										<td>@(scn.request)</td>
+										<td>
+											<button class="btn btn-danger">キャンセル</button>
+										</td>
+									</tr>
+								}
+							}
 						}
+
 					</table>
 				</div>
 				@*  *@
@@ -102,18 +112,34 @@
 				<table>
 					<col span="1" width="150px">
 					<tbody>
-						<tr>
-							<td>生徒名</td>
-							<td>@(Model.getSection().getStudent().name)</td>
-						</tr>
-						<tr>
-							<td id="timer-title">残り時間</td>
-							<td id="timer-count"></td>
-						</tr>
-						<tr>
-							<td id="margin-bottom">要望</td>
-							<td id="margin-bottom">@(Model.getSection().request)</td>
-						</tr>
+						@{
+							telledge.Models.Section section;
+							section = Model.getSection();
+							<tr>
+								<td>生徒名</td>
+								<td>
+									@if(section != null)
+									{
+									@(section.getStudent().name)
+									}
+								</td>
+							</tr>
+							<tr>
+								<td id="timer-title">残り時間</td>
+								<td id="timer-count"></td>
+							</tr>
+							<tr>
+								<td id="margin-bottom">要望</td>
+								<td id="margin-bottom">
+									@if (section != null)
+									{
+										@(Model.getSection().request)
+
+									}
+								</td>
+							</tr>
+						}
+
 
 					</tbody>
 				</table>

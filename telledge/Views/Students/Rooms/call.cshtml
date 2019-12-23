@@ -21,12 +21,16 @@
 	<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
 	<script src="~/Scripts/JqueryUI/jquery-ui-1.8.12.min.js"></script>
 	<script src="~/Scripts/raty/jquery.raty.js"></script>
+	<script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
 	<script src="~/Scripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
 	<link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript">
 		let mintime = @Model.worstTime;
-		let overtime= @Model.extensionTime;
+		let overtime = @Model.extensionTime;
+		//WebSocketで利用
+		const roomId = @Model.id;
+		const studentId = @Student.currentUser().id;
 	</script>
 	<script type="text/javascript" src="~/Scripts/Timer.js"></script>
 	<script src="~/Scripts/Telledge/studentRoomsCall.js"></script>
@@ -96,9 +100,7 @@
 						</tr>
 						<tr>
 							<td>
-								<a href="/student/rooms/leave/@(Model.id)">
-									<button class="btn btn-danger">ルーム退出</button>
-								</a>
+								<button id="leave-button" class="btn btn-danger">ルーム退出</button>
 
 								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#review-modal">通話終了</button>
 							</td>

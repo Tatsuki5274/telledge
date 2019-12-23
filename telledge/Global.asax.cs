@@ -22,9 +22,9 @@ namespace telledge
                 new[] { "telledge.Controllers.Student" }
             );
             routes.MapRoute(
-                "Default", // ルート名
-                "teacher/{controller}/{action}/{id}", // パラメーター付きの URL
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // パラメーターの既定値
+                "Default", // 繝ｫ繝ｼ繝亥錐
+                "teacher/{controller}/{action}/{id}", // 繝代Λ繝｡繝ｼ繧ｿ繝ｼ莉倥″縺ｮ URL
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // 繝代Λ繝｡繝ｼ繧ｿ繝ｼ縺ｮ譌｢螳壼､
             );
 
         }
@@ -36,6 +36,6 @@ namespace telledge
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-        }
+		}
     }
 }
