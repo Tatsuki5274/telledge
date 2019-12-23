@@ -225,9 +225,12 @@
     <Content Include="Scripts\raty\jquery.raty.js" />
     <Content Include="Scripts\tag-it.js" />
     <Content Include="Scripts\tag-it.min.js" />
+    <Content Include="Scripts\Telledge\deactivate.js" />
     <Content Include="Scripts\Telledge\studentRoomsCall.js" />
     <Content Include="Scripts\Telledge\teacherRoomCall.js" />
     <Content Include="Scripts\Timer.js" />
+    <Content Include="StyleSheets\common.css" />
+    <Content Include="StyleSheets\deactivate.css" />
     <Content Include="StyleSheets\TeacherRoomsindex.css" />
     <Content Include="StyleSheets\StudentLogin.css" />
     <Content Include="StyleSheets\studentMenuStyle.css" />
@@ -264,6 +267,7 @@
     <Content Include="Scripts\raty\fonts\raty.eot" />
     <Content Include="Scripts\raty\fonts\raty.ttf" />
     <Content Include="Scripts\raty\fonts\raty.woff" />
+    <Content Include="Views\Students\Registrations\deactivate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -271,7 +275,6 @@
     <Folder Include="Views\Students\Homes\" />
     <Folder Include="Views\Students\Passwords\" />
     <Folder Include="Views\Students\Points\" />
-    <Folder Include="Views\Students\Registrations\" />
     <Folder Include="Views\Teachers\Homes\" />
     <Folder Include="Views\Teachers\Passwords\" />
     <Folder Include="Views\Teachers\Points\" />
