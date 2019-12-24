@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +8,10 @@ namespace telledge.Controllers.Teachers
 {
     public class RegistrationsController : Controller
     {
-        // GET: Registrations
-        public ActionResult Index()
-        {
-            return View();
-        }
-    }
+		// GET: Registrations
+		public ActionResult deactivate()
+		{
+			return View("/Views/Teachers/Registrations/deactivate.cshtml");
+		}
+	}
 }

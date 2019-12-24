@@ -1,0 +1,35 @@
+
+@{
+    ViewBag.Title = "deactivate";
+}
+<!doctype html>
+<html>
+<head>
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Telledge/deactivate.js"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/StyleSheets/deactivate.css" />
+    <link rel="stylesheet" href="~/StyleSheets/common.css" />
+</head>
+<body>
+    <main class="col-lg-6 col-lg-offset-3">
+        <div id="form-box">
+            <form id="agreements" action="/teacher/registrations/deactivate" method="post">
+
+                <h2 class="separate-boxes center">退会が必要ですか？</h2>
+                <p class="separate-boxes">退会するにあたり以下の注意事項に同意にして頂く必要があります。よく読んだ上ですべての項目にチェックを付けてから退会ボタンを押してください。</p>
+                <div class="separate-boxes">
+                    <input class="agreement-checkbox" type="checkbox" />退会後は全てのデータへのアクセス権を失うことを理解しました。<br />
+                    <input class="agreement-checkbox" type="checkbox" />退会後も外部から見えるデータは消えずに残り続けることを理解しました。機密情報はその限りではありません。<br />
+                    <input class="agreement-checkbox" type="checkbox" />取得済みのポイントは消失し、永久的に復元することができないことを理解しました。<br />
+                    <input class="agreement-checkbox" type="checkbox" />OO規約、XX規約に同意します。<br />
+                </div>
+                <input id="inactivedate-button" class="btn btn-danger" type="submit" value="退会" disabled="disabled" />
+
+            </form>
+        </div>
+    </main>
+</body>
+</html>
+
