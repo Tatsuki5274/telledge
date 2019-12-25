@@ -50,5 +50,11 @@ namespace telledge.Controllers.Teachers
 				return View("/Views/Teachers/Sessions/create.cshtml");
 			}
 		}
-    }
+		[HttpGet]
+		public ActionResult show(int roomid)
+		{
+			var model = Room.find(roomid);
+			return View("/Views/Teachers/Rooms/call.cshtml", model);
+		}
+	}
 }
