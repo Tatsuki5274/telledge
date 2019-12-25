@@ -1,0 +1,18 @@
+
+@{
+    Layout = "~/Views/Shared/studentMenu.cshtml";
+}
+
+<main>
+	<header>
+		<link rel="stylesheet" href="~/StyleSheets/studentRoomSearch.css" />
+	</header>
+		<h1 id="search-padding">ルーム検索</h1>
+		<div>
+			<form action="/student/Rooms/search" method="post" name="Student">
+				<span>タグ</span>
+				<span><input type="text" name="keyword"></span>
+				<span><input type="submit" name="submit" value="検索"></span>
+			</form>
+		</div>
+</main>

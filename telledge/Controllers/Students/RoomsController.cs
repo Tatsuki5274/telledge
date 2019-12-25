@@ -149,5 +149,16 @@ namespace telledge.Controllers.Students
 			section.update();
 			return RedirectToAction("index", "rooms");
 		}
-	}
+        [HttpGet]
+        public ActionResult search()
+        {
+            return View("/Views/Students/Rooms/search.cshtml");
+        }
+        [HttpPost]
+        public ActionResult search(String keyword)
+		{
+            var model = Room.getRooms(keyword);
+            return View("/Views/Students/Rooms/index.cshtml", model);
+        }
+    }
 }

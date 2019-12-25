@@ -231,6 +231,7 @@
     <Content Include="Scripts\Timer.js" />
     <Content Include="StyleSheets\common.css" />
     <Content Include="StyleSheets\deactivate.css" />
+    <Content Include="StyleSheets\studentRoomSearch.css" />
     <Content Include="StyleSheets\TeacherRoomsindex.css" />
     <Content Include="StyleSheets\StudentLogin.css" />
     <Content Include="StyleSheets\studentMenuStyle.css" />
@@ -269,6 +270,7 @@
     <Content Include="Scripts\raty\fonts\raty.woff" />
     <Content Include="Views\Students\Registrations\deactivate.cshtml" />
     <Content Include="Views\Teachers\Registrations\deactivate.cshtml" />
+    <Content Include="Views\Students\Rooms\search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
