@@ -26,7 +26,7 @@ namespace telledge.Controllers.Students
             return View("/Views/Students/Sessions/create.cshtml");
 
         }
-        [HttpDelete]
+        [HttpPost]
         public ActionResult Delete()
         {
             Student.logout();
