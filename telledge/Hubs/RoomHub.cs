@@ -38,9 +38,14 @@ namespace telledge.Hubs
 		// 生徒がルームに参加した時の処理
 		public void joinRoom(int roomId, int studentId)
 		{
-			Room room = Room.find(roomId);	//ルーム番号のルームインスタンスを取得する
+			Room room = Room.find(roomId);  //ルーム番号のルームインスタンスを取得する
+			Section section = Section.find(roomId, studentId);
 			//Student student = Student.
-			Clients.Group("room_" + roomId).append();
+			Clients.Group("teacher_room_" + roomId).append(new {
+				student_id = section.studentId,
+				student_name = section.getStudent().name,
+				request = section.request
+			});
 		}
 		// 生徒がルームから退出した時の処理
 		public void leaveRoom(int roomId, int studentId)

@@ -56,6 +56,19 @@ $(function () {
 		$('#student-' + studentId).remove();
 	});
 
+	// 生徒一覧への追記処理
+	echo.on("append", (student_json) => {
+		console.log(student_json);
+		$("#student-list").append("<tr id=\"student-" + student_json.student_id + "\"></tr>");
+		$("#student-" + student_json.student_id)
+			.append(
+				"<td>" + student_json.student_name + "</td>",
+				"<td>" + student_json.request + "</td>",
+				"<td><button class=\"btn btn-danger\">キャンセル</button></td>"
+			);
+
+	})
+
 	// 接続を開始
 	connection.start(function () {
 		//サーバーのJoinTeacherメソッドを実行し、講師として登録する

@@ -1,8 +1,10 @@
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using telledge.Hubs;
 using telledge.Models;
 
 namespace telledge.Controllers.Students
@@ -114,6 +116,7 @@ namespace telledge.Controllers.Students
                 return View();
             }
         }
+
 		[HttpPost]
 		public ActionResult join(int id, string request)
 		{
@@ -124,6 +127,12 @@ namespace telledge.Controllers.Students
 			section.request = request;
 			section.beginTime = DateTime.Now;
 			section.create();
+			GlobalHost.ConnectionManager.GetHubContext<RoomHub>().Clients.Group("teacher_room_" + id).append(new
+			{
+				student_id = section.studentId,
+				student_name = section.getStudent().name,
+				request = section.request
+			});
 			return RedirectToAction("call", "rooms", new { Id = Convert.ToInt32(id) });
 		}
 

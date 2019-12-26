@@ -78,29 +78,32 @@
 				</div>
 				<div id="room--list">
 					<table border="1" class="table  table-striped">
-						<tr>
-							<td>名前</td>
-							<td>要望</td>
-							<td>対応不可</td>
-						</tr>
-						@{
-							telledge.Models.Section[] sections;
-							if ((sections = Model.getSections()) != null)
-							{
-								foreach (var scn in Model.getSections())
+						<thead>
+							<tr>
+								<td>名前</td>
+								<td>要望</td>
+								<td>対応不可</td>
+							</tr>
+						</thead>
+						<tbody id="student-list">
+							@{
+								telledge.Models.Section[] sections;
+								if ((sections = Model.getSections()) != null)
 								{
-									<!--- student-x というidはWebSocketでの識別子として利用 -->
-									<tr id="student-@(scn.studentId)">
-										<td>@(scn.getStudent().name)</td>
-										<td>@(scn.request)</td>
-										<td>
-											<button class="btn btn-danger">キャンセル</button>
-										</td>
-									</tr>
+									foreach (var scn in Model.getSections())
+									{
+										<!--- student-x というidはWebSocketでの識別子として利用 -->
+										<tr id="student-@(scn.studentId)">
+											<td>@(scn.getStudent().name)</td>
+											<td>@(scn.request)</td>
+											<td>
+												<button class="btn btn-danger">キャンセル</button>
+											</td>
+										</tr>
+									}
 								}
 							}
-						}
-
+						</tbody>
 					</table>
 				</div>
 				@*  *@
