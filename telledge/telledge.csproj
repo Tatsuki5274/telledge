@@ -271,6 +271,7 @@
     <Content Include="Views\Students\Registrations\deactivate.cshtml" />
     <Content Include="Views\Teachers\Registrations\deactivate.cshtml" />
     <Content Include="Views\Students\Rooms\search.cshtml" />
+    <Content Include="Views\Students\Registrations\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
