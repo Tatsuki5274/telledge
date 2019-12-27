@@ -271,13 +271,13 @@
     <Content Include="Views\Students\Registrations\deactivate.cshtml" />
     <Content Include="Views\Teachers\Registrations\deactivate.cshtml" />
     <Content Include="Views\Students\Rooms\search.cshtml" />
+    <Content Include="Views\Students\Homes\edit.cshtml" />
     <Content Include="Views\Teachers\Registrations\create.cshtml" />
     <Content Include="Views\Students\Registrations\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Inquiry\" />
-    <Folder Include="Views\Students\Homes\" />
     <Folder Include="Views\Students\Passwords\" />
     <Folder Include="Views\Students\Points\" />
     <Folder Include="Views\Teachers\Homes\" />
