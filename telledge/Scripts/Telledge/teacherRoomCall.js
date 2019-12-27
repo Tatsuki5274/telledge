@@ -58,20 +58,28 @@ $(function () {
 
 	// 生徒一覧への追記処理
 	echo.on("append", (student_json) => {
-		console.log(student_json);
-		$("#student-list").append("<tr id=\"student-" + student_json.student_id + "\"></tr>");
+		const id = "id=\"student-" + student_json.student_id + "\"";
+		const value = "value=\"" + student_json.student_id + "\"";
+		$("#student-list").append("<tr " + id + " " + value + "></tr>");
 		$("#student-" + student_json.student_id)
 			.append(
 				"<td>" + student_json.student_name + "</td>",
 				"<td>" + student_json.request + "</td>",
 				"<td><button class=\"btn btn-danger\">キャンセル</button></td>"
 			);
+	});
 
-	})
+	//リジェクトボタンを押したときの処理
+	$(document).on("click", "#student-list button", function () {
+		const $tr = $(this).closest("tr");		//押されたボタンから一番近いtr要素を取得する
+		const studentId = $tr.attr("value");	//生徒番号をdomから取得
+		echo.invoke("rejectRoom", roomId, studentId);	//RoomHubクラスのrejectRoomメソッドを呼び出す（引数は順番にルーム番号、生徒番号）
+		$tr.remove();	//対象の要素を削除
+	});
 
 	// 接続を開始
 	connection.start(function () {
 		//サーバーのJoinTeacherメソッドを実行し、講師として登録する
 		echo.invoke("JoinTeacher", roomId);
 	});
-})
+});

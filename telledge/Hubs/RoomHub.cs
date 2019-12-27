@@ -54,7 +54,22 @@ namespace telledge.Hubs
 			section.roomId = roomId;
 			section.studentId = studentId;
 			section.delete();
+			// 講師のフロントエンド処理を呼び出す
 			Clients.Group("teacher_room_" + roomId).removeStudent(studentId);
+		}
+
+		//講師が生徒を対応拒否した場合の処理
+		public void rejectRoom(int roomId, int studentId)
+		{
+			Section section = new Section();
+			section.roomId = roomId;
+			section.studentId = studentId;
+			section.delete();
+			// 生徒全体へリジェクト情報を送信する
+			Clients.Group("student_room_" + roomId).reject(new {
+				student_id = studentId
+				//待ち人数と待ち時間を更新して同時に返す処理をここに実装予定
+			});
 		}
 		public void Hello()
 		{
