@@ -111,10 +111,11 @@
 		</div>
 	</main>
 
+	<!-- 評価のモーダルウィンドウ -->
 	<div class="modal fade" id="review-modal" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/student/rooms/end" method="post" >
+				<form action="/student/rooms/end" method="post">
 					<input name="id" type="hidden" value="@(Model.id)" />
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
@@ -129,6 +130,26 @@
 						<input type="submit" class="btn btn-primary" />
 					</div>
 				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- リジェクトのモーダルウィンドウ -->
+	<div class="modal fade" id="reject-modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+					<h4 class="modal-title">お知らせ</h4>
+				</div>
+				<div class="modal-body">
+					この度はルームへのご参加誠にありがとうございます。<br />
+					大変申し訳ございませんが、担当講師の力不足によりお客様へ満足のできるレッスンを提供することが難しいと判断したためレッスンの提供を中止しました。<br />
+					お手数をおかけしますが別の講師のルームに再参加していただくよう宜しくお願い申し上げます。
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="location.href='/student/rooms/index'">ルーム一覧へ戻る</button>
+				</div>
 			</div>
 		</div>
 	</div>
