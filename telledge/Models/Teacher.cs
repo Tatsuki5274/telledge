@@ -215,5 +215,64 @@ namespace telledge.Models
 			}
 			return valuation;
 		}
+		public bool Update()
+		{
+			bool check = false;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (var connection = new SqlConnection(cstr))
+			using (var command = connection.CreateCommand())
+			{
+				try
+				{
+					connection.Open();
+					command.CommandText = "Update Teacher Set name = @name,sex = @sex ,profileImage = @profileImage,age = @age,language = @language, " +
+											"introduction = @introduction,passwordDigest = @passwordDigest,mailaddress = @mailaddress, " +
+											 "point = @point,address = @address,is2FA = @is2FA,nationality = @nationality,inactiveDate = @inactiveDate where id = @id";
+					command.Parameters.Add(new SqlParameter("@id", id));
+					if (name != null) command.Parameters.Add(new SqlParameter("@name", name));
+					else command.Parameters.Add(new SqlParameter("@name", DBNull.Value));
+					if (profileImage != null) command.Parameters.Add(new SqlParameter("@profileImage", profileImage));
+					else command.Parameters.Add(new SqlParameter("@profileImage", DBNull.Value));
+					command.Parameters.Add(new SqlParameter("@age", age));
+					command.Parameters.Add(new SqlParameter("@language", language));
+					command.Parameters.Add(new SqlParameter("@introduction", intoroduction));
+					command.Parameters.Add(new SqlParameter("@passwordDigest", passwordDigest));
+					command.Parameters.Add(new SqlParameter("@mailaddress", mailaddress));
+					command.Parameters.Add(new SqlParameter("@point", point));
+					command.Parameters.Add(new SqlParameter("@address", address));
+					command.Parameters.Add(new SqlParameter("@is2FA", is2FA));
+					command.Parameters.Add(new SqlParameter("@nationality", nationality));
+					if (inactiveDate != null) command.Parameters.Add(new SqlParameter("@inactiveDate", inactiveDate));
+					else command.Parameters.Add(new SqlParameter("@inactiveDate", DBNull.Value));
+					int cnt = command.ExecuteNonQuery();
+					if (cnt != 0)
+					{
+						check = true;
+					}
+					connection.Close();
+				}
+				catch (SqlException)
+				{
+					//エラー
+					connection.Close();
+					return check;
+				}
+			}
+			return check;
+		}
+		public bool changePassword(String oldPasswordRaw, String newPasswordRaw)
+		{
+			bool check = false;
+			SHA256 sha = new SHA256CryptoServiceProvider();
+			byte[] input = Encoding.ASCII.GetBytes(oldPasswordRaw);
+			byte[] CheckPasswordDigest = sha.ComputeHash(input);
+			if (passwordDigest.SequenceEqual(CheckPasswordDigest))
+			{
+				input = Encoding.ASCII.GetBytes(newPasswordRaw);
+				passwordDigest = input;
+				check = true;
+			}
+			return check;
+		}
 	}
 }
