@@ -226,7 +226,7 @@ namespace telledge.Models
 			if (passwordDigest.SequenceEqual(CheckPasswordDigest))
 			{
 				input = Encoding.ASCII.GetBytes(newPasswordRaw);
-				passwordDigest = input;
+				passwordDigest = sha.ComputeHash(input);
 				check = true;
 			}
 			return check;
