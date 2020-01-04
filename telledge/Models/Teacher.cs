@@ -82,6 +82,7 @@ namespace telledge.Models
                             retTeacher.nationality = dt.Rows[0]["nationality"].ToString();
                             retTeacher.is2FA = (bool)dt.Rows[0]["is2FA"];
                             retTeacher.point = (int)dt.Rows[0]["point"];
+							retTeacher.address = dt.Rows[0]["address"].ToString();
                             if (dt.Rows[0]["inactiveDate"] != DBNull.Value)
                             {
                                 retTeacher.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
@@ -231,6 +232,7 @@ namespace telledge.Models
 					command.Parameters.Add(new SqlParameter("@id", id));
 					if (name != null) command.Parameters.Add(new SqlParameter("@name", name));
 					else command.Parameters.Add(new SqlParameter("@name", DBNull.Value));
+					command.Parameters.Add(new SqlParameter("@sex", sex));
 					if (profileImage != null) command.Parameters.Add(new SqlParameter("@profileImage", profileImage));
 					else command.Parameters.Add(new SqlParameter("@profileImage", DBNull.Value));
 					command.Parameters.Add(new SqlParameter("@age", age));
@@ -269,7 +271,7 @@ namespace telledge.Models
 			if (passwordDigest.SequenceEqual(CheckPasswordDigest))
 			{
 				input = Encoding.ASCII.GetBytes(newPasswordRaw);
-				passwordDigest = input;
+				passwordDigest = sha.ComputeHash(input);
 				check = true;
 			}
 			return check;
