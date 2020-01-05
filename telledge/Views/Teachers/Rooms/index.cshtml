@@ -9,12 +9,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" href="~/StyleSheets/TeacherRoomsindex.css">
 <main>
-	<form action="/teacher/Rooms/create" method="post" name="Teacher">
+	<div>
 		<a href="/teacher/Rooms/Create">ルーム作成</a>
-	</form>
-	<form action="/teacher/Passwords/edit" method="get" name="Teacher">
+	</div>
+	<div>
 		<a href="/teacher/Passwords/edit">パスワード変更画面</a>
-	</form>
+	</div>
 	@foreach (var item in Model)
 	{
 		<div class="room-boxes">
