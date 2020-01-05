@@ -6,9 +6,12 @@ Layout = "~/Views/Shared/studentMenu.cshtml";
 }
 
 <main>
-	<form action="/student/Homes/edit" method="get" name="Student">
+	<div>
 		<a href="/student/Homes/edit">登録情報変更</a>
-	</form>
+	</div>
+	<div>
+		<a href="/student/Passwords/edit">パスワード変更画面</a>
+	</div>
 	@foreach (var item in Model)
 	{
 		<div class="room-boxes">
