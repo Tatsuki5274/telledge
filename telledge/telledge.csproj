@@ -274,6 +274,7 @@
     <Content Include="Views\Students\Homes\edit.cshtml" />
     <Content Include="Views\Teachers\Registrations\create.cshtml" />
     <Content Include="Views\Students\Registrations\create.cshtml" />
+    <Content Include="Views\Students\points\create.cshtml" />
     <Content Include="Views\Students\Passwords\edit.cshtml" />
     <Content Include="Views\Teachers\Passwords\edit.cshtml" />
   </ItemGroup>
@@ -282,7 +283,6 @@
     <Folder Include="Views\Inquiry\" />
     <Folder Include="Views\Students\Homes\" />
     <Folder Include="Views\Students\Passwords\" />
-    <Folder Include="Views\Students\Points\" />
     <Folder Include="Views\Teachers\Homes\" />
     <Folder Include="Views\Teachers\Points\" />
   </ItemGroup>
