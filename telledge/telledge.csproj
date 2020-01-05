@@ -197,6 +197,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Authentication.config" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Content\JqueryUI\jquery-ui-1.12.1.min.css" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -204,6 +208,25 @@
     <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\JqueryUI\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\JqueryUI\jquery-ui-1.8.12.min.js" />
+    <Content Include="Scripts\lazeemenu\lazeemenu-jquery.js" />
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu-dark-theme.css">
+      <DependentUpon>lazeemenu-dark-theme.scss</DependentUpon>
+    </Content>
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu-dark-theme.min.css">
+      <DependentUpon>lazeemenu-dark-theme.css</DependentUpon>
+    </Content>
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu-stripped-theme.css">
+      <DependentUpon>lazeemenu-stripped-theme.scss</DependentUpon>
+    </Content>
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu-stripped-theme.min.css">
+      <DependentUpon>lazeemenu-stripped-theme.css</DependentUpon>
+    </Content>
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu.css">
+      <DependentUpon>lazeemenu.scss</DependentUpon>
+    </Content>
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu.min.css">
+      <DependentUpon>lazeemenu.css</DependentUpon>
+    </Content>
     <Content Include="Scripts\ModalWindow.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -232,6 +255,8 @@
     <Content Include="StyleSheets\common.css" />
     <Content Include="StyleSheets\deactivate.css" />
     <Content Include="StyleSheets\studentRoomSearch.css" />
+    <Content Include="StyleSheets\teacherHomeMypage.css" />
+    <Content Include="StyleSheets\TeacherMenu.css" />
     <Content Include="StyleSheets\TeacherRoomsindex.css" />
     <Content Include="StyleSheets\StudentLogin.css" />
     <Content Include="StyleSheets\studentMenuStyle.css" />
@@ -276,13 +301,18 @@
     <Content Include="Views\Students\Registrations\create.cshtml" />
     <Content Include="Views\Students\points\create.cshtml" />
     <Content Include="Views\Students\Passwords\edit.cshtml" />
+    <Content Include="Views\Teachers\Homes\mypage.cshtml" />
     <Content Include="Views\Teachers\Passwords\edit.cshtml" />
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu-dark-theme.scss" />
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu-stripped-theme.scss" />
+    <Content Include="Scripts\lazeemenu\sass\lazeemenu.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Inquiry\" />
     <Folder Include="Views\Students\Homes\" />
     <Folder Include="Views\Students\Passwords\" />
+    <Folder Include="Views\Students\Points\" />
     <Folder Include="Views\Teachers\Homes\" />
     <Folder Include="Views\Teachers\Points\" />
   </ItemGroup>

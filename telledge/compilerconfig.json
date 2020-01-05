@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "Scripts/lazeemenu/sass/lazeemenu-dark-theme.css",
+    "inputFile": "Scripts/lazeemenu/sass/lazeemenu-dark-theme.scss"
+  },
+  {
+    "outputFile": "Scripts/lazeemenu/sass/lazeemenu-stripped-theme.css",
+    "inputFile": "Scripts/lazeemenu/sass/lazeemenu-stripped-theme.scss"
+  },
+  {
+    "outputFile": "Scripts/lazeemenu/sass/lazeemenu.css",
+    "inputFile": "Scripts/lazeemenu/sass/lazeemenu.scss"
+  }
+]

@@ -1,4 +1,4 @@
-﻿.clearfix::after {
+.clearfix::after {
     content: "";
     display: block;
     clear: both;
@@ -25,7 +25,6 @@ header {
     border: solid 3px #000000;
     margin-right: auto;
     height: auto;
-    width: 50%;
     display: block;
 }
 

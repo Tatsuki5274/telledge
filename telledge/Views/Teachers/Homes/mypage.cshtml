@@ -1,0 +1,55 @@
+@model telledge.Models.Teacher
+
+
+@{
+    ViewBag.Title = "mypage";
+    Layout = "~/Views/Shared/teacherMenu.cshtml";
+}
+<link href="~/Scripts/lazeemenu/sass/lazeemenu.min.css" rel="stylesheet" />
+<link href="~/StyleSheets/common.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/lazeemenu/lazeemenu-jquery.js"></script>
+<link href="~/StyleSheets/teacherHomeMypage.css" rel="stylesheet" />
+
+<main class="col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6">
+    <h1>マイページ</h1>
+    <ul id="menu-1">
+        <li>
+            <h3><span>プロフィール</span></h3>
+            <ul>
+                <li><span class="list-width">画像</span></li>
+                <li><span class="list-width">メールアドレス</span>@Model.mailaddress</li>
+                <li><span class="list-width">名前</span>@Model.name</li>
+                <li>
+                    <button class="btn btn-primary center" type="button" onclick="location.href='/teacher/homes/edit'">変更</button>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3><span>セキュリティ</span></h3>
+            <ul>
+                <li><span class="list-width">パスワード</span>********</li>
+                <li><span class="list-width">二段階認証</span>無効</li>
+                <li>
+                    <button class="btn btn-primary center" type="button" onclick="location.href='/teacher/passwords/edit'">変更</button>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3><span>アカウント</span></h3>
+            <ul>
+                <li>
+                    <div class="list-paddings">
+                        <p>アカウントを削除します</p>
+                        <button class="btn btn-danger center" type="button" onclick="location.href='/teacher/registrations/deactivate'">退会</button>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#menu-1').lazeemenu('collapseAll');  //メニューをすべて閉じた状態で開始する
+        });
+    </script>
+</main>
