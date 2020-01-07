@@ -306,14 +306,11 @@
     <Content Include="Scripts\lazeemenu\sass\lazeemenu-dark-theme.scss" />
     <Content Include="Scripts\lazeemenu\sass\lazeemenu-stripped-theme.scss" />
     <Content Include="Scripts\lazeemenu\sass\lazeemenu.scss" />
+    <Content Include="Views\Teachers\Homes\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Inquiry\" />
-    <Folder Include="Views\Students\Homes\" />
-    <Folder Include="Views\Students\Passwords\" />
-    <Folder Include="Views\Students\Points\" />
-    <Folder Include="Views\Teachers\Homes\" />
     <Folder Include="Views\Teachers\Points\" />
   </ItemGroup>
   <ItemGroup>

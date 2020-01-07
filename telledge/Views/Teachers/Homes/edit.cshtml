@@ -1,0 +1,82 @@
+@model telledge.Models.Teacher
+
+@{
+    ViewBag.Title = "edit";
+    Layout = "~/Views/Shared/teacherMenu.cshtml";
+}
+
+<h2>edit</h2>
+
+
+<form action="/teacher/homes/update" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Teacher</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="name">名前</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="name">メールアドレス</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mailaddress, new { htmlAttributes = new { @class = "form-control", @type = "email"} })
+                @Html.ValidationMessageFor(model => model.mailaddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="sex">性別</label>
+            <div class="col-md-10">
+                <input class=" text-box single-line" name="sex" type="radio" value="1">男性
+                <input class=" text-box single-line" name="sex" type="radio" value="2">女性
+                <input class=" text-box single-line" name="sex" type="radio" value="3" checked>未設定
+
+                @Html.ValidationMessageFor(model => model.sex, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="profileImage">画像</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.profileImage, new { htmlAttributes = new { @class = "", @type = "file" } })
+                @Html.ValidationMessageFor(model => model.profileImage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="intoroduction">自己紹介</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.intoroduction, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.intoroduction, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="nationality">国籍</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nationality, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nationality, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
