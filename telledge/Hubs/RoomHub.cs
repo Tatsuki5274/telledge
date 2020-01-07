@@ -47,6 +47,19 @@ namespace telledge.Hubs
 				request = section.request
 			});
 		}
+		//通話を終了する信号を受け取ったときに実行する処理（呼び出し元は問わない）
+		public void endCall(int roomId, int studentId)
+		{
+			Section section = Section.find(roomId, studentId);
+			TimeSpan talkSpan = (DateTime.Now - section.beginTime);
+			section.talkTime = talkSpan.Minutes + talkSpan.Hours * 60;
+			if (section.update())
+			{
+				//各ユーザに通話の終了を伝達する
+				Clients.Group("teacher_room_" + roomId).endCall(Room.find(roomId).getSection());
+				Clients.Group("student_room_" + roomId).endCall(roomId, studentId);
+			}
+		}
 		// 生徒がルームから退出した時の処理
 		public void leaveRoom(int roomId, int studentId)
 		{

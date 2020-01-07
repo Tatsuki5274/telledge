@@ -59,6 +59,24 @@ $(function () {
 		}
 	});
 
+	//通話終了ボタンの入力を検知したときの処理
+	$("#endCall-button").click(function () {
+		echo.invoke("endCall", roomId, studentId);	//ルームの終了を知らせる信号を送信する
+	});
+
+	// 通話終了の信号を受信したときの処理
+	echo.on("endCall", (room_id, student_id) => {
+		if (student_id == studentId) {
+			//終了対象が自分なら
+			$("#review-modal").modal({
+				backdrop: "static"
+			});
+			// モーダルウィンドウを開く
+			$("#review-modal").modal('show');
+			echo.invoke("LeaveStudent", roomId);	//信号の受信を終了する
+		}
+	});
+
 	//Sectionテーブルから情報を削除する処理を実行する
 	$("#leave-button").click(function () {
 		echo.invoke("leaveRoom", roomId, studentId);	//RoomHubに定義されているサーバーのleaveRoomメソッドを実行する

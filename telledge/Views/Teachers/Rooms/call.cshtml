@@ -21,39 +21,36 @@
 	</script>
 	<script src="~/Scripts/Timer.js"></script>
 	<script src="~/Scripts/Telledge/teacherRoomCall.js"></script>
-
-</head>
-<body>
-	<div class="modal js-modal">
-		<div class="modal__bg js-modal-close"></div>
-		<div class="modal__content">
-			<h3 class="h3-margin-left">休憩時間です!!次の生徒の対応を開始しますか?</h3>
-			<div class="div-margin">
-				<span>生徒名</span>
-				<span>山田</span>
-			</div>
-			<div class="div-margin">
-				<span>要望</span>
-				<span>こうしてください。</span>
-			</div>
-			<div class="div-margin">
-				<input class="buttom-margin" type="submit" value="対応不可" id="button-color-red">
-				<input class="buttom-margin" type="submit" value="次の生徒へ" id="button-color-Green">
-				<a class="js-modal-close" href=""></a>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
-
-<html>
-<head>
-	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" href="~/Content/bootstrap.min.css">
-	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
+
+	<!-- 休憩のモーダルウィンドウ -->
+	<div class="modal fade" id="break-modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="h3-margin-left">休憩時間です!!次の生徒の対応を開始しますか?</h3>
+				</div>
+				<div class="modal-body">
+					<div class="div-margin">
+						<span>生徒名</span>
+						<span>山田</span>
+					</div>
+					<div class="div-margin">
+						<span>要望</span>
+						<span>こうしてください。</span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input class="buttom-margin" type="submit" value="対応不可" id="button-color-red">
+					<input class="buttom-margin" type="submit" value="次の生徒へ" id="button-color-Green">
+					<button type="button" class="btn btn-primary" onclick="location.href='/student/rooms/index'">ルーム一覧へ戻る</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<main class="clearfix">
 		<div id="main-left" class="boxes border float">
 			<div id="content-box">
@@ -121,9 +118,9 @@
 							<tr>
 								<td>生徒名</td>
 								<td>
-									@if(section != null)
+									@if (section != null)
 									{
-									@(section.getStudent().name)
+										@(section.getStudent().name)
 									}
 								</td>
 							</tr>
