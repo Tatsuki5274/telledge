@@ -307,6 +307,7 @@
     <Content Include="Scripts\lazeemenu\sass\lazeemenu-stripped-theme.scss" />
     <Content Include="Scripts\lazeemenu\sass\lazeemenu.scss" />
     <Content Include="Views\Teachers\Homes\edit.cshtml" />
+    <Content Include="Views\Students\Passwords\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
