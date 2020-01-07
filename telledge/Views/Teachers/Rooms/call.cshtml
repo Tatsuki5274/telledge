@@ -36,17 +36,16 @@
 				<div class="modal-body">
 					<div class="div-margin">
 						<span>生徒名</span>
-						<span>山田</span>
+						<span class="student-name"></span>
 					</div>
 					<div class="div-margin">
 						<span>要望</span>
-						<span>こうしてください。</span>
+						<span class="student-request"></span>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<input class="buttom-margin" type="submit" value="対応不可" id="button-color-red">
-					<input class="buttom-margin" type="submit" value="次の生徒へ" id="button-color-Green">
-					<button type="button" class="btn btn-primary" onclick="location.href='/student/rooms/index'">ルーム一覧へ戻る</button>
+					<button class="btn btn-danger">対応不可</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#break-modal">次の生徒へ</button>
 				</div>
 			</div>
 		</div>
@@ -117,7 +116,7 @@
 							section = Model.getSection();
 							<tr>
 								<td>生徒名</td>
-								<td>
+								<td class="student-name">
 									@if (section != null)
 									{
 										@(section.getStudent().name)
@@ -130,7 +129,7 @@
 							</tr>
 							<tr>
 								<td id="margin-bottom">要望</td>
-								<td id="margin-bottom">
+								<td id="margin-bottom" class="student-request">
 									@if (section != null)
 									{
 										@(Model.getSection().request)

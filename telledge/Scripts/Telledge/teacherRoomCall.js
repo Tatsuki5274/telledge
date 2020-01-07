@@ -75,8 +75,16 @@ $(function () {
 	});
 
 	// 通話終了の信号を受信したときの処理
-	echo.on("endCall", (section) => {
-		console.log(section);
+	echo.on("endCall", (section, student) => {
+		if (section != null) {
+			//次に待っている生徒がいる場合
+			$('.student-name').text(student.name);
+			$('.student-request').text(section.request);
+		} else {
+			$('.student-name').text("");
+			$('.student-request').text("");
+		}
+		$('#student-' + student.id).remove();
 		$("#break-modal").modal({
 			backdrop: "static"
 		});
@@ -85,7 +93,7 @@ $(function () {
 		
 	});
 
-	//リジェクトボタンを押したときの処理
+	//生徒リストのリジェクトボタンを押したときの処理
 	$(document).on("click", "#student-list button", function () {
 		const $tr = $(this).closest("tr");		//押されたボタンから一番近いtr要素を取得する
 		const studentId = $tr.attr("value");	//生徒番号をdomから取得

@@ -56,7 +56,10 @@ namespace telledge.Hubs
 			if (section.update())
 			{
 				//各ユーザに通話の終了を伝達する
-				Clients.Group("teacher_room_" + roomId).endCall(Room.find(roomId).getSection());
+				Room room = Room.find(roomId);
+				Section room_section = room == null ? null : room.getSection();
+				Student room_section_student = room_section == null ? null : room_section.getStudent();
+				Clients.Group("teacher_room_" + roomId).endCall(room_section, room_section_student);
 				Clients.Group("student_room_" + roomId).endCall(roomId, studentId);
 			}
 		}
