@@ -49,7 +49,7 @@ namespace telledge.Hubs
 				student_name = section.getStudent().name,
 				request = section.request
 			});
-			Clients.Group("student_room_" + roomId).updateWaitInfo(room.getWaitTime(), room.getWaitCount());
+			Clients.Group("student_room_" + roomId).updateWaitInfo(room, room.getSections());
 		}
 		//通話を終了する信号を受け取ったときに実行する処理（呼び出し元は問わない）
 		public void endCall(int roomId, int studentId)
@@ -65,7 +65,7 @@ namespace telledge.Hubs
 				Student room_section_student = room_section == null ? null : room_section.getStudent();
 				Clients.Group("teacher_room_" + roomId).endCall(room_section, room_section_student);
 				Clients.Group("student_room_" + roomId).endCall(roomId, studentId);
-				Clients.Group("student_room_" + roomId).updateWaitInfo(room.getWaitTime(), room.getWaitCount());    //生徒の待ち情報を更新する
+				Clients.Group("student_room_" + roomId).updateWaitInfo(room, room.getSections());    //生徒の待ち情報を更新する
 			}
 		}
 		// 生徒がルームから退出した時の処理
@@ -77,7 +77,7 @@ namespace telledge.Hubs
 			section.studentId = studentId;
 			section.delete();
 			Clients.Group("teacher_room_" + roomId).removeStudent(studentId);   //講師のリストから削除する
-			Clients.Group("student_room_" + roomId).updateWaitInfo(room.getWaitTime(), room.getWaitCount());	//生徒の待ち情報を更新する
+			Clients.Group("student_room_" + roomId).updateWaitInfo(room, room.getSections());	//生徒の待ち情報を更新する
 		}
 
 		//講師が生徒を対応拒否した場合の処理
@@ -93,7 +93,7 @@ namespace telledge.Hubs
 				student_id = studentId
 				//待ち人数と待ち時間を更新して同時に返す処理をここに実装予定
 			});
-			Clients.Group("student_room_" + roomId).updateWaitInfo(room.getWaitTime(), room.getWaitCount());    //生徒の待ち情報を更新する
+			Clients.Group("student_room_" + roomId).updateWaitInfo(room, room.getSections());    //生徒の待ち情報を更新する
 		}
 		public void Hello()
 		{

@@ -134,7 +134,7 @@ namespace telledge.Controllers.Students
 				student_name = section.getStudent().name,
 				request = section.request
 			});
-			GlobalHost.ConnectionManager.GetHubContext<RoomHub>().Clients.Group("student_room_" + id).updateWaitInfo(room.getWaitTime(), room.getWaitCount());
+			GlobalHost.ConnectionManager.GetHubContext<RoomHub>().Clients.Group("student_room_" + id).updateWaitInfo(room, room.getSections());
 			return RedirectToAction("call", "rooms", new { Id = Convert.ToInt32(id) });
 		}
 

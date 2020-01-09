@@ -93,8 +93,19 @@ $(function () {
 	});
 
 	//情報を更新するメソッド
-	//updateWaitInfo(更新後の予想待ち時間、更新後の待機人数)
-	echo.on("updateWaitInfo", (waitTime, waitCount) => {
+	//updateWaitInfo(sectionの配列オブジェクト)
+	echo.on("updateWaitInfo", (room, sections) => {
+		// 自分のorderを求める
+		const order = sections.find(section => section.studentId > studentId).order;
+
+		// 自分より前に並んでいる情報を抽出する
+		const selected_sections = sections.filter((section) => {
+			return section.order < order;
+		});
+
+		const waitTime = selected_sections.length * (room.worstTime + room.extensionTime) / 2;
+		const waitCount = selected_sections.length;
+
 		$('#waitTime').text(waitTime);
 		$('#waitCount').text(waitCount);
 	});
