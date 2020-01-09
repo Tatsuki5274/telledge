@@ -48,5 +48,16 @@ namespace telledge.Controllers.Students
 				return View("/Views/Students/Homes/edit.cshtml");
 			}
 		}
+		public ActionResult mypage()
+		{
+			if (Student.currentUser() == null)
+			{
+				return RedirectToRoute("Student",new{Controller = "Sessions", Action = "create"});
+			}
+			else
+			{
+				return View("/Views/Students/Homes/mypage.cshtml",Student.currentUser());
+			}
+		}
     }
 }

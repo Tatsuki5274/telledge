@@ -254,6 +254,7 @@
     <Content Include="Scripts\Timer.js" />
     <Content Include="StyleSheets\common.css" />
     <Content Include="StyleSheets\deactivate.css" />
+    <Content Include="StyleSheets\studentHomeMypage.css" />
     <Content Include="StyleSheets\studentRoomSearch.css" />
     <Content Include="StyleSheets\teacherHomeMypage.css" />
     <Content Include="StyleSheets\TeacherMenu.css" />
@@ -308,6 +309,7 @@
     <Content Include="Scripts\lazeemenu\sass\lazeemenu.scss" />
     <Content Include="Views\Teachers\Homes\edit.cshtml" />
     <Content Include="Views\Students\Passwords\create.cshtml" />
+    <Content Include="Views\Students\Homes\mypage.cshtml" />
     <Content Include="Views\Teachers\Passwords\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
