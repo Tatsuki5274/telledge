@@ -45,8 +45,8 @@ namespace telledge.Controllers.Students
 		{
 
 			String pass = System.Web.Security.Membership.GeneratePassword(1,0); //復旧用パスワード自動生成
-			Teacher teacher = new Teacher();
-			teacher.setPassword(pass);
+			Student student = new Student();
+			student.setPassword(pass);
 			
 			return RedirectToRoute("Student", new { controller = "Homes", Action = "mypage" });
 		}
