@@ -33,5 +33,20 @@ namespace telledge.Controllers.Teachers
 			}
 			return View("/Views/Teachers/Passwords/edit.cshtml");
 		}
+		[HttpGet]
+		public ActionResult create()
+		{
+			return View("/Views/Teachers/Passwords/create.cshtml");
+		}
+		[HttpPost]
+		public ActionResult create(String mailaddress)
+		{
+
+			String pass = System.Web.Security.Membership.GeneratePassword(1, 0); //復旧用パスワード自動生成
+			Teacher teacher = new Teacher();
+			teacher.setPassword(pass);
+
+			return RedirectToRoute("Teacher", new { controller = "Homes", Action = "mypage" });
+		}
 	}
 }
