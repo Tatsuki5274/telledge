@@ -121,6 +121,7 @@ namespace telledge.Controllers.Students
 		public ActionResult join(int id, string request)
 		{
 			if (Student.currentUser() == null) return RedirectToAction("create", "sessions");
+			Room room = Room.find(id);
 			Section section = new Section();
 			section.roomId = id;
 			section.studentId = Student.currentUser().id;
@@ -133,6 +134,7 @@ namespace telledge.Controllers.Students
 				student_name = section.getStudent().name,
 				request = section.request
 			});
+			GlobalHost.ConnectionManager.GetHubContext<RoomHub>().Clients.Group("student_room_" + id).updateWaitInfo(room.getWaitTime(), room.getWaitCount());
 			return RedirectToAction("call", "rooms", new { Id = Convert.ToInt32(id) });
 		}
 

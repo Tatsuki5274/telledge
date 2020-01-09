@@ -77,6 +77,28 @@ $(function () {
 		}
 	});
 
+	//通話する人を更新する処理
+	// updateCallStudent(新たに通話する生徒番号)
+	echo.on("updateCallStudent", (student_id) => {
+		if (student_id == studentId) {
+			//通話が自分の番なら　＝　自分は通話側
+			$('#waiting').addClass('hidden');
+			$('#calling').removeClass('hidden');
+		}
+		else {
+			//通話が他人なら ＝　自分は待機側
+			$('#waiting').removeClass('hidden');
+			$('#calling').addClass('hidden');
+		}
+	});
+
+	//情報を更新するメソッド
+	//updateWaitInfo(更新後の予想待ち時間、更新後の待機人数)
+	echo.on("updateWaitInfo", (waitTime, waitCount) => {
+		$('#waitTime').text(waitTime);
+		$('#waitCount').text(waitCount);
+	});
+
 	//Sectionテーブルから情報を削除する処理を実行する
 	$("#leave-button").click(function () {
 		echo.invoke("leaveRoom", roomId, studentId);	//RoomHubに定義されているサーバーのleaveRoomメソッドを実行する
