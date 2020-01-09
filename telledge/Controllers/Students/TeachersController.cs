@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using telledge.Models;
 
 namespace telledge.Controllers.Students
 {
@@ -11,7 +12,15 @@ namespace telledge.Controllers.Students
         // GET: Teachers
         public ActionResult Index()
         {
-            return View();
-        }
+			var model = Teacher.getAll();
+			return View("/Views/Students/Teachers/index.cshtml", model);
+		}
+
+		public ActionResult Show(int id)
+		{
+			var model = Teacher.find(id);
+			return View("/Views/Students/Teachers/show.cshtml", model);
+		}
+
     }
 }

@@ -1,0 +1,47 @@
+@model telledge.Models.Teacher
+
+@{
+ViewBag.Title = "show";
+Layout = "~/Views/Shared/studentMenu.cshtml";
+}
+
+<main>
+	<table class="Teachers-table" border="1" width="200">
+		<tr>
+			<td>写真?</td>
+		</tr>
+		<tr>
+			<td>名前</td>
+			<td>@(Model.name)</td>
+		</tr>
+		<tr>
+			<td>性別</td>
+			<td>
+				@{
+					String sex = ((telledge.Enums.sex)Model.sex).ToString();
+					if (sex == "Man")
+					{
+						sex = "男性";
+					}
+					else
+					{
+						sex = "女性";
+					}
+				}
+				@sex
+			</td> 
+		</tr>
+		<tr>
+			<td>年齢</td>
+			<td>@(Model.age)</td>
+		</tr>
+		<tr>
+			<td>言語</td>
+			<td>@(Model.language)</td>
+		</tr>
+		<tr>
+			<td>自己紹介</td>
+			<td>@(Model.intoroduction)</td>
+		</tr>
+	</table>
+	</main>

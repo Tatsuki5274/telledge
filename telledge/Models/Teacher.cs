@@ -276,5 +276,80 @@ namespace telledge.Models
 			}
 			return check;
 		}
+		public static Teacher[] getAll()
+		{
+			Teacher[] retTeachers = null; //配列オブジェクトの参照先をnullとする
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "select * from Teacher";
+				DataSet ds = new DataSet();
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				int cnt = adapter.Fill(ds, "Teacher");
+				DataTable dt = ds.Tables["Teacher"];
+				if (cnt != 0)
+				{
+					retTeachers = new Teacher[cnt];   //配列オブジェクトとして一件以上の要素を返すことが確定したためRoomインスタンスへの参照を保存する領域を生成する
+					for (int i = 0; i < cnt; i++)
+					{
+						retTeachers[i] = new Teacher();   //引数なしコンストラクタで初期化し、戻したい値を格納する領域を生成する
+						retTeachers[i].id = (int)dt.Rows[i]["id"];
+						retTeachers[i].name = (String)dt.Rows[i]["name"];
+						retTeachers[i].sex = (int)dt.Rows[i]["sex"];
+						if (dt.Rows[i]["profileImage"] == DBNull.Value) retTeachers[i].profileImage = null;
+						retTeachers[i].profileImage = (String)dt.Rows[i]["profileImage"];
+						retTeachers[i].age = (int)dt.Rows[i]["age"];
+						retTeachers[i].language = (String)dt.Rows[i]["language"];
+						retTeachers[i].intoroduction = (String)dt.Rows[i]["introduction"];
+						retTeachers[i].passwordDigest = (Byte[])dt.Rows[i]["passwordDigest"];
+						retTeachers[i].mailaddress = (String)(dt.Rows[i]["mailaddress"].ToString());
+						retTeachers[i].point = (int)dt.Rows[i]["point"];
+						retTeachers[i].address = (String)dt.Rows[i]["address"];
+						retTeachers[i].is2FA = (bool)dt.Rows[i]["is2FA"];
+						retTeachers[i].nationality = (String)dt.Rows[i]["nationality"];
+						if (dt.Rows[i]["inactiveDate"] == DBNull.Value) retTeachers[i].inactiveDate = null;
+						else retTeachers[i].inactiveDate = DateTime.Parse(dt.Rows[i]["inactiveDate"].ToString());
+					}
+				}
+				return retTeachers;
+			}
+		}
+		public static Teacher find(int id)
+		{
+			Teacher retTeacher = null;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (SqlConnection connection = new SqlConnection(cstr))
+			{
+				string sql = "select * from Teacher where id = @id";
+				SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+				adapter.SelectCommand.Parameters.Add("@id", SqlDbType.VarChar);
+				adapter.SelectCommand.Parameters["@id"].Value = id;
+				DataSet ds = new DataSet();
+				int cnt = adapter.Fill(ds, "Teacher");
+				if (cnt != 0)
+				{
+					retTeacher = new Teacher();
+					DataTable dt = ds.Tables["Teacher"];
+					retTeacher.id = (int)dt.Rows[0]["id"];
+					retTeacher.name = (String)dt.Rows[0]["name"];
+					retTeacher.sex = (int)dt.Rows[0]["sex"];
+					if (dt.Rows[0]["profileImage"] == DBNull.Value) retTeacher.profileImage = null;
+					retTeacher.profileImage = (String)dt.Rows[0]["profileImage"];
+					retTeacher.age = (int)dt.Rows[0]["age"];
+					retTeacher.language = (String)dt.Rows[0]["language"];
+					retTeacher.intoroduction = (String)dt.Rows[0]["introduction"];
+					retTeacher.passwordDigest = (Byte[])dt.Rows[0]["passwordDigest"];
+					retTeacher.mailaddress = (String)(dt.Rows[0]["mailaddress"].ToString());
+					retTeacher.point = (int)dt.Rows[0]["point"];
+					retTeacher.address = (String)dt.Rows[0]["address"];
+					retTeacher.is2FA = (bool)dt.Rows[0]["is2FA"];
+					retTeacher.nationality = (String)dt.Rows[0]["nationality"];
+					if (dt.Rows[0]["inactiveDate"] == DBNull.Value) retTeacher.inactiveDate = null;
+					else retTeacher.inactiveDate = DateTime.Parse(dt.Rows[0]["inactiveDate"].ToString());
+
+				}
+			}
+			return retTeacher;
+		}
 	}
 }

@@ -168,6 +168,7 @@
     <Compile Include="Controllers\Teachers\RegistrationsController.cs" />
     <Compile Include="Controllers\Teachers\RoomsController.cs" />
     <Compile Include="Controllers\Teachers\SessionsController.cs" />
+    <Compile Include="Enums\sex.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -309,6 +310,8 @@
     <Content Include="Scripts\lazeemenu\sass\lazeemenu.scss" />
     <Content Include="Views\Teachers\Homes\edit.cshtml" />
     <Content Include="Views\Students\Passwords\create.cshtml" />
+    <Content Include="Views\Students\Teachers\index.cshtml" />
+    <Content Include="Views\Students\Teachers\show.cshtml" />
     <Content Include="Views\Students\Homes\mypage.cshtml" />
     <Content Include="Views\Teachers\Passwords\create.cshtml" />
   </ItemGroup>
@@ -316,6 +319,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Inquiry\" />
     <Folder Include="Views\Teachers\Points\" />
+    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

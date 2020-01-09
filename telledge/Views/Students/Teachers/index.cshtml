@@ -1,0 +1,40 @@
+@model IEnumerable<telledge.Models.Teacher>
+
+@{
+ViewBag.Title = "index";
+Layout = "~/Views/Shared/studentMenu.cshtml";
+}
+
+<main>
+	<table class="Teachers-table" border="1" width="200">
+		<tr>
+			<td>名前</td>
+			<td>性別</td>
+			<td>年齢</td>
+			<td>言語</td>
+			<td>写真?</td>
+		</tr>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td><a href="/student/Teachers/show/@(item.id)">@(item.name)</a></td>
+				<td>
+					@{
+						String sex = ((telledge.Enums.sex)item.sex).ToString();
+						if (sex == "Man")
+						{
+							sex = "男性";
+						}
+						else
+						{
+							sex = "女性";
+						}
+					}
+					@sex
+				</td>
+				<td>@(item.age)</td>
+				<td>@(item.language)</td>
+			</tr>
+		}
+	</table>
+	</main>
