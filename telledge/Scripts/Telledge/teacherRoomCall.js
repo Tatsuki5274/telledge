@@ -40,7 +40,6 @@ timer.setCallback(Status.AllDone, () => {
 	$('#room-end').css('display', 'inline');
 
 });
-timer.setTimer();
 
 let counter = new Counter();
 counter.setCallback(Status.NotStarted, () => {
@@ -76,6 +75,7 @@ counter.setCallback(Status.AllDone, () => {
 	$('#room-end').css('display', 'inline');
 
 });
+counter.setState(Status.Restart);
 
 // WebSocketの処理
 $(function () {
@@ -110,7 +110,7 @@ $(function () {
 		timer.setState(Status.Essential);	//最低通話として処理
 		timer.setTimer()
 
-		//カウンター起動処理をここに <--
+		counter.startTimer();
 	});
 
 	//通話終了ボタンの入力を検知したときの処理
