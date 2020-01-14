@@ -108,7 +108,7 @@ $(function () {
 	$(".startCall-button").click(function () {
 		echo.invoke("startCall", roomId, current_student_id);	//ルームの開始を知らせる信号を送信する
 		timer.setState(Status.Essential);	//最低通話として処理
-		timer.setTimer()
+		timer.setTimer();
 
 		counter.startTimer();
 	});
@@ -136,7 +136,8 @@ $(function () {
 		});
 		// モーダルウィンドウを開く
 		$("#break-modal").modal('show');
-		
+
+		timer.deleteTimer();	//タイマーを削除する
 	});
 
 	//生徒リストのリジェクトボタンを押したときの処理

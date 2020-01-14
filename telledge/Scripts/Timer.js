@@ -64,7 +64,7 @@ class Timer{
 	setTimer() {
 		//secを減らす
 		let sec = this.sec;
-		const interval = setInterval(() => {
+		this.interval = setInterval(() => {
 			this.showTime();
 			this.sec--;
 			if (this.sec < 0) {
@@ -72,5 +72,9 @@ class Timer{
 				this.setState(this.status);
 			}
 		}, 1000);
+	}
+	deleteTimer() {
+		clearInterval(this.interval);
+		$('#timer-count').text("");
 	}
 }
