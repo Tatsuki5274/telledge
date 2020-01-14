@@ -26,7 +26,7 @@ namespace telledge.Models
         public String request { get; set; }
         public int? valuation { get; set; }
         public int order { get; set; }
-        public DateTime beginTime { get; set; }
+        public DateTime? beginTime { get; set; }
         public int? talkTime { get; set; }
 
         public Room getRoom()
@@ -117,7 +117,14 @@ namespace telledge.Models
                     {
                         command.Parameters.Add(new SqlParameter("@valuation", DBNull.Value));
                     }
-                    command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
+					if(beginTime == null)
+					{
+						command.Parameters.Add(new SqlParameter("@beginTime", DBNull.Value));
+					}
+					else
+					{
+						command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
+					}
 					command.Parameters.Add(new SqlParameter("@talkTime", DBNull.Value));
                     int cnt = command.ExecuteNonQuery();
                     if (cnt != 0)
@@ -126,7 +133,7 @@ namespace telledge.Models
                     }
                     connection.Close();
                 }
-                catch (SqlException)
+                catch (SqlException e)
                 {
                     //入力情報が足りないメッセージを吐く
                 }

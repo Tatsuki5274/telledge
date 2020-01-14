@@ -15,9 +15,11 @@
 	<script type="text/javascript" src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
 	<script src="~/Scripts/ModalWindow.js"></script>
 	<script>
-		mintime = @(Model.worstTime);
-		overtime = @(Model.extensionTime);
-		roomId = @(Model.id);
+		const mintime = @(Model.worstTime);
+		const overtime = @(Model.extensionTime);
+		const roomId = @(Model.id);
+		let current_student_id = @(Model.getSection() != null ? Model.getSection().studentId : -1);
+
 	</script>
 	<script src="~/Scripts/Timer.js"></script>
 	<script src="~/Scripts/Counter.js"></script>
@@ -46,7 +48,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-danger">対応不可</button>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#break-modal">次の生徒へ</button>
+					<button type="button" class="btn btn-primary startCall-button" data-toggle="modal" data-target="#break-modal">次の生徒へ</button>
 				</div>
 			</div>
 		</div>
@@ -148,6 +150,7 @@
 					</tbody>
 				</table>
 				<div>
+					<button class="btn btn-success startCall-button">通話開始</button>
 					<button id="call-end" class="btn btn-success js-modal-open">通話終了</button>
 					<button id="disabled-call-end" class="btn btn-success" disabled="disabled">通話終了</button>
 					<button id="room-end" class="btn btn-danger">ルーム終了</button>

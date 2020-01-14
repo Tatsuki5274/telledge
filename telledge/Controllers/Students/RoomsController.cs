@@ -126,7 +126,6 @@ namespace telledge.Controllers.Students
 			section.roomId = id;
 			section.studentId = Student.currentUser().id;
 			section.request = request;
-			section.beginTime = DateTime.Now;
 			section.create();
 			GlobalHost.ConnectionManager.GetHubContext<RoomHub>().Clients.Group("teacher_room_" + id).append(new
 			{
@@ -154,8 +153,8 @@ namespace telledge.Controllers.Students
 		{
 			if (Student.currentUser() == null) return RedirectToAction("create", "sessions");
 			Section section = Section.find(id, Student.currentUser().id);
-			TimeSpan span = DateTime.Now - section.beginTime;
-			section.talkTime = span.Minutes + span.Hours * 60;
+			TimeSpan? span = DateTime.Now - section.beginTime;
+			section.talkTime = span.Value.Minutes + span.Value.Hours * 60;
 			section.valuation = score;
 			section.update();
 			return RedirectToAction("index", "rooms");

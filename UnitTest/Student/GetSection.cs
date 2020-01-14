@@ -11,7 +11,7 @@ namespace UnitTest.Students
         {
             Student student = new Student();
 			student.id = 1;
-            Section[] section = student.GetSection();
+            Section[] section = student.GetSections();
             Assert.IsNotNull(section);
         }
         [TestMethod]
@@ -19,7 +19,7 @@ namespace UnitTest.Students
         {
 			Student student = new Student();
 			student.id = 999;
-			Section[] section = student.GetSection();
+			Section[] section = student.GetSections();
 			Assert.IsNull(section);
 		}
     }

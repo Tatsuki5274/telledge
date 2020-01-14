@@ -25,8 +25,7 @@ con.setCallback(Status.Extend, () => {
 	$('#timer-status').css('color', 'red');
 	$('#timer-status').text("延長時間");
 });
-con.setState(Status.Essential);	//最低通話として処理
-con.setTimer()
+
 
 
 // WebSocketの処理
@@ -84,6 +83,8 @@ $(function () {
 			//通話が自分の番なら　＝　自分は通話側
 			$('#waiting').addClass('hidden');
 			$('#calling').removeClass('hidden');
+			con.setState(Status.Essential);	//最低通話として処理
+			con.setTimer();	//タイマー開始
 		}
 		else {
 			//通話が他人なら ＝　自分は待機側
