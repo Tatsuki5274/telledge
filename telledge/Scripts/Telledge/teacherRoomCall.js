@@ -40,8 +40,42 @@ timer.setCallback(Status.AllDone, () => {
 	$('#room-end').css('display', 'inline');
 
 });
+timer.setTimer();
 
-timer.setTimer()
+let counter = new Counter();
+counter.setCallback(Status.NotStarted, () => {
+	$('#call-end').css('display', 'none');
+	$('#disabled-call-end').css('display', 'none');
+	$('#room-end').css('display', 'inline');
+
+	$('#timer-counter').css('display', 'none');
+
+});
+counter.setCallback(Status.Stop, () => {
+	$('#timer-counter').css('display', 'inline');
+	$('#timer-counter').css('color', 'black');
+
+	$('#call-end').css('display', 'none');
+	$('#disabled-call-end').css('display', 'inline');
+	$('#room-end').css('display', 'none');
+});
+counter.setCallback(Status.Restart, () => {
+	$('#timer-counter').css('color', 'red');
+	$('#timer-counter').css('display', 'inline');
+
+
+	$('#call-end').css('display', 'inline');
+	$('#disabled-call-end').css('display', 'none');
+	$('#room-end').css('display', 'none');
+});
+counter.setCallback(Status.AllDone, () => {
+	$('#timer-counter').css('display', 'none');
+
+	$('#call-end').css('display', 'none');
+	$('#disabled-call-end').css('display', 'none');
+	$('#room-end').css('display', 'inline');
+
+});
 
 // WebSocketの処理
 $(function () {
@@ -106,4 +140,24 @@ $(function () {
 		//サーバーのJoinTeacherメソッドを実行し、講師として登録する
 		echo.invoke("JoinTeacher", roomId);
 	});
+
+	//タイマーの始動
+	/*counter.setState(Status.Restart);
+	 counter.startTimer();
+
+	//タイマーの一時停止処理
+	var flag = 0;
+	$("#Timertext").click(function () {
+		if (flag == 0) {
+			$("#Timertext").text("再開");
+			counter.setState(Status.Stop);
+			counter.stopTimer();
+			flag = 1;
+		} else {
+			$("#Timertext").text("一時停止");
+			counter.setState(Status.Restart);
+			counter.startTimer();
+			flag = 0;
+		}
+	})*/
 });

@@ -87,6 +87,28 @@
 		<div id="main-right" class="boxes float">
 			<div id="call" class="divide">
 				<div id="image">画像</div>
+				<table>
+					<col span="1" width="200px">
+					<tbody>
+						<tr>
+							<td>講師名</td>
+							<td>@Model.getTeacher().name</td>
+						</tr>
+						<tr>
+							<td>通話開始時刻</td>
+							<td>@DateTime.Now</td>
+						</tr>
+						<tr id="Timer">
+							<td id="timer-status">最低通話時間</td>
+							<td id="timer-count">@Model.worstTime</td>
+						</tr>
+						<tr>
+							<td>終了予定時刻</td>
+							<td>@Model.endScheduleTime</td>
+						</tr>
+						<tr>
+							<td>
+								<button id="leave-button" class="btn btn-danger">ルーム退出</button>
 				<!-- 通話待機中の画面表示 -->
 				<table id="waiting">
 					<tr>

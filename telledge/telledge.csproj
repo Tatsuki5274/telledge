@@ -252,6 +252,7 @@
     <Content Include="Scripts\Telledge\deactivate.js" />
     <Content Include="Scripts\Telledge\studentRoomsCall.js" />
     <Content Include="Scripts\Telledge\teacherRoomCall.js" />
+    <Content Include="Scripts\Counter.js" />
     <Content Include="Scripts\Timer.js" />
     <Content Include="StyleSheets\common.css" />
     <Content Include="StyleSheets\deactivate.css" />

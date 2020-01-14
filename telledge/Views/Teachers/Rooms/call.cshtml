@@ -20,6 +20,7 @@
 		roomId = @(Model.id);
 	</script>
 	<script src="~/Scripts/Timer.js"></script>
+	<script src="~/Scripts/Counter.js"></script>
 	<script src="~/Scripts/Telledge/teacherRoomCall.js"></script>
 	<link rel="stylesheet" href="~/Content/bootstrap.min.css">
 	<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
@@ -69,6 +70,10 @@
 						<tr>
 							<td>予想通話時間</td>
 							<td>@(Model.getWaitTime())分</td>
+						</tr>
+						<tr id="Counter">
+							<td>通話時間</td>
+							<td id="timer-counter"></td>
 						</tr>
 					</table>
 				</div>
@@ -123,7 +128,7 @@
 									}
 								</td>
 							</tr>
-							<tr>
+							<tr id="Timer">
 								<td id="timer-title">残り時間</td>
 								<td id="timer-count"></td>
 							</tr>
@@ -153,7 +158,6 @@
 		</div>
 		<script>
 			timer.setState(Status.Essential);	//最低通話として処理
-
 		</script>
 	</main>
 </body>
