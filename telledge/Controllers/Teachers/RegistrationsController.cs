@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,7 +31,7 @@ namespace telledge.Controllers.Teachers
 			return View("/Views/Teachers/Registrations/create.cshtml");
 		}
 		[HttpPost]
-		public ActionResult create(String name,String mailaddress,String password,String passwordConfirmation,String imagePath)
+		public ActionResult create(String name,String mailaddress,String password,String passwordConfirmation,HttpPostedFileWrapper imagePath)
 		{
 			if(password != "" && passwordConfirmation != "")//空文字で登録できないようにする
 			{
@@ -40,7 +41,11 @@ namespace telledge.Controllers.Teachers
 					teacher.name = name;
 					teacher.mailaddress = mailaddress;
 					teacher.setPassword(password);//パスワードダイジェスト化
-					teacher.profileImage = imagePath;
+				if (imagePath != null)
+				{
+					imagePath.SaveAs(Server.MapPath(@"/uproadFiles/") + Path.GetFileName(imagePath.FileName));
+					teacher.profileImage = Server.MapPath(@"/uproadFiles/") + Path.GetFileName(imagePath.FileName);
+				}	
 					teacher.language = DBNull.Value.ToString();
 					teacher.intoroduction = DBNull.Value.ToString();
 					teacher.address = DBNull.Value.ToString();

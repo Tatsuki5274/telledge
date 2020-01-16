@@ -2,7 +2,7 @@
 
 </head>
 <body class="Registrations-box">
-	<form action="/teacher/Registrations/create" method="post" name="Teacher">
+	<form action="/teacher/Registrations/create"  encType="multipart/form-data" method="post" name="Teacher">
 		<h1>講師用登録画面</h1>
 		<div>
 			<span>名前</span>
@@ -32,7 +32,7 @@
 			<span>証明写真</span>
 		</div>
 		<div>
-			<span><input type="file" name="imagePath"></span>
+			<span><input asp-for="FileUpload.FormatFile" type="file" name="imagePath" id="imagePath" /></span>
 		</div>
 		<div>
 			<span>

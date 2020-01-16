@@ -135,7 +135,7 @@ namespace telledge.Models
 					}
 					connection.Close();
 				}
-				catch (SqlException)
+				catch (SqlException e)
 				{
 					//入力情報が足りないメッセージを吐く
 				}

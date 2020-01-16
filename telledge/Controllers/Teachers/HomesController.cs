@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using telledge.Models;
+using System.Data;
+using System.IO;
 
 namespace telledge.Controllers.Teachers
 {
@@ -49,5 +51,6 @@ namespace telledge.Controllers.Teachers
 		{
 			return View("/Views/Teachers/Homes/edit.cshtml");
 		}
-    }
+
+	}
 }
