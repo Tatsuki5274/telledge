@@ -183,7 +183,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Picture\logo.png" />
     <Content Include="Assets\Picture\Test.jpg" />
+    <Content Include="Assets\Picture\検索ロゴ.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

@@ -1,12 +1,20 @@
-﻿.clearfix::after {
+.clearfix::after {
     content: "";
     display: block;
     clear: both;
 }
 
-body {
-    margin: 0px;
+main {
+	margin: 0 0 0 auto;
 }
+
+flex-container {
+	display: flex;
+}
+
+/*body {
+    margin: 0px;
+}*/
 
 #above {
 }
@@ -15,15 +23,15 @@ body {
 }
 
 header {
-    border: solid;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    font-size: 32px;
+	font-size: 32px;
+	background: rgb(228,248,236);
+	background: linear-gradient(305deg, rgba(228,248,236,0.9) 0%, rgba(207,252,212,1) 30%, rgba(207,252,212,1) 100%);
 }
 
 footer {
-    text-align: center;
+	text-align: center;
+	color: #a3b1bd;
+	background-color: rgba(0, 26, 58, 0.65);
 }
 
 #left-box {
@@ -31,13 +39,17 @@ footer {
 }
 
 #right-box {
-    width: 79%;
+
+}
+
+.search {
+
 }
 
 .main-box {
-    display: block;
-    box-sizing: border-box;
-    float: left;
+	display: block;
+	box-sizing: border-box;
+	float: left;
 }
 
 .menu-contents {
@@ -48,9 +60,14 @@ footer {
     border-bottom: 0px;
 }
 
-    .menu-contents:nth-child(1) {
-        border-top: 0px;
-    }
+.menu-contents:nth-child(1) {
+    border-top: 0px;
+}
+
+.header-contents {
+	display: inline-block;
+	width: 20%;
+}
 
 .header-contents {
     display: inline-block;
@@ -58,9 +75,133 @@ footer {
 }
 
 .footer-boxes {
-    border: solid;
+
 }
 
-    .footer-boxes:nth-child(1) {
-        border-bottom: 0px;
-    }
+ .footer-boxes:nth-child(1) {
+    border-bottom: 0px;
+}
+
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css');
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v17/mem5YaGs126MiZpBA-UN_r8OUuhs.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhs.ttf) format('truetype');
+}
+
+hr {
+	height: 0.5px;
+	background-color: black;
+	margin : 0;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+.sidebar-toggle {
+	margin-left: -240px;
+}
+
+.sidebar {
+	width: 240px;
+	height: 100%;
+	background-color: 
+	position: sticky;
+	top: 0;
+	box-shadow: 2px 2px 4px gray;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	z-index: 100;
+}
+
+	.sidebar #leftside-navigation ul,
+	.sidebar #leftside-navigation ul ul {
+		margin: -2px 0 0;
+		padding: 0;
+	}
+
+		.sidebar #leftside-navigation ul li {
+			list-style-type: none;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+		}
+
+			.sidebar #leftside-navigation ul li.active > a {
+				color: #1abc9c;
+			}
+
+			.sidebar #leftside-navigation ul li.active ul {
+				display: block;
+			}
+
+			.sidebar #leftside-navigation ul li a {
+				color: #422963;
+				text-decoration: none;
+				display: block;
+				padding: 18px 0 18px 25px;
+				font-size: 12px;
+				outline: 0;
+				-webkit-transition: all 200ms ease-in;
+				-moz-transition: all 200ms ease-in;
+				-o-transition: all 200ms ease-in;
+				-ms-transition: all 200ms ease-in;
+				transition: all 200ms ease-in;
+			}
+
+				.sidebar #leftside-navigation ul li a:hover {
+					color: #1abc9c;
+				}
+
+				.sidebar #leftside-navigation ul li a span {
+					display: inline-block;
+				}
+
+				.sidebar #leftside-navigation ul li a i {
+					width: 20px;
+				}
+
+					.sidebar #leftside-navigation ul li a i .fa-angle-left,
+					.sidebar #leftside-navigation ul li a i .fa-angle-right {
+						padding-top: 3px;
+		}
+
+.sidebar #leftside-navigation ul ul {
+	display: none;
+}
+
+.sidebar #leftside-navigation ul ul li {
+	background: #23313f;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	border-bottom: none;
+}
+
+.sidebar #leftside-navigation ul ul li a {
+					font-size: 12px;
+					padding-top: 13px;
+					padding-bottom: 13px;
+					color: #aeb2b7;
+}

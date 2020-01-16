@@ -10,50 +10,52 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <header>
-        <div class="headerTitle">
-            <p>Telledge</p>
-        </div>
-    </header>
-    <div class="clearfix">
-        <div class="col-lg-2 col-md-3">
-            <div>
-                <div class="menu_box">
-                    マイページ
-                </div>
-                <div class="menu_box">
-                    ポイント管理
-                </div>
-                <div class="menu_box">
-                    ルーム管理
-                </div>
-                <div class="menu_box">
-                    ブラックリスト管理
-                </div>
-                <div class="menu_box">
-                    ルールとマナー
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-10 col-md-9">
-            @RenderBody()
-        </div>
-    </div>
-    <footer>
-        <div>
-            <p class="font-space">
-                <font size="5">About Contact us</font>
-            </p>
-        </div>
-
-        <div>
-            <p class="font-space_under">
-                <font size="3"></font>
-                agreement
-                pravancy
-                copylight
-            </p>
-        </div>
-    </footer>
+	<header>
+		<img src="~/Assets/Picture/logo.png" />
+		<a href="~/student/Homes/mypage"><img src="~/Assets/Picture/検索ロゴ.png" class="search" /></a>
+	</header>
+	<hr />
+	<flex-container>
+		<aside class="sidebar">
+			<div id="leftside-navigation" class="nano">
+				<ul class="nano-content">
+					<li>
+						<a href="/teacher/Homes/mypage"><i class="fa fa-dashboard"></i><span>マイページ</span></a>
+						<a href="/teacher/Rooms/index"><i class="fa fa-dashboard"></i><span>ルーム一覧</span></a>
+						<a href="/teacher/Points/index"><i class="fa fa-dashboard"></i><span>ポイント管理</span></a>
+						<a href=""><i class="fa fa-dashboard"></i><span>ルールとマナー</span></a>
+					</li>
+				</ul>
+			</div>
+		</aside>
+		<div class="col-lg-10 col-md-9">
+			@RenderBody()
+		</div>
+	</flex-container>
+	<hr />
+	<footer>
+		<div id="above" class="footer-boxes">
+			<div class="header-contents">
+				<span>FAQ</span>
+			</div>
+			<div class="header-contents">
+				<span>About</span>
+			</div>
+			<div class="header-contents">
+				<span>Contact us</span>
+			</div>
+		</div>
+		<div id="below" class="footer-boxes">
+			<div class="header-contents">
+				<span>Agreement</span>
+			</div>
+			<div class="header-contents">
+				<span>Pravacy</span>
+			</div>
+			<div class="header-contents">
+				<span>Copyright</span>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

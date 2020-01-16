@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -9,37 +9,31 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <header>
-        <span>Tellege</span>
-    </header>
-    <div class="clearfix">
-        <div id="left-box" class="main-box">
-            <div class="menu-contents">
-                <span>検索</span>
-            </div>
-            <div class="menu-contents">
-                <span>ルーム一覧</span>
-            </div>
-            <div class="menu-contents">
-                <span>受講履歴</span>
-            </div>
-            <div class="menu-contents">
-                <span>ポイント管理</span>
-            </div>
-            <div class="menu-contents">
-                <span>マイページ</span>
-            </div>
-            <div class="menu-contents">
-                <span>ルールとマナー</span>
-            </div>
-            <div class="menu-contents">
-                <span>講師一覧</span>
-            </div>
-        </div>
-        <div id="right-box" class="main-box">
-            @RenderBody()
-        </div>
-    </div>
+	<header>
+		<img src="~/Assets/Picture/logo.png" />
+		<a href="~/student/Homes/mypage"><img src="~/Assets/Picture/検索ロゴ.png" class="search"/></a>
+	</header>
+	<hr />
+	<flex-container>
+		<aside class="sidebar">
+			<div id="leftside-navigation" class="nano">
+				<ul class="nano-content">
+					<li>
+						<a href="/student/Homes/mypage"><i class="fa fa-dashboard"></i><span>検索</span></a>
+						<a href="/student/Homes/mypage"><i class="fa fa-dashboard"></i><span>マイページ</span></a>
+						<a href="/student/Teachers/index"><i class="fa fa-dashboard"></i><span>講師一覧</span></a>
+						<a href="/student/Rooms/index"><i class="fa fa-dashboard"></i><span>ルーム一覧</span></a>
+						<a href="/student/Points/create"><i class="fa fa-dashboard"></i><span>ポイント購入</span></a>
+						<a href=""><i class="fa fa-dashboard"></i><span>ルールとマナー</span></a>
+					</li>
+				</ul>
+			</div>
+		</aside>
+		<div id="right-box" class="main-box">
+			@RenderBody()
+		</div>
+	</flex-container>
+	<hr />
     <footer>
         <div id="above" class="footer-boxes">
             <div class="header-contents">
