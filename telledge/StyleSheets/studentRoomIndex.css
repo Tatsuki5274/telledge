@@ -4,10 +4,9 @@
   clear: both;
 }
 
-.example{
-	height: 60px;
-	width: 60px;
-	background-color: red;
+.room-images{
+	height: 100px;
+	width: 100px;
 	display: block;
 }
 

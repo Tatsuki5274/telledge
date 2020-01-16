@@ -17,9 +17,9 @@
         <li>
             <h3><span>プロフィール</span></h3>
             <ul>
-                <li><span class="list-width">画像</span></li>
-                <li><span class="list-width">メールアドレス</span>@Model.mailaddress</li>
-                <li><span class="list-width">名前</span>@Model.name</li>
+                <li>プロフィール画像<span class="center"><img src="/uproadFiles/@Model.profileImage" width="120px" /></span></li>
+                <li><span>メールアドレス</span>@Model.mailaddress</li>
+                <li><span>名前</span>@Model.name</li>
                 <li>
                     <button class="btn btn-primary center" type="button" onclick="location.href='/teacher/homes/edit'">変更</button>
                 </li>
@@ -28,8 +28,8 @@
         <li>
             <h3><span>セキュリティ</span></h3>
             <ul>
-                <li><span class="list-width">パスワード</span>********</li>
-                <li><span class="list-width">二段階認証</span>無効</li>
+                <li><span>パスワード</span>********</li>
+                <li><span>二段階認証</span>無効</li>
                 <li>
                     <button class="btn btn-primary center" type="button" onclick="location.href='/teacher/passwords/edit'">変更</button>
                 </li>

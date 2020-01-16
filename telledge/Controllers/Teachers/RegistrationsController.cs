@@ -44,7 +44,7 @@ namespace telledge.Controllers.Teachers
 				if (imagePath != null)
 				{
 					imagePath.SaveAs(Server.MapPath(@"/uproadFiles/") + Path.GetFileName(imagePath.FileName));
-					teacher.profileImage = Server.MapPath(@"/uproadFiles/") + Path.GetFileName(imagePath.FileName);
+					teacher.profileImage = Path.GetFileName(imagePath.FileName);
 				}	
 					teacher.language = DBNull.Value.ToString();
 					teacher.intoroduction = DBNull.Value.ToString();
