@@ -47,14 +47,13 @@ body {
     padding-left: 40px;
 	position: fixed;
 	top: 0;
+	width: 30%;
 	height: 100%;
-	width: 100%;
 }
 
 #image{
 	height: 100px;
 	width: 100px;
-	background-color: red;
 	margin: 0 auto;
 }
 
