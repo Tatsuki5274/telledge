@@ -192,7 +192,7 @@
     <Content Include="Assets\Pictures\top-student.svg" />
     <Content Include="Assets\Pictures\top-teacher.svg" />
     <Content Include="Assets\Picture\logo.png" />
-    <Content Include="Assets\Picture\検索ロゴ.png" />
+    <Content Include="Assets\Picture\searchlogo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

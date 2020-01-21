@@ -12,6 +12,12 @@ flex-container {
 
 }
 
+#above {
+}
+
+#below {
+}
+
 .footer-boxes:nth-child(1) {
 	border-bottom: 0px;
 }
@@ -26,6 +32,10 @@ header {
 	font-size: 32px;
 	background: rgb(248,228,245);
 	background: linear-gradient(305deg, rgba(248,228,245,0.7959558823529411) 0%, rgba(252,207,246,1) 30%, rgba(248,228,245,0.7959558823529411) 100%);
+}
+
+#right-box {
+	width: 100%;
 }
 
 .menu_box {
@@ -111,7 +121,6 @@ header p {
 
 hr {
 	height: 0.5px;
-	background-color: black;
 	margin: 0;
 }
 
@@ -129,10 +138,8 @@ body {
 .sidebar {
 	width: 240px;
 	height: 100%;
-	background-color: rgba(226, 226, 226, 0.3);
 	position: sticky;
 	top: 0;
-	box-shadow: 2px 2px 4px gray;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -165,7 +172,7 @@ body {
 				text-decoration: none;
 				display: block;
 				padding: 18px 0 18px 25px;
-				font-size: 12px;
+				font-size: 16px;
 				outline: 0;
 				-webkit-transition: all 200ms ease-in;
 				-moz-transition: all 200ms ease-in;
@@ -209,3 +216,6 @@ body {
 					padding-bottom: 13px;
 					color: #aeb2b7;
 				}
+logosize{
+	top: 2px;
+}

@@ -2,16 +2,18 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="~/StyleSheets/studentMenuStyle.css">
-    <link rel="stylesheet" type="text/css" href="~/StyleSheets/studentRoomIndex.css" />
-    <link rel="stylesheet" type="text/css" href="~/StyleSheets/studentRoomShow.css" />
-    <title>@ViewBag.Title</title>
+	<meta name="viewport" content="width=device-width" />
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="~/StyleSheets/studentMenuStyle.css">
+	<link rel="stylesheet" type="text/css" href="~/StyleSheets/studentRoomIndex.css" />
+	<link rel="stylesheet" type="text/css" href="~/StyleSheets/studentRoomShow.css" />
+	<title>@ViewBag.Title</title>
 </head>
 <body>
 	<header>
 		<img src="~/Assets/Picture/logo.png" />
-		<a href="~/student/Homes/mypage"><img src="~/Assets/Picture/検索ロゴ.png" class="search"/></a>
+		<a href="~/student/Homes/mypage"><img src="~/Assets/Picture/searchlogo.png" class="search"/></a>
 	</header>
 	<hr />
 	<flex-container>
@@ -19,12 +21,12 @@
 			<div id="leftside-navigation" class="nano">
 				<ul class="nano-content">
 					<li>
-						<a href="/student/Homes/mypage"><i class="fa fa-dashboard"></i><span>検索</span></a>
-						<a href="/student/Homes/mypage"><i class="fa fa-dashboard"></i><span>マイページ</span></a>
-						<a href="/student/Teachers/index"><i class="fa fa-dashboard"></i><span>講師一覧</span></a>
-						<a href="/student/Rooms/index"><i class="fa fa-dashboard"></i><span>ルーム一覧</span></a>
-						<a href="/student/Points/create"><i class="fa fa-dashboard"></i><span>ポイント購入</span></a>
-						<a href=""><i class="fa fa-dashboard"></i><span>ルールとマナー</span></a>
+						<a href="/student/Homes/mypage"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 検索</a><hr />
+						<a href="/student/Homes/mypage"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> マイページ</a><hr />
+						<a href="/student/Teachers/index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 講師一覧</a><hr />
+						<a href="/student/Rooms/index"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> ルーム一覧</a><hr />
+						<a href="/student/Points/create"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> ポイント購入</a><hr />
+						<a href=""><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> ルールとマナー</a>
 					</li>
 				</ul>
 			</div>
