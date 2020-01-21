@@ -1,38 +1,40 @@
+@{
+	Layout = null;
+}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>Telledge</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+	<meta charset="utf-8">
+	<title>Wellcome to Telledge</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
 
+	<!-- Favicons -->
+	<link href="img/favicon.png" rel="icon">
+	<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
+	<!-- Bootstrap CSS File -->
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Libraries CSS Files -->
+	<!-- Libraries CSS Files -->
 	<link href="~/Scripts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 	<link href="~/Scripts/fancybox/fancybox.css" rel="stylesheet" />
 
-  <!-- Main Stylesheet File -->
+	<!-- Main Stylesheet File -->
 	<link href="~/StyleSheets/top.css" rel="stylesheet" />
 
-  <link rel="prefetch" href="img/zoom.png">
+	<link rel="prefetch" href="img/zoom.png">
 
-  <!-- =======================================================
-    Template Name: Munter
-    Template URL: https://templatemag.com/munter-bootstrap-one-page-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
+	<!-- =======================================================
+	  Template Name: Munter
+	  Template URL: https://templatemag.com/munter-bootstrap-one-page-template/
+	  Author: TemplateMag.com
+	  License: https://templatemag.com/license/
+	======================================================= -->
 </head>
 
 <body data-spy="scroll" data-offset="58" data-target="#navigation">
@@ -48,10 +50,9 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#intro" class="smoothscroll">Home</a></li>
-					<li><a href="#about-us" class="smoothscroll">About Telledge</a></li>
-					<li><a href="#portfolio" class="smoothscroll">Portfolio</a></li>
-					<li><a href="#process" class="smoothscroll">Process</a></li>
-					<li><a href="#clients" class="smoothscroll">Clients</a></li>
+					<li><a href="#about-us" class="smoothscroll">Student</a></li>
+					<li><a href="#process" class="smoothscroll">Teacher</a></li>
+					<li><a href="#clients" class="smoothscroll">Contribution</a></li>
 					<li><a href="#contact" class="smoothscroll">Contact</a></li>
 				</ul>
 			</div>
@@ -61,48 +62,41 @@
 
 	<!-- === MAIN Background === -->
 	<div class="slide story" id="intro" data-slide="1">
-		<div class="container">
-			<div id="home-row-1" class="row clearfix">
-				<div class="col-12">
-					<h1 class="font-semibold">Telledge <span class="font-thin">beyond common sense.</span></h1>
-					<h4 class="font-thin">We help that <span class="font-semibold">you proceed  </span>to previously.</h4>
-					<br>
-					<br>
-				</div>
-				<!-- /col-12 -->
+		<div class="col-12 mainvisual">
+			<div id="mainvisual-content-box">
+				<h1 class="font-semibold">Telledge <span class="font-thin">beyond common sense.</span></h1>
+				<h4 class="font-thin">We help that <span class="font-semibold">you proceed  </span>from previous.</h4>
 			</div>
-			<!-- /row -->
-			<div id="home-row-2" class="row clearfix">
+		</div>
+		<div id="home-row-2" class="row clearfix">
 
-				<div class="col-12 col-sm-4">
-					<a href="#portfolio" class="smoothscroll navigation-slide-a">
-						<div class="home-hover navigation-slide">
-							<object id="hoge" width='128' height='128' type="image/svg+xml" data="/assets/Pictures/top-personal.svg" style="fill: white;"></object>
-						</div>
-						<span>PERSONAL</span>
-					</a>
-				</div>
-
-				<div class="col-12 col-sm-4">
-					<a href="#portfolio" class="smoothscroll navigation-slide-a">
-						<div class="home-hover navigation-slide">
-							<object id="hoge" width='128' height='128' type="image/svg+xml" data="/assets/Pictures/top-student.svg" style="fill: white;"></object>
-						</div>
-						<span>STUDENT</span>
-					</a>
-				</div>
-
-				<div class="col-12 col-sm-4">
-					<a href="#clients" class="smoothscroll navigation-slide-a">
-						<div class="home-hover navigation-slide">
-
-							<object id="hoge" width='128' height='128' type="image/svg+xml" data="/assets/Pictures/top-business.svg" style="fill: white;"></object>
-						</div>
-						<span>BUSINESS</span>
-					</a>
-				</div>
+			<div class="col-12 col-sm-4">
+				<a href="#portfolio" class="smoothscroll navigation-slide-a">
+					<div class="home-hover navigation-slide">
+						<object id="hoge" width='128' height='128' type="image/svg+xml" data="/assets/Pictures/top-personal.svg" style="fill: white;"></object>
+					</div>
+					<span>PERSONAL</span>
+				</a>
 			</div>
-			<!-- /row -->
+
+			<div class="col-12 col-sm-4">
+				<a href="#portfolio" class="smoothscroll navigation-slide-a">
+					<div class="home-hover navigation-slide">
+						<object id="hoge" width='128' height='128' type="image/svg+xml" data="/assets/Pictures/top-student.svg" style="fill: white;"></object>
+					</div>
+					<span>STUDENT</span>
+				</a>
+			</div>
+
+			<div class="col-12 col-sm-4">
+				<a href="#clients" class="smoothscroll navigation-slide-a">
+					<div class="home-hover navigation-slide">
+
+						<object id="hoge" width='128' height='128' type="image/svg+xml" data="/assets/Pictures/top-business.svg" style="fill: white;"></object>
+					</div>
+					<span>BUSINESS</span>
+				</a>
+			</div>
 		</div>
 		<!-- /container -->
 	</div>
@@ -156,29 +150,22 @@
 					<h4 class="font-thin">面白いことを知っているのであれば講師になる道もあります。世界の皆さんへ体験を共有しましょう。</h4>
 				</div>
 			</div>
+
 			<!-- /row -->
 		</div>
+
 		<!-- /container -->
+	</div>
+	<div class="jumbotron">
+		<h1>学びたい方はこちら</h1>
+		<p>生徒としてログインし、今すぐ学習を開始します！</p>
+		<p>
+			<a class="btn btn-success btn-lg" href="/student/registrations/create" role="button">新規登録</a>
+			<a class="btn btn-primary btn-lg" href="/student/sessions/create" role="button">ログイン</a>
+		</p>
 	</div>
 	<!-- /slide2 -->
 	<!-- === SLide 3 - Portfolio -->
-	<div class="slide story" id="portfolio" data-slide="3">
-		<div class="row">
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p01-large.jpg"><img class="thumb" src="img/portfolio/p01-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p02-large.jpg"><img class="thumb" src="img/portfolio/p02-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p09-large.jpg"><img class="thumb" src="img/portfolio/p09-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p010-large.jpg"><img class="thumb" src="img/portfolio/p10-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p05-large.jpg"><img class="thumb" src="img/portfolio/p05-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p06-large.jpg"><img class="thumb" src="img/portfolio/p06-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p07-large.jpg"><img class="thumb" src="img/portfolio/p07-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p08-large.jpg"><img class="thumb" src="img/portfolio/p08-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p03-large.jpg"><img class="thumb" src="img/portfolio/p03-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p04-large.jpg"><img class="thumb" src="img/portfolio/p04-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p11-large.jpg"><img class="thumb" src="img/portfolio/p11-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="img/portfolio/p12-large.jpg"><img class="thumb" src="img/portfolio/p12-small.jpg" alt=""></a></div>
-		</div>
-		<!-- /row -->
-	</div>
 	<!-- /slide3 -->
 	<!-- === Slide 4 - Process === -->
 	<div class="slide story" id="process" data-slide="4">
@@ -228,6 +215,14 @@
 			<!-- /row -->
 		</div>
 		<!-- /container -->
+	</div>
+	<div class="jumbotron">
+		<h1>教えたい方はこちら</h1>
+		<p>講師としてログインし、あなたの価値を共有しましょう！</p>
+		<p>
+			<a class="btn btn-success btn-lg" href="/teacher/registrations/create" role="button">新規登録</a>
+			<a class="btn btn-primary btn-lg" href="/teacher/sessions/create" role="button">ログイン</a>
+		</p>
 	</div>
 	<!-- /slide4 -->
 	<!-- === Slide 5 === -->

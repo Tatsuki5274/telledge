@@ -187,6 +187,7 @@
     <Content Include="Assets\Pictures\top-learning-new-thing.svg" />
     <Content Include="Assets\Pictures\top-business.svg" />
     <Content Include="Assets\Pictures\top-look.svg" />
+    <Content Include="Assets\Pictures\top-mainvisual.jpg" />
     <Content Include="Assets\Pictures\top-personal.svg" />
     <Content Include="Assets\Pictures\top-student.svg" />
     <Content Include="Assets\Pictures\top-teacher.svg" />
