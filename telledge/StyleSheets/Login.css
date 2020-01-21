@@ -1,15 +1,20 @@
-﻿#room-name {
+.radious {
+	border-radius: 10px;
+}
+#room-name {
     margin: 50px;
 }
 
 .center {
     text-align: center;
 }
-
+.margin-left-text{
+	margin-left : 25%;
+}
 .example {
-    margin: 10px auto;
-    font-size: large;
-    margin-left: 15%;
+	margin: 10px auto;
+	font-size: large;
+	margin-left: 15%;
 }
 
 .Room-buttom {
@@ -40,7 +45,7 @@
 }
 
 .margin {
-    margin-left: 25%;
+    margin-left: 10%;
 }
 
 .room-font2 {
@@ -48,20 +53,20 @@
     padding-top: 20px;
 }
 
-.room-button-left {
-    margin-left: 30%;
-    display: inline-block;
-    border-radius: 7%; /* 角丸       */
-    font-size: 26pt; /* 文字サイズ */
-    text-align: center; /* 文字位置   */
-    cursor: pointer; /* カーソル   */
-    padding: 12px 12px; /* 余白       */
-    background: #ffff1a; /* 背景色     */
-    color: #000000; /* 文字色     */
-    line-height: 1em; /* 1行の高さ  */
-    transition: .3s; /* なめらか変化 */
-    box-shadow: 6px 6px 3px #666666; /* 影の設定 */
-    border: 2px solid #ffff1a; /* 枠の指定 */
+.room-button-login {
+	margin-left: 30%;
+	display: inline-block;
+	border-radius: 7%; /* 角丸       */
+	font-size: 15pt; /* 文字サイズ */
+	text-align: center; /* 文字位置   */
+	cursor: pointer; /* カーソル   */
+	padding: 12px 12px; /* 余白       */
+	color: #000000; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	transition: .3s; /* なめらか変化 */
+	border: 2px solid #adb1b8; /* 枠の指定 */
+	background: #CCCCFF; /* 背景色 */
+	width : 50%;
 }
 
 .room-button-right {
@@ -72,7 +77,7 @@
     text-align: center; /* 文字位置   */
     cursor: pointer; /* カーソル   */
     padding: 12px 12px; /* 余白       */
-    background: #ffff1a; /* 背景色     */
+    
     color: #000000; /* 文字色     */
     line-height: 1em; /* 1行の高さ  */
     transition: .3s; /* なめらか変化 */
@@ -84,21 +89,8 @@
     margin-left: 100px;
     margin-top: 100px;
 }
-
-.color {
-    margin-left: 30%;
-    display: inline-block;
-    border-radius: 7%; /* 角丸       */
-    font-size: 26pt; /* 文字サイズ */
-    text-align: center; /* 文字位置   */
-    cursor: pointer; /* カーソル   */
-    padding: 12px 12px; /* 余白       */
-    background: #00FF00; /* 背景色     */
-    color: #000000; /* 文字色     */
-    line-height: 1em; /* 1行の高さ  */
-    transition: .3s; /* なめらか変化 */
-    box-shadow: 6px 6px 3px #666666; /* 影の設定 */
-    border: 2px solid #ffff1a; /* 枠の指定 */
+.span-width {
+	width: 100% !important;
 }
 
 .long {
@@ -110,9 +102,19 @@
 }
 
 .room-boxes {
-    width: 50%;
-    padding: 50px 100px;
-    margin: 30px auto;
-    background-color: #CCFF99;
-    border: solid;
+	width: 40%;
+	margin: 30px auto;
+	border: solid;
+	border-color:gainsboro;
+}
+.margin-top-login {
+	margin-top : 10px;
+}
+.button-login {
+	width: 50%;
+	margin-left: 35%;
+	margin-top: 10px;
+}
+.font-size{
+	font-size:10pt;
 }

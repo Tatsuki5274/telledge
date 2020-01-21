@@ -254,6 +254,7 @@
     <Content Include="Scripts\lazeemenu\sass\lazeemenu.min.css">
       <DependentUpon>lazeemenu.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\location.js" />
     <Content Include="Scripts\ModalWindow.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -289,7 +290,7 @@
     <Content Include="StyleSheets\teacherHomeMypage.css" />
     <Content Include="StyleSheets\TeacherMenu.css" />
     <Content Include="StyleSheets\TeacherRoomsindex.css" />
-    <Content Include="StyleSheets\StudentLogin.css" />
+    <Content Include="StyleSheets\Login.css" />
     <Content Include="StyleSheets\studentMenuStyle.css" />
     <Content Include="StyleSheets\studentRoomShow.css" />
     <Content Include="StyleSheets\TeacherLogin.css" />

@@ -7,55 +7,58 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="~/StyleSheets/StudentLogin.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" href="~/StyleSheets/Login.css">
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="bootstrap.min.js"></script>
 </head>
 <body>
     <main class="clearfix">
         <form action="/student/sessions/create" method="post" name="Student">
-            <div class="room-boxes">
+            <div class="room-boxes  radious">
                 <div id="room-name" class="center example">
-                    <h1> <span>生徒用ログイン画面</span></h1>
+                    <h2><span>生徒用ログイン画面</span></h2>
                 </div>
-
-                <table class="example">
-                    <col span="1" width="180px">
-                    <tr>
-                        <td class="room-font">メールアドレス</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="margin"  name="mailaddress"size="60%" value=""></td></td>
-                    <tr>
-                        <td class="room-font">パスワード</td>
-                    </tr>
-                    <tr>
-                        <td><input type="password" class="margin" size="60%" name="password" value=""></td>
-                    </tr>
-                    <tr>
-                        <td class="room-font2">
-                            続行することで、 Telledgeの<a href="xxxx.html">利用規約</a>および<a href="xxxx.html">プライバシー規約</a>に
-                            同意するものとみなされます。
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" class="room-button-left" name="submit" value="ログイン" /></td>
-                    </tr>
-                    <tr>
-                        <td><a href="xxxx.html" class="password">パスワードを忘れた方は</a></td>
-                    </tr>
-                    <tr>
-                        <td width="40%"><hr color="#C0C0C0" size="1" class="long"></td>
-                        <td>未登録の場合はこちらへ</td>
-                        <td width="40%"><hr color="#C0C0C0" size="1" class="small"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" class="color" name="submit" value="新規会員登録" /></td>
-                    </tr>
-                </table>
-            </div>
+				<div class="margin-left-text">
+					<div>
+						<span>メールアドレス</span>
+					</div>
+					<div>
+						<span><input type="text" name="mailaddress"></span>
+					</div>
+					<div>
+						<span>パスワード</span>
+					</div>
+					<div>
+						<span><input type="password" name="password"></span>
+					</div>
+				</div>
+				<div class="btn btn-default">
+					<button class="btn btn-default button-login"style="width:40%" >ログイン</button>
+				</div>
+				<div>
+					<span style="font-size:smaller">
+						続行することで、 Telledgeの<a href="xxxx.html">利用規約</a>および<a href="xxxx.html">プライバシー規約</a>に
+						同意するものとみなされます。
+					</span>
+				</div>
+				<div>
+					<span><a href="xxxx.html" class="password font-size">パスワードを忘れた方は</a></span>
+				</div>
+			</div>
+			<div>
+				<table style="margin-left:35%">
+					<tr>
+						<td width="30%"><hr color="#C0C0C0" size="1px"></td>
+						<td style="margin:40%">未登録の場合はこちらへ</td>
+						<td width="30%"><hr color="#C0C0C0" size="1px"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="btn btn-default">
+				<button class="btn btn-default button-login" style="width:30%">新規会員登録</button>
+			</div>  
             </form>
     </main>
 </body>
