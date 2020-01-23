@@ -14,7 +14,8 @@
 	width: 50%;
 	padding: 50px 100px;
 	margin: 30px auto;
-	background-color: #c0c0c091;
+	border-style: outset;
+	box-shadow: 6px 6px #d6d8d4a1;
 }
 
 .room-title{
@@ -24,9 +25,7 @@
 .rooms-table{
 	line-height: 200%
 }
-.room-detail{
-	margin-left: 50px;
-}
+
 
 .float{
 	float: left;
