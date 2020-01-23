@@ -9,29 +9,32 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" href="~/StyleSheets/TeacherRoomsindex.css">
 <main>
-	@foreach (var item in Model)
+	@if (Model != null)
 	{
-		<div class="room-boxes">
-			<h2 class="room-title">@item.roomName</h2>
-			<span class="room-title">@item.description</span>
-			<div class="flex">
+		foreach (var item in Model)
+		{
+			<div class="room-boxes">
+				<h2 class="room-title">@item.roomName</h2>
+				<span class="room-title">@item.description</span>
+				<div class="flex">
+				</div>
+				<div class="float">
+					<table class="rooms-table">
+						<col span="2" width="300px">
+						<tbody>
+							<tr>
+								<td><h4>タグ</h4></td>
+								<td><h4 class="margin">@item.tag</h4></td>
+							</tr>
+							<tr>
+								<td><h4>獲得ポイント数</h4></td>
+								<td><h4 class="margin">@item.point</h4></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-			<div class="float">
-				<table class="rooms-table">
-					<col span="2" width="300px">
-					<tbody>
-						<tr>
-							<td><h4>タグ</h4></td>
-							<td><h4 class="margin">@item.tag</h4></td>
-						</tr>
-						<tr>
-							<td><h4>獲得ポイント数</h4></td>
-							<td><h4 class="margin">@item.point</h4></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
+		}
 	}
 </main>
 
