@@ -44,11 +44,15 @@ namespace telledge.Controllers.Students
 					}
 					else
 					{
+						ViewBag.ErrorMessage = "登録済みのメールアドレスです。";
 						return View("/Views/Students/Registrations/create.cshtml");
 					}
 
 				}
+				ViewBag.ErrorMessage = "パスワードと確認用パスワードが一致しませんでした。";
+				return View("/Views/Students/Registrations/create.cshtml");
 			}
+			ViewBag.ErrorMessage = "必須項目を入力してください。";
 			return View("/Views/Students/Registrations/create.cshtml");
 		}
 		[HttpGet]

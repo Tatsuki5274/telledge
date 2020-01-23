@@ -57,11 +57,14 @@ namespace telledge.Controllers.Teachers
 					}
 					else
 					{
-						return View("/Views/Teachers/Registrations/create.cshtml");
-
+						ViewBag.ErrorMessage = "登録済みのメールアドレスです。";
+						return View("/Views/Teachers/Registrations/create.cshtml");																					
 					}
 				}
+				ViewBag.ErrorMessage = "パスワードと確認用パスワードが一致しませんでした。";
+				return View("/Views/Teachers/Registrations/create.cshtml");
 			}
+			ViewBag.ErrorMessage = "必須項目を入力してください。";
 			return View("/Views/Teachers/Registrations/create.cshtml");
 		}
 	}
