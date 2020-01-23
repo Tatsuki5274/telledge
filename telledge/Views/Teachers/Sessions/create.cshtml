@@ -12,7 +12,6 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="bootstrap.min.js"></script>
-	<script type="text/javascript" src="~/Scripts/location.js"></script>
 </head>
 <body>
 	<main class="clearfix">
@@ -22,6 +21,9 @@
 					<h2><span>講師用ログイン画面</span></h2>
 				</div>
 				<div class="margin-left-text">
+					<div>
+						<span style="color:red">@ViewBag.ErrorMessage</span>
+					</div>
 					<div>
 						<span>メールアドレス</span>
 					</div>

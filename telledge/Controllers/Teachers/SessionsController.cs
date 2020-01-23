@@ -21,12 +21,12 @@ namespace telledge.Controllers.Teachers
         [HttpPost]
         public ActionResult Create(String mailaddress, String password)
         {
-            Teacher ret = Teacher.login(mailaddress, password);
-            if (ret != null)
-            {
+			if (Teacher.login(mailaddress, password)!=null)
+			{
 				return RedirectToRoute("Teacher", new { controller = "Rooms", Action = "Index" });
 			}
-            return View("/Views/Teachers/Sessions/create.cshtml");
+			ViewBag.ErrorMessage = "メールアドレスかパスワードが一致しませんでした";
+			return View("/Views/Teachers/Sessions/create.cshtml");
 
         }
         [HttpDelete]
