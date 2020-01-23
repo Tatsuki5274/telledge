@@ -1,0 +1,13 @@
+.Registrations-box{
+	border : solid 1px #808080;
+	border-radius : 10px;
+	width : 40%;
+	margin:auto;
+
+}
+.center{
+	text-align : center;
+}
+.small{
+	font-size:xx-small;
+}

@@ -1,12 +1,17 @@
+@{
+	Layout =null;
+}
+
 <!DOCTYPE html>
 
 <html>
 <head>
-
+	<link rel="stylesheet" href="~/StyleSheets/signin.css">
+	<link rel="stylesheet" href="~/Content/bootstrap.min.css">
 </head>
-<body class="Registrations-box">
+<body class="Registrations-box center radious">
 	<form action="/student/Registrations/create" method="post" name="Student">
-		<h1>生徒用登録画面</h1>
+		<h2>生徒用登録画面</h2>
 		<div>
 			<span>メールアドレス</span>
 		</div>
@@ -25,17 +30,18 @@
 		<div>
 			<span><input type="password" name="passwordConfirmation"></span>
 		</div>
-		<div>
+		<div class="small">
 			<span>
 				続行することで、 Telledgeの<a href="xxxx.html">利用規約</a><br>
 				および<a href="xxxx.html">プライバシーポリシ</a>に
 				同意するものとみなされます。
 			</span>
 		</div>
-		<div>
-			<span><input type="submit" value="登録"></span>
-			<span><input type="submit" value="キャンセル"></span>
+		<div class="margin-buttom">
+			<button class="btn btn-success" style="width:40%">登録</button>
+			<button class="btn btn-default" style="width:40%">キャンセル</button>
 		</div>
+		
 	</form>
 </body>
 </html>
