@@ -37,9 +37,16 @@ namespace telledge.Controllers.Students
 					student.skypeId = ""; //nullが自動で入ってしまう為、空文字を代入
 					student.name = DBNull.Value.ToString();
 					student.profileImage = DBNull.Value.ToString();
-					student.create();
-					Student.login(mailaddress, password);
-					return View("/Views/Students/Homes/mypage.cshtml",Student.currentUser());
+					if (student.create())
+					{
+						Student.login(mailaddress, password);
+						return View("/Views/Students/Homes/mypage.cshtml", Student.currentUser());
+					}
+					else
+					{
+						return View("/Views/Students/Registrations/create.cshtml");
+					}
+
 				}
 			}
 			return View("/Views/Students/Registrations/create.cshtml");

@@ -50,9 +50,16 @@ namespace telledge.Controllers.Teachers
 					teacher.intoroduction = DBNull.Value.ToString();
 					teacher.address = DBNull.Value.ToString();
 					teacher.nationality = DBNull.Value.ToString();
-					teacher.create();
-					Teacher.login(mailaddress,password);
-					return View("/Views/Teachers/Homes/mypage.cshtml",Teacher.currentUser());
+					if (teacher.create())
+					{
+						Teacher.login(mailaddress, password);
+						return View("/Views/Teachers/Homes/mypage.cshtml", Teacher.currentUser());
+					}
+					else
+					{
+						return View("/Views/Teachers/Registrations/create.cshtml");
+
+					}
 				}
 			}
 			return View("/Views/Teachers/Registrations/create.cshtml");
