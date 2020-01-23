@@ -37,7 +37,18 @@ namespace telledge.Controllers.Students
         {
 			if (Student.currentUser() == null) return RedirectToRoute("Student", new { controller = "Sessions", action = "Create" });
             var model = Room.find(id);
-            return View("/Views/Students/Rooms/call.cshtml", model);
+
+			try
+			{
+				ViewBag.studentRequest = Section.find(model.id, Student.currentUser().id).request;
+			}
+			catch (NullReferenceException e)
+			{
+				ViewBag.studentRequest = "";
+				return RedirectToRoute("Student", new { controller = "Rooms", action = "index" });
+			}
+
+			return View("/Views/Students/Rooms/call.cshtml", model);
         }
         //
         // GET: /Rooms/Create
