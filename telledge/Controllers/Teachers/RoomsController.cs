@@ -27,19 +27,26 @@ namespace telledge.Controllers.Teachers
 			return View("/Views/Teachers/Rooms/call.cshtml", model);
         }
 		[HttpPost]
-		public ActionResult Create(String roomName,String tag,String description,int worstTime,int extensionTime,int point,DateTime endScheduleTime)
+		public ActionResult Create(String roomName,String tag,String description,int? worstTime,int? extensionTime,int? point,DateTime? endScheduleTime)
 		{
 			Room room = new Room();
 			room.teacherId = Teacher.currentUser().id;
 			room.roomName = roomName;
 			room.tag = tag;
 			room.description = description;
-			room.worstTime = worstTime;
-			room.extensionTime = extensionTime;
-			room.point = point;
-			room.endScheduleTime = endScheduleTime;
 			room.beginTime = DateTime.Now;
 			room.endTime = null;
+			try
+			{
+				room.worstTime = worstTime.Value;
+				room.extensionTime = extensionTime.Value;
+				room.point = point.Value;
+				room.endScheduleTime = endScheduleTime.Value;
+			}
+			catch (InvalidOperationException)
+			{
+				return View("/Views/Teachers/Rooms/create.cshtml");
+			}
 			
 			int ret = room.create();
 			if(ret != 0)
