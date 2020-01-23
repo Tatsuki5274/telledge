@@ -12,9 +12,12 @@ namespace telledge.Controllers.Teachers
         // GET: Sessions
         public ActionResult Create()
         {
-            return View("/Views/Teachers/Sessions/create.cshtml");
-        }
-        public ActionResult Index()
+			ViewBag.signInPath = "/teacher/sessions/create";
+			ViewBag.signUpPath = "/teacher/registrations/create";
+			ViewBag.pageTitle = "講師用ログイン画面";
+			return View("/Views/Shared/signin.cshtml");
+		}
+		public ActionResult Index()
         {
             return View();
         }
@@ -25,11 +28,14 @@ namespace telledge.Controllers.Teachers
 			{
 				return RedirectToRoute("Teacher", new { controller = "Rooms", Action = "Index" });
 			}
+			ViewBag.signInPath = "/teacher/sessions/create";
+			ViewBag.signUpPath = "/teacher/registrations/create";
+			ViewBag.pageTitle = "講師用ログイン画面";
 			ViewBag.ErrorMessage = "メールアドレスかパスワードが一致しませんでした";
-			return View("/Views/Teachers/Sessions/create.cshtml");
+			return View("/Views/Shared/signin.cshtml");
 
-        }
-        [HttpDelete]
+		}
+		[HttpDelete]
         public ActionResult Delete()
         {
             Teacher.logout();

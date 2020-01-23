@@ -1,6 +1,6 @@
 
 @{
-	Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -15,10 +15,10 @@
 </head>
 <body>
 	<main class="clearfix">
-		<form action="/teacher/sessions/create" method="post" name="Teacher">
+		<form action="@ViewBag.signInPath" method="post" name="Student">
 			<div class="room-boxes  radious">
 				<div id="room-name" class="center example">
-					<h2><span>講師用ログイン画面</span></h2>
+					<h2><span>@ViewBag.pageTitle</span></h2>
 				</div>
 				<div class="margin-left-text">
 					<div>
@@ -28,13 +28,13 @@
 						<span>メールアドレス</span>
 					</div>
 					<div>
-						<span><input type="text"class="width" name="mailaddress"></span>
+						<span><input type="text" class="width" name="mailaddress"></span>
 					</div>
 					<div>
 						<span>パスワード</span>
 					</div>
 					<div>
-						<span><input type="password"class="width" name="password"></span>
+						<span><input type="password" class="width" name="password"></span>
 					</div>
 				</div>
 				<div class="btn btn-default">
@@ -59,10 +59,11 @@
 					</tr>
 				</table>
 			</div>
-			<div class="btn btn-default">
-				<button class="btn btn-default button-login" style="width:30%" onclick="jump()">新規会員登録</button>
-			</div>
+
 		</form>
+		<div class="btn btn-default">
+			<button class="btn btn-default button-login" onclick="location.href='@ViewBag.signUpPath'" style="width:30%">新規会員登録</button>
+		</div>
 	</main>
 </body>
 </html>

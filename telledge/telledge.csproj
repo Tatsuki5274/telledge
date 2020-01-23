@@ -317,10 +317,8 @@
     <Content Include="Views\Homes\Index.cshtml" />
     <Content Include="Views\Shared\teacherMenu.cshtml" />
     <Content Include="Views\Shared\studentMenu.cshtml" />
-    <Content Include="Views\Students\Sessions\create.cshtml" />
     <Content Include="Views\Students\Rooms\index.cshtml" />
     <Content Include="Views\Teachers\Rooms\index.cshtml" />
-    <Content Include="Views\Teachers\Sessions\Create.cshtml" />
     <Content Include="Views\Teachers\Rooms\call.cshtml" />
     <Content Include="Views\Teachers\Rooms\Create.cshtml" />
     <Content Include="Views\Students\Rooms\call.cshtml" />
@@ -347,11 +345,14 @@
     <Content Include="Views\Students\Teachers\show.cshtml" />
     <Content Include="Views\Students\Homes\mypage.cshtml" />
     <Content Include="Views\Teachers\Passwords\create.cshtml" />
+    <Content Include="Views\Shared\signin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Inquiry\" />
+    <Folder Include="Views\Students\Sessions\" />
     <Folder Include="Views\Teachers\Points\" />
+    <Folder Include="Views\Teachers\Sessions\" />
     <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
