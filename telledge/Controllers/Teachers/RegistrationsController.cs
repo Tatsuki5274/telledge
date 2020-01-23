@@ -23,7 +23,7 @@ namespace telledge.Controllers.Teachers
 			if (Teacher.currentUser() == null) return RedirectToRoute("Teacher", new { controller = "Sessions", Action = "create" });
 			Teacher.currentUser().delete();
 			Teacher.logout();
-			return RedirectToAction("top", "Homes");
+			return RedirectToAction("top", "Home");
 		}
 		[HttpGet]
 		public ActionResult create()

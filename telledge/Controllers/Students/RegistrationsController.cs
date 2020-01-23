@@ -22,7 +22,7 @@ namespace telledge.Controllers.Students
 			if (Student.currentUser() == null) return RedirectToRoute("Student", new { controller = "Sessions", Action = "create" });
 			Student.currentUser().delete();
 			Student.logout();
-			return RedirectToAction("top", "Homes");
+			return RedirectToAction("top", "Home");
 		}
 		[HttpPost]
 		public ActionResult create(String mailaddress,String password,String passwordConfirmation)
