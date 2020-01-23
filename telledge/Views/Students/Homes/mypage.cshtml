@@ -19,7 +19,6 @@
 			<ul>
 				<li><span class="list-width">メールアドレス</span>@Model.mailaddress</li>
 				<li><span class="list-width">ユーザー名</span>@Model.name</li>
-				<li><span class="list-width">プロフィール画像</span>@Model.profileImage</li>
 				<li><span class="list-width">SkypeID</span>@Model.skypeId</li>
 				<li>
 					<button class="btn btn-primary center" type="button" onclick="location.href='/Student/homes/edit'">変更</button>
@@ -40,22 +39,29 @@
 			<h3><span>受講履歴</span></h3>
 			<ul>
 				<li>
-					<table>
-						<tr>
-							<td><span class="list-width">講師名</span></td>
-							<td><span class="list-width">ルーム名</span></td>
-							<td><span class="list-width">特徴タグ</span></td>
-						</tr>
-
-						@foreach (var item in Model.GetSections())
+					@if (Model.GetSections() != null)
+					{
+						foreach (var item in Model.GetSections())
 						{
-							<tr>
-								<td><span class="list-width">@item.getRoom().getTeacher().name</span>
-								<td><span class="list-width">@item.getRoom().roomName</span>
-								<td><span class="list-width">@item.getRoom().tag</span>
-							</tr>
+							<table>
+								<tr>
+									<td><span class="list-width">講師名</span></td>
+									<td><span class="list-width">ルーム名</span></td>
+									<td><span class="list-width">特徴タグ</span></td>
+								</tr>
+								<tr>
+									<td><span class="list-width">@item.getRoom().getTeacher().name</span>
+									<td><span class="list-width">@item.getRoom().roomName</span>
+									<td><span class="list-width">@item.getRoom().tag</span>
+								</tr>
+							</table>
 						}
-					</table>
+					}
+					else
+					{
+						<span class="list-width" style="text-align:center">受講履歴無し</span>
+					}
+
 				</li>
 			</ul>
 		</li>

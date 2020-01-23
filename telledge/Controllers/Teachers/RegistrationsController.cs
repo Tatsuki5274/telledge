@@ -41,17 +41,18 @@ namespace telledge.Controllers.Teachers
 					teacher.name = name;
 					teacher.mailaddress = mailaddress;
 					teacher.setPassword(password);//パスワードダイジェスト化
-				if (imagePath != null)
-				{
-					imagePath.SaveAs(Server.MapPath(@"/uproadFiles/") + Path.GetFileName(imagePath.FileName));
-					teacher.profileImage = Path.GetFileName(imagePath.FileName);
-				}	
+					if (imagePath != null)
+					{
+						imagePath.SaveAs(Server.MapPath(@"/uproadFiles/") + Path.GetFileName(imagePath.FileName));
+						teacher.profileImage = Path.GetFileName(imagePath.FileName);
+					}	
 					teacher.language = DBNull.Value.ToString();
 					teacher.intoroduction = DBNull.Value.ToString();
 					teacher.address = DBNull.Value.ToString();
 					teacher.nationality = DBNull.Value.ToString();
 					teacher.create();
-					return View("/Views/Teachers/Registrations/top.cshtml");
+					Teacher.login(mailaddress,password);
+					return View("/Views/Teachers/Homes/mypage.cshtml",Teacher.currentUser());
 				}
 			}
 			return View("/Views/Teachers/Registrations/create.cshtml");
