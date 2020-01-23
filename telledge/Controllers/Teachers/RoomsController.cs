@@ -50,6 +50,21 @@ namespace telledge.Controllers.Teachers
 				return View("/Views/Teachers/Sessions/create.cshtml");
 			}
 		}
+		public ActionResult delete(int roomId)
+		{
+			Room room = new Room();
+			room.id = roomId;
+			Section[] section = room.getSections();
+			for (int i = 0; i < section.Length; i++)
+			{
+				if (section[i].talkTime == null)
+				{
+					section[i].delete();
+				}
+			}
+			room.close();
+			return View("/Views/Teachers/Homes/mypage.cshtml");
+		}
 		[HttpGet]
 		public ActionResult show(int roomid)
 		{
