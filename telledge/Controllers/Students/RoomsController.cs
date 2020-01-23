@@ -127,12 +127,7 @@ namespace telledge.Controllers.Students
 			section.studentId = Student.currentUser().id;
 			section.request = request;
 			section.create();
-			GlobalHost.ConnectionManager.GetHubContext<RoomHub>().Clients.Group("teacher_room_" + id).append(new
-			{
-				student_id = section.studentId,
-				student_name = section.getStudent().name,
-				request = section.request
-			});
+			GlobalHost.ConnectionManager.GetHubContext<RoomHub>().Clients.Group("teacher_room_" + id).append(section.getStudent(), section);
 			GlobalHost.ConnectionManager.GetHubContext<RoomHub>().Clients.Group("student_room_" + id).updateWaitInfo(room, room.getSections());
 			return RedirectToAction("call", "rooms", new { Id = Convert.ToInt32(id) });
 		}

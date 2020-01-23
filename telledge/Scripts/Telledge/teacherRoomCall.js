@@ -77,6 +77,9 @@ counter.setCallback(Status.AllDone, () => {
 });
 counter.setState(Status.Restart);
 
+
+let students = [];
+
 // WebSocketの処理
 $(function () {
 	// 1. サーバとの接続オブジェクト作成
@@ -88,29 +91,39 @@ $(function () {
 	// サーバから呼び出して要素を削除するメソッドを登録
 	echo.on("removeStudent", function (studentId) {
 		$('#student-' + studentId).remove();
+		students = students.filter((student) => {
+			return student.student.id != studentId;
+		});
 	});
 
 	// 生徒一覧への追記処理
-	echo.on("append", (student_json) => {
-		current_student_id = student_json.student_id;
-		const id = "id=\"student-" + student_json.student_id + "\"";
-		const value = "value=\"" + student_json.student_id + "\"";
+	echo.on("append", (student, section) => {
+		current_student_id = student.id;
+		const id = "id=\"student-" + student.id + "\"";
+		const value = "value=\"" + student.id + "\"";
 		$("#student-list").append("<tr " + id + " " + value + "></tr>");
-		$("#student-" + student_json.student_id)
+		$("#student-" + student.id)
 			.append(
-				"<td>" + student_json.student_name + "</td>",
-				"<td>" + student_json.request + "</td>",
+				"<td>" + student.name + "</td>",
+				"<td>" + section.request + "</td>",
 				"<td><button class=\"btn btn-danger\">キャンセル</button></td>"
 		);
-		if (current_student_id == -1) current_student_id = student_json.student_id;
+		students.push({ student: student, section: section });	//入室した生徒を管理対象へ追加する
+		students.sort(function (a, b) {		//生徒の順番をorder順に並び替える
+			return a.section.order - b.section.order;
+		});
 	});
 
 	$(".startCall-button").click(function () {
-		echo.invoke("startCall", roomId, current_student_id);	//ルームの開始を知らせる信号を送信する
+		echo.invoke("startCall", roomId, students[0].student.id);	//ルームの開始を知らせる信号を送信する
 		timer.setState(Status.Essential);	//最低通話として処理
 		timer.setTimer();
-
 		counter.startTimer();
+		const call_student = students[0];	//生徒情報を取得する
+		$("#student-name").text(call_student.student.name);
+		$("#student-request").text(call_student.section.request);
+		$("#student-skype-id").text(call_student.student.skypeId);
+		$("#call-start").addClass("hidden");
 	});
 
 	//通話終了ボタンの入力を検知したときの処理
@@ -125,25 +138,37 @@ $(function () {
 			$('.student-name').text(student.name);
 			$('.student-request').text(section.request);
 			current_student_id = section.studentId;
+
+			$("#break-modal").modal({
+				backdrop: "static"
+			});
+			// モーダルウィンドウを開く
+			$("#break-modal").modal('show');
 		} else {
+			//次の生徒がいない場合の処理
 			$('.student-name').text("");
 			$('.student-request').text("");
+			$('#student-skype-id').text("");
 			current_student_id = -1;
-		}
-		$('#student-' + student.id).remove();
-		$("#break-modal").modal({
-			backdrop: "static"
-		});
-		// モーダルウィンドウを開く
-		$("#break-modal").modal('show');
 
+			$("#break-last-modal").modal({
+				backdrop: "static"
+			});
+			// モーダルウィンドウを開く
+			$("#break-last-modal").modal('show');
+		}
 		timer.deleteTimer();	//タイマーを削除する
+		$("#student-" + students[0].student.id).remove();	//先頭の生徒を削除する
+		students.shift();
 	});
 
 	//生徒リストのリジェクトボタンを押したときの処理
 	$(document).on("click", "#student-list button", function () {
 		const $tr = $(this).closest("tr");		//押されたボタンから一番近いtr要素を取得する
 		const studentId = $tr.attr("value");	//生徒番号をdomから取得
+		students = students.filter((filter_student) => {
+			return filter_student.student.id != studentId
+		});
 		echo.invoke("rejectRoom", roomId, studentId);	//RoomHubクラスのrejectRoomメソッドを呼び出す（引数は順番にルーム番号、生徒番号）
 		$tr.remove();	//対象の要素を削除
 	});

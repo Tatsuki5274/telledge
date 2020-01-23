@@ -83,6 +83,7 @@ $(function () {
 			//通話が自分の番なら　＝　自分は通話側
 			$('#waiting').addClass('hidden');
 			$('#calling').removeClass('hidden');
+			$('#endCall-button').attr('disabled', 'disabled');
 			con.setState(Status.Essential);	//最低通話として処理
 			con.setTimer();	//タイマー開始
 		}
@@ -96,19 +97,21 @@ $(function () {
 	//情報を更新するメソッド
 	//updateWaitInfo(sectionの配列オブジェクト)
 	echo.on("updateWaitInfo", (room, sections) => {
-		// 自分のorderを求める
-		const order = sections.find(section => section.studentId > studentId).order;
+		if (room != null && sections != null) {
+			// 自分のorderを求める
+			const order = sections.find(section => section.studentId > studentId).order;
 
-		// 自分より前に並んでいる情報を抽出する
-		const selected_sections = sections.filter((section) => {
-			return section.order < order;
-		});
+			// 自分より前に並んでいる情報を抽出する
+			const selected_sections = sections.filter((section) => {
+				return section.order < order;
+			});
 
-		const waitTime = selected_sections.length * (room.worstTime + room.extensionTime) / 2;
-		const waitCount = selected_sections.length;
+			const waitTime = selected_sections.length * (room.worstTime + room.extensionTime) / 2;
+			const waitCount = selected_sections.length;
 
-		$('#waitTime').text(waitTime);
-		$('#waitCount').text(waitCount);
+			$('#waitTime').text(waitTime);
+			$('#waitCount').text(waitCount);
+		}
 	});
 
 	//Sectionテーブルから情報を削除する処理を実行する

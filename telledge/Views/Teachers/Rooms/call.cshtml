@@ -29,7 +29,7 @@
 </head>
 <body>
 
-	<!-- 休憩のモーダルウィンドウ -->
+	<!-- 休憩のモーダルウィンドウ　次の生徒がいるバージョン -->
 	<div class="modal fade" id="break-modal" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -49,6 +49,25 @@
 				<div class="modal-footer">
 					<button class="btn btn-danger">対応不可</button>
 					<button type="button" class="btn btn-primary startCall-button" data-toggle="modal" data-target="#break-modal">次の生徒へ</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 休憩のモーダルウィンドウ 最後の生徒バージョン -->
+	<div class="modal fade" id="break-last-modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="h3-margin-left">お疲れ様でした!!</h3>
+				</div>
+				<div class="modal-body">
+					<div>
+						<span>あなたから学びたい生徒へのレッスンの提供が終了しました。<br />別の生徒が入出するまでしばらくお待ちください！</span>
+						<span class="student-name"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#break-last-modal">戻る</button>
 				</div>
 			</div>
 		</div>
@@ -123,7 +142,7 @@
 							section = Model.getSection();
 							<tr>
 								<td>生徒名</td>
-								<td class="student-name">
+								<td id="student-name" class="student-name">
 									@if (section != null)
 									{
 										@(section.getStudent().name)
@@ -135,12 +154,21 @@
 								<td id="timer-count"></td>
 							</tr>
 							<tr>
-								<td id="margin-bottom">要望</td>
-								<td id="margin-bottom" class="student-request">
+								<td id="">要望</td>
+								<td id="student-request" class="student-request">
 									@if (section != null)
 									{
 										@(Model.getSection().request)
 
+									}
+								</td>
+							</tr>
+							<tr>
+								<td>Skype ID</td>
+								<td id="student-skype-id">
+									@if (section != null)
+									{
+										@Model.getSection().getStudent().skypeId
 									}
 								</td>
 							</tr>
@@ -150,7 +178,7 @@
 					</tbody>
 				</table>
 				<div>
-					<button class="btn btn-success startCall-button">通話開始</button>
+					<button id="call-start" class="btn btn-success startCall-button">通話開始</button>
 					<button id="call-end" class="btn btn-success js-modal-open">通話終了</button>
 					<button id="disabled-call-end" class="btn btn-success" disabled="disabled">通話終了</button>
 					<button id="room-end" class="btn btn-danger">ルーム終了</button>

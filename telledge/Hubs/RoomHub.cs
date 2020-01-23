@@ -43,12 +43,14 @@ namespace telledge.Hubs
 
 			Room room = Room.find(roomId);  //ルーム番号のルームインスタンスを取得する
 			Section section = Section.find(roomId, studentId);
-			//Student student = Student.
+			/*
 			Clients.Group("teacher_room_" + roomId).append(new {
 				student_id = section.studentId,
 				student_name = section.getStudent().name,
 				request = section.request
 			});
+			*/
+			Clients.Group("teacher_room_" + roomId).append(section.getStudent(), section);
 			Clients.Group("student_room_" + roomId).updateWaitInfo(room, room.getSections());
 		}
 
