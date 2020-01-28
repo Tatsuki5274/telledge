@@ -19,6 +19,11 @@ namespace telledge.Controllers.Teachers
 
 		}
 
+		public ActionResult rule()
+		{
+			return View("/Views/Teachers/Homes/rule.cshtml");
+		}
+
 		[HttpPost]
 		public ActionResult update(String imagePath ,String mailaddress ,String name, String nationality, int sex, String intoroduction)
 		{

@@ -19,6 +19,12 @@ namespace telledge.Controllers.Students
 		{
 			return View("/Views/Students/Homes/edit.cshtml");
 		}
+
+		public ActionResult rule()
+		{
+			return View("/Views/Students/Homes/rule.cshtml");
+		}
+
 		public ActionResult update(String mailaddress,String name,String imagePath,String skypeId)
 		{
 			Student student = Student.currentUser();
