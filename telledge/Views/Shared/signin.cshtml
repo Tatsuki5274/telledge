@@ -9,9 +9,9 @@
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" href="~/StyleSheets/Login.css">
-	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="~/Content/bootstrap.min.css">
 	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
 	<main class="clearfix">
@@ -20,7 +20,7 @@
 				<div id="room-name" class="center example">
 					<h2><span>@ViewBag.pageTitle</span></h2>
 				</div>
-				<div class="margin-left-text">
+				<div id="form-content">
 					<div>
 						<span style="color:red">@ViewBag.ErrorMessage</span>
 					</div>
@@ -37,8 +37,8 @@
 						<span><input type="password" class="width" name="password"></span>
 					</div>
 				</div>
-				<div class="btn btn-default">
-					<button class="btn btn-default button-login" style="width:40%">ログイン</button>
+				<div>
+					<button id="login-button" class="btn btn-success" >ログイン</button>
 				</div>
 				<div>
 					<span style="font-size:smaller">
@@ -51,18 +51,18 @@
 				</div>
 			</div>
 			<div>
-				<table style="margin-left:35%">
+				<table id="signup-table">
 					<tr>
 						<td width="30%"><hr color="#C0C0C0" size="1px"></td>
-						<td style="margin:40%">未登録の場合はこちらへ</td>
+						<td>未登録の場合はこちらへ</td>
 						<td width="30%"><hr color="#C0C0C0" size="1px"></td>
 					</tr>
 				</table>
 			</div>
 
 		</form>
-		<div class="btn btn-default">
-			<button class="btn btn-default button-login" onclick="location.href='@ViewBag.signUpPath'" style="width:30%">新規会員登録</button>
+		<div>
+			<button id="to-signup-button" class="btn btn-primary" onclick="location.href='@ViewBag.signUpPath'" >新規会員登録</button>
 		</div>
 	</main>
 </body>
