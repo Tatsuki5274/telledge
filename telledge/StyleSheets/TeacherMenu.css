@@ -26,6 +26,7 @@ footer {
 	text-align: center;
 	color: #a3b1bd;
 	background-color: rgba(0, 26, 58, 0.65);
+	margin-top: auto;
 }
 
 header {
@@ -124,11 +125,15 @@ hr {
 	margin: 0;
 }
 
-body {
+body,
+#wrapper {
 	padding: 0;
 	margin: 0;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 .sidebar-toggle {
