@@ -1,45 +1,64 @@
+@model telledge.Models.Student
+
 @{
-	Layout = null;
+	ViewBag.Title = "edit";
+	Layout = "~/Views/Shared/studentMenu.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>edit</h2>
 
-<html>
-<head>
 
-</head>
-<body>
-	<form action="/student/Homes/update" method="post" name="Student">
-		<h1>ユーザー変更画面</h1>
-		<div>
-			<span>メールアドレス</span>
-		</div>
-		<div>
-			<span><input type="text" name="mailaddress"></span>
-		</div>
-		<div>
-			<span>名前</span>
-		</div>
-		<div>
-			<span><input type="text" name="name"></span>
-		</div>
-		<div>
-			<span>プロフィール画像</span>
-		</div>
-		<div>
-			<span><input type="file" name="imagePath"></span>
-		</div>
-		<div>
-			<span>SkypeID</span>
-		</div>
-		<div>
-			<span><input type="text" name="skypeId"></span>
-		</div>
-		<div>
-			<span><input type="submit" value="ユーザー変更"></span>
-			<span><input type="submit" value="キャンセル"></span>
-		</div>
-	</form>
-</body>
-</html>
+<form action="/student/homes/update" method="post">
 
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<h4>Student</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.id)
+
+		<div class="form-group">
+			<label class="control-label col-md-2" for="name">名前</label>
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2" for="name">メールアドレス</label>
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.mailaddress, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+				@Html.ValidationMessageFor(model => model.mailaddress, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2" for="profileImage">画像</label>
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.profileImage, new { htmlAttributes = new { @class = "", @type = "file" } })
+				@Html.ValidationMessageFor(model => model.profileImage, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-2" for="nationality">SkypeId</label>
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.skypeId, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.skypeId, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Save" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+</form>
+
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
