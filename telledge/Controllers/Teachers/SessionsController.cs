@@ -15,6 +15,7 @@ namespace telledge.Controllers.Teachers
 			ViewBag.signInPath = "/teacher/sessions/create";
 			ViewBag.signUpPath = "/teacher/registrations/create";
 			ViewBag.pageTitle = "講師用ログイン画面";
+			ViewBag.ForgetPath = "/teacher/passwords/create";
 			return View("/Views/Shared/signin.cshtml");
 		}
 		public ActionResult Index()
@@ -31,6 +32,7 @@ namespace telledge.Controllers.Teachers
 			ViewBag.signInPath = "/teacher/sessions/create";
 			ViewBag.signUpPath = "/teacher/registrations/create";
 			ViewBag.pageTitle = "講師用ログイン画面";
+			ViewBag.ForgetPath = "/teacher/passwords/create";
 			ViewBag.ErrorMessage = "メールアドレスかパスワードが一致しませんでした";
 			return View("/Views/Shared/signin.cshtml");
 
