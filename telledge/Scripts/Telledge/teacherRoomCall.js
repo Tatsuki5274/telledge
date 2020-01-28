@@ -120,6 +120,7 @@ $(function () {
 		timer.setTimer();
 		counter.startTimer();
 		const call_student = students[0];	//生徒情報を取得する
+		$('#student-' + call_student.student.id + " button").attr('disabled', 'disable');
 		$("#student-name").text(call_student.student.name);
 		$("#student-request").text(call_student.section.request);
 		$("#student-skype-id").text(call_student.student.skypeId);
