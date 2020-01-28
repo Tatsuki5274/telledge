@@ -1,6 +1,28 @@
-form{
-	padding-left : 25%;
+.boxes {
+	border-style: outset;
+	box-shadow: 6px 6px #d6d8d4a1;
+	position: relative;
+	z-index: 1;
 }
-#search-padding{
-	padding-left : 35%;
+
+#tag-box {
+	width: 40%;
+	padding: 20px 100px 50px;
+	margin: 30px auto;
+
+}
+
+#optional-box{
+	width: 60%;
+	padding: 50px;
+	margin: 30px auto;
+}
+
+#search-button{
+	width: 200px;
+	margin: 0 auto;
+	display: block;
+}
+#search-form{
+	margin-bottom: 100px;
 }
