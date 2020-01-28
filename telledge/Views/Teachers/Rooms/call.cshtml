@@ -178,17 +178,16 @@
 					</tbody>
 				</table>
 				<div>
-					<button id="call-start" class="btn btn-success startCall-button">通話開始</button>
-					<button id="call-end" class="btn btn-success js-modal-open">通話終了</button>
-					<button id="disabled-call-end" class="btn btn-success" disabled="disabled">通話終了</button>
-					<button id="room-end" class="btn btn-danger">ルーム終了</button>
+					<button id="call-start" class="btn btn-success startCall-button" disabled="disabled">通話開始</button>
+					<button id="call-end" class="btn btn-primary js-modal-open hidden">通話終了</button>
+					<button id="room-end" class="btn btn-danger hidden">ルーム終了</button>
 
 				</div>
 
 			</div>
 		</div>
 		<script>
-			timer.setState(Status.Essential);	//最低通話として処理
+			timer.setState(Status.NotStarted);	//最低通話として処理
 		</script>
 	</main>
 </body>

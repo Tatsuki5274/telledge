@@ -76,6 +76,14 @@ $(function () {
 		}
 	});
 
+	echo.on("endRoom", () => {
+		$("#end-room-modal").modal({
+			backdrop: "static"
+		});
+		// モーダルウィンドウを開く
+		$("#end-room-modal").modal('show');
+	});
+
 	//通話する人を更新する処理
 	// updateCallStudent(新たに通話する生徒番号)
 	echo.on("updateCallStudent", (student_id) => {

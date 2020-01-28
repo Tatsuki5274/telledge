@@ -1,8 +1,8 @@
 const timer = new Timer(mintime, overtime);
 timer.setCallback(Status.NotStarted, () => {
-	$('#call-end').css('display', 'none');
-	$('#disabled-call-end').css('display', 'none');
-	$('#room-end').css('display', 'inline');
+	$('#call-end').addClass('hidden');
+	$('#room-end').addClass('hidden');
+	$('#call-start').removeClass('hidden');
 
 	$('#timer-title').text('通話なし');
 	$('#timer-count').css('display', 'none');
@@ -10,71 +10,35 @@ timer.setCallback(Status.NotStarted, () => {
 
 });
 timer.setCallback(Status.Essential, () => {
+	$('#call-end').removeClass('hidden');
+	$('#room-end').addClass('hidden');
+	$('#call-start').addClass('hidden');
+	$('#call-end').attr('disabled', 'disabled');
+
 	$('#timer-title').text('残り時間');
 	$('#timer-count').css('display', 'inline');
 	$('#timer-count').css('color', 'black');
 	$('#timer-title').css('color', 'black');
-
-	$('#call-end').css('display', 'none');
-	$('#disabled-call-end').css('display', 'inline');
-	$('#room-end').css('display', 'none');
 });
 timer.setCallback(Status.Extend, () => {
+	$('#call-end').removeAttr('disabled');
+	$('#room-end').addClass('hidden');
+
 	$('#timer-count').css('color', 'red');
 	$('#timer-title').css('color', 'red');
 	$('#timer-title').text("延長時間");
 	$('#timer-count').css('display', 'inline');
-
-
-	$('#call-end').css('display', 'inline');
-	$('#disabled-call-end').css('display', 'none');
-	$('#room-end').css('display', 'none');
 });
 timer.setCallback(Status.AllDone, () => {
+	$('#call-end').addClass('hidden');
+	$('#room-end').removeClass('hidden');
+
 	$('#timer-title').text("通話時間終了");
 	$('#timer-title').css('color', 'red');
 	$('#timer-count').css('display', 'none');
-
-	$('#call-end').css('display', 'none');
-	$('#disabled-call-end').css('display', 'none');
-	$('#room-end').css('display', 'inline');
-
 });
 
 let counter = new Counter();
-counter.setCallback(Status.NotStarted, () => {
-	$('#call-end').css('display', 'none');
-	$('#disabled-call-end').css('display', 'none');
-	$('#room-end').css('display', 'inline');
-
-	$('#timer-counter').css('display', 'none');
-
-});
-counter.setCallback(Status.Stop, () => {
-	$('#timer-counter').css('display', 'inline');
-	$('#timer-counter').css('color', 'black');
-
-	$('#call-end').css('display', 'none');
-	$('#disabled-call-end').css('display', 'inline');
-	$('#room-end').css('display', 'none');
-});
-counter.setCallback(Status.Restart, () => {
-	$('#timer-counter').css('color', 'red');
-	$('#timer-counter').css('display', 'inline');
-
-
-	$('#call-end').css('display', 'inline');
-	$('#disabled-call-end').css('display', 'none');
-	$('#room-end').css('display', 'none');
-});
-counter.setCallback(Status.AllDone, () => {
-	$('#timer-counter').css('display', 'none');
-
-	$('#call-end').css('display', 'none');
-	$('#disabled-call-end').css('display', 'none');
-	$('#room-end').css('display', 'inline');
-
-});
 counter.setState(Status.Restart);
 
 
@@ -108,6 +72,13 @@ $(function () {
 				"<td>" + section.request + "</td>",
 				"<td><button class=\"btn btn-danger\">キャンセル</button></td>"
 		);
+		if (students.length == 0) {
+			//一人目の入室者ならば
+			const $start = $('#call-start');
+			$start.removeClass('hidden');
+			$start.removeAttr('disabled');
+			$('#call-end').addClass('hidden');
+		}
 		students.push({ student: student, section: section });	//入室した生徒を管理対象へ追加する
 		students.sort(function (a, b) {		//生徒の順番をorder順に並び替える
 			return a.section.order - b.section.order;
@@ -127,8 +98,12 @@ $(function () {
 		$("#call-start").addClass("hidden");
 	});
 
+	$('#room-end').click(() => {
+		echo.invoke("endRoom", roomId);
+	});
+
 	//通話終了ボタンの入力を検知したときの処理
-	$("#room-end").click(function () {
+	$("#call-end").click(function () {
 		echo.invoke("endCall", roomId, current_student_id);	//ルームの終了を知らせる信号を送信する
 	});
 
