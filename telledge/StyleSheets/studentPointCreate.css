@@ -1,0 +1,31 @@
+.demo-container {
+	width: 100%;
+	max-width: 350px;
+	margin: 50px auto;
+}
+
+form {
+	margin: 30px;
+}
+
+input {
+	font-family: inherit;
+	font-size: 16px;
+	height: 32px;
+	margin: 0 0 1rem 0;
+	padding: 0.5rem;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.half{
+	width: 49%;
+}
+.quarter{
+	width: 24%;
+}
+
+#submit-button {
+	background-color: #007295;
+	color:white;
+}

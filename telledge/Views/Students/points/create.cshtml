@@ -1,58 +1,36 @@
 @{
-   Layout = "~/Views/Shared/studentMenu.cshtml";
+	Layout = "~/Views/Shared/studentMenu.cshtml";
 }
 
-<!DOCTYPE html>
+<script src="~/Scripts/card/card.js"></script>
+<link href="~/StyleSheets/studentPointCreate.css" rel="stylesheet" />
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-</head>
-<body>
-	<form action="/student/Points/create" method="post" name="Student">
-		<h1>ポイント購入画面</h1>
-		<div>
-			<span>ブランド名</span>
-		</div>
-		<div>
-			<select name="brand">
-				<option value="VISA">VISA</option>
-				<option value="Master">Master</option>
-				<option value="JCB">JCB</option>
-			</select>
-		</div>
-		<div>
-			<span>カード番号</span>
-		</div>
-		<div>
-			<input type="text" name="cardNumber">
-		</div>
-		<div>
-			<span>有効期限</span>
-		</div>
-		<div>
-			<input type="text" name="validatedDate">
-		</div>
-		<div>
-			<span>セキュリティコード</span>
-		</div>
-		<div>
-			<input type="text" name="secureCode">
-		</div>
-		<div>
-			<span>購入ポイント</span>
-		</div>
-		<div>
-			<select name="selectedPoint">
-				<option value="100">100ポイント</option>
-				<option value="500">500ポイント</option>
-				<option value="1000">1000ポイント</option>
-				<option value="5000">5000ポイント</option>
-			</select>
-		</div>
-		<div>
-			<input type="submit" name="buy" value="購入">
-		</div>
-	</form>
-</body>
-</html>
+
+<title>Card &ndash; the better way to collect credit cards</title>
+<meta name="viewport" content="initial-scale=1">
+<!-- CSS is included through the card.js script -->
+<div class="demo-container">
+	<div class="card-wrapper"></div>
+
+	<div class="form-container active">
+		<form action="">
+			<div>
+				<input class="half" placeholder="Card number" type="tel" name="number">
+				<input class="half" placeholder="Full name" type="text" name="name">
+			</div>
+			<div>
+				<input class="quarter" placeholder="MM/YY" type="tel" name="expiry">
+				<input class="quarter" placeholder="CVC" type="number" name="cvc">
+				<input id="submit-button" class="half" type="submit" />
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<script>
+	new Card({
+		form: document.querySelector('form'),
+		container: '.card-wrapper'
+	});
+</script>

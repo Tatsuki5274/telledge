@@ -211,6 +211,9 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Scripts\card\card.css" />
+    <Content Include="Scripts\card\card.js" />
+    <Content Include="Scripts\card\jquery.card.js" />
     <Content Include="Scripts\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Scripts\font-awesome\fonts\fontawesome-webfont.woff" />
@@ -287,6 +290,7 @@
     <Content Include="StyleSheets\deactivate.css" />
     <Content Include="StyleSheets\signin.css" />
     <Content Include="StyleSheets\studentHomeMypage.css" />
+    <Content Include="StyleSheets\studentPointCreate.css" />
     <Content Include="StyleSheets\studentRoomSearch.css" />
     <Content Include="StyleSheets\top.css" />
     <Content Include="StyleSheets\teacherHomeMypage.css" />
