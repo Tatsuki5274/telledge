@@ -26,6 +26,22 @@ namespace telledge.Hubs
 		public void JoinTeacher(int roomId)
 		{
 			Groups.Add(Context.ConnectionId, "teacher_room_" + roomId);
+
+			Room room = Room.find(roomId);
+			Section[] sections = room.getSections();
+			StudentData[] data = null;
+			if (sections != null)
+			{
+				data = new StudentData[sections.Length];
+				for (int i = 0; i < sections.Length; i++)
+				{
+					StudentData datum = new StudentData();
+					datum.section = sections[i];
+					datum.student = sections[i].getStudent();
+					data[i] = datum;
+				}
+			}
+			Clients.Group("teacher_room_" + roomId).setStudents(data);
 		}
 
 		// 指定されたグループから離脱する
@@ -65,7 +81,7 @@ namespace telledge.Hubs
 				Room room = Room.find(roomId);
 				Section room_section = room == null ? null : room.getSection();
 				Student room_section_student = room_section == null ? null : room_section.getStudent();
-				Clients.Group("teacher_room_" + roomId).endCall(room_section, room_section_student);
+				Clients.Group("teacher_room_" + roomId).endCall();
 				Clients.Group("student_room_" + roomId).endCall(roomId, studentId);
 				Clients.Group("student_room_" + roomId).updateWaitInfo(room, room.getSections());    //生徒の待ち情報を更新する
 			}
@@ -101,5 +117,11 @@ namespace telledge.Hubs
 		{
 			Clients.All.hello();
 		}
+	}
+
+	public struct StudentData
+	{
+		public Student student;
+		public Section section;
 	}
 }

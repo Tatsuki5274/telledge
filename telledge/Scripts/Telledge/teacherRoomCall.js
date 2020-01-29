@@ -62,7 +62,6 @@ $(function () {
 
 	// 生徒一覧への追記処理
 	echo.on("append", (student, section) => {
-		current_student_id = student.id;
 		const id = "id=\"student-" + student.id + "\"";
 		const value = "value=\"" + student.id + "\"";
 		$("#student-list").append("<tr " + id + " " + value + "></tr>");
@@ -104,35 +103,40 @@ $(function () {
 
 	//通話終了ボタンの入力を検知したときの処理
 	$("#call-end").click(function () {
-		echo.invoke("endCall", roomId, current_student_id);	//ルームの終了を知らせる信号を送信する
+		echo.invoke("endCall", roomId, students[0].student.id);	//ルームの終了を知らせる信号を送信する
 	});
 
-	// 通話終了の信号を受信したときの処理
-	echo.on("endCall", (section, student) => {
-		if (section != null) {
+	/*
+	 * 通話終了の信号を受信したときの処理
+	 * students配列の0番目には対応中の生徒が入っている状態。
+	 * 1番目には次に待っている生徒が入っている状態
+	 */
+	echo.on("endCall", () => {
+		if (students.length >= 2) {
 			//次に待っている生徒がいる場合
-			$('.student-name').text(student.name);
-			$('.student-request').text(section.request);
-			current_student_id = section.studentId;
-
+			$('.student-name').text(students[1].student.name);
+			$('.student-request').text(students[1].section.request);
 			$("#break-modal").modal({
 				backdrop: "static"
 			});
 			// モーダルウィンドウを開く
 			$("#break-modal").modal('show');
-		} else {
+		} else if (students.length == 1) {
 			//次の生徒がいない場合の処理
 			$('.student-name').text("");
 			$('.student-request').text("");
 			$('#student-skype-id').text("");
-			current_student_id = -1;
 
 			$("#break-last-modal").modal({
 				backdrop: "static"
 			});
 			// モーダルウィンドウを開く
 			$("#break-last-modal").modal('show');
+		} else {
+			// 通話待ちが0人の状態で通話を終了することはありえない
+			throw students;
 		}
+
 		timer.deleteTimer();	//タイマーを削除する
 		$("#student-" + students[0].student.id).remove();	//先頭の生徒を削除する
 		students.shift();
@@ -147,6 +151,18 @@ $(function () {
 		});
 		echo.invoke("rejectRoom", roomId, studentId);	//RoomHubクラスのrejectRoomメソッドを呼び出す（引数は順番にルーム番号、生徒番号）
 		$tr.remove();	//対象の要素を削除
+	});
+
+	echo.on("setStudents", (arg_students) => {
+		if (arg_students == null) students = [];
+		else {
+			students = arg_students.map(student => {
+				return {
+					student : student.student,
+					section : student.section
+				};
+			});
+		}
 	});
 
 	// 接続を開始
