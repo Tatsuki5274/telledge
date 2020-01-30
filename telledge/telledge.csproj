@@ -345,7 +345,6 @@
     <Content Include="Views\Teachers\Homes\edit.cshtml" />
     <Content Include="Views\Students\Passwords\create.cshtml" />
     <Content Include="Views\Students\Teachers\index.cshtml" />
-    <Content Include="Views\Students\Teachers\show.cshtml" />
     <Content Include="Views\Students\Homes\mypage.cshtml" />
     <Content Include="Views\Teachers\Passwords\create.cshtml" />
     <Content Include="Views\Shared\signin.cshtml" />

@@ -15,12 +15,5 @@ namespace telledge.Controllers.Students
 			var model = Teacher.getAll();
 			return View("/Views/Students/Teachers/index.cshtml", model);
 		}
-
-		public ActionResult Show(int id)
-		{
-			var model = Teacher.find(id);
-			return View("/Views/Students/Teachers/show.cshtml", model);
-		}
-
     }
 }

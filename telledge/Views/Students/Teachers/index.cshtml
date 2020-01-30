@@ -17,8 +17,8 @@ Layout = "~/Views/Shared/studentMenu.cshtml";
 		@foreach (var item in Model)
 		{
 			<tr>
-				<td></td>
-				<td><a href="/student/Teachers/show/@(item.id)">@(item.name)</a></td>
+				<td>@(item.profileImage)</td>
+				<td>@(item.name)</td>
 				<td>
 					@{
 						String sex = ((telledge.Enums.sex)item.sex).ToString();
