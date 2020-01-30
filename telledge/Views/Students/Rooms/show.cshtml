@@ -28,8 +28,8 @@
 		<div class="bkRGBA">
 			<div class="Text">
 				<p>
-					<h3>ルーム名</h3>
-					@(Model.roomName)
+					<h2>ルーム名</h2>
+					<h3>@(Model.roomName)</h3>
 				</p>
 				<ul class="tagFlex" id="readOnlyTags">
 					@foreach (var tag in Model.tag.Split(','))
@@ -40,51 +40,69 @@
 				<p>
 					<img src="/uproadFiles/@Model.getTeacher().profileImage" width="150px" />
 				</p>
-				<p>
-					講師名
-					@(Model.getTeacher().name)
-				</p>
-				<p>
-					評価
-					4
-				</p>
-				<p>
-					開始時間
-					@(Model.beginTime)
-				</p>
-				<p>
-					終了予定時刻
-					@(Model.endScheduleTime)
-				</p>
-				<p>
-					料金
-					@(Model.point)ポイント
-				</p>
-				<p>
-					待機人数
-					@(Model.getWaitCount())人
-				</p>
-				<p>
-					最低通話時間
-					@(Model.worstTime)分
-				</p>
-				<p>
-					最大延長時間
-					@(Model.extensionTime)分
-				</p>
-				<p>
-					予想待ち時間
-					@(Model.getWaitTime())分
-				</p>
-				<hr wight="70%" />
-				<p>
+				<div>
 					<h3>講師からのメッセージ</h3>
-				</p>
-				<p>
-					@(Model.description)
-				</p>
-				<input type="button" value="戻る" onclick="">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinModal">要望入力</button>
+					<h4>@(Model.description)</h4>
+						
+				</div>
+				<hr/>
+				<table id="detail-table">
+					<tr>
+						<td>講師名</td>
+						<td>@(Model.getTeacher().name)</td>
+					</tr>
+					<tr>
+						<td>評価</td>
+						<td>
+							@{
+								double val;
+								if ((val = Model.getValuation()) == -1.0)
+								{
+									<span>評価なし</span>
+								}
+								else
+								{
+									<span>@val</span>
+								}
+							}
+						</td>
+					</tr>
+					<tr>
+						<td>開始時間</td>
+						<td>@(Model.beginTime)</td>
+					</tr>
+					<tr>
+						<td>終了予定時刻</td>
+						<td>@(Model.endScheduleTime)</td>
+					</tr>
+					<tr>
+						<td>料金</td>
+						<td>@(Model.point)ポイント</td>
+					</tr>
+
+					<tr>
+						<td>最低通話時間</td>
+						<td>@(Model.worstTime)分</td>
+					</tr>
+					<tr>
+						<td>最大延長時間</td>
+						<td>@(Model.extensionTime)分</td>
+					</tr>
+					<tr>
+						<td>待機人数</td>
+						<td>@(Model.getWaitCount())人</td>
+					</tr>
+					<tr>
+						<td>予想待ち時間</td>
+						<td>約@(Model.getWaitTime())分</td>
+					</tr>
+				</table>
+				<hr>
+				<div id="button-box">
+					<input type="button" class="btn btn-success" value="戻る"  onclick="location.href='/student/rooms/index'">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinModal">要望入力</button>
+				</div>
+
 			</div>
 		</div>
 	</div>
