@@ -57,6 +57,7 @@
     <Compile Include="Inquiry\Delete.cs" />
     <Compile Include="Inquiry\find.cs" />
     <Compile Include="Room\getRooms.Stringtag.cs" />
+    <Compile Include="Room\update.cs" />
     <Compile Include="Room\getValuation.cs" />
     <Compile Include="Room\getSection.cs" />
     <Compile Include="Room\GetSections.cs" />

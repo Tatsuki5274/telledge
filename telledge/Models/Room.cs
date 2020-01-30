@@ -370,5 +370,34 @@ namespace telledge.Models
 			}
 			return valuation;
 		}
+		public Boolean update()
+		{
+			bool check = false;
+			string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
+			using (var connection = new SqlConnection(cstr))
+			using (var command = connection.CreateCommand())
+			{
+				try
+				{
+					connection.Open();
+					command.CommandText = "Update Room set endTime = @endTime Where id = @id";
+					command.Parameters.Add(new SqlParameter("@id", id));
+					command.Parameters.Add(new SqlParameter("@endTime", DateTime.Now));
+					int cnt = command.ExecuteNonQuery();
+					if (cnt != 0)
+					{
+						check = true;
+					}
+					connection.Close();
+				}
+				catch (SqlException)
+				{
+					//エラー
+					connection.Close();
+					return check;
+				}
+			}
+			return check;
+		}
 	}
 }
