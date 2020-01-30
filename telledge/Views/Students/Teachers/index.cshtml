@@ -17,7 +17,9 @@ Layout = "~/Views/Shared/studentMenu.cshtml";
 		@foreach (var item in Model)
 		{
 			<tr>
-				<td>@(item.profileImage)</td>
+				<td>
+					<img class="room-images" src="/uproadFiles/@(item.profileImage)" />
+				</td>
 				<td>@(item.name)</td>
 				<td>
 					@{
