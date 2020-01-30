@@ -18,9 +18,11 @@ $(document).ready(function () {
 
 let con = new Timer(mintime, overtime);
 con.setCallback(Status.Essential, function () {
-	console.log("callbacked!");
+	$('#endCall-button').attr('disabled', 'disabled');
 });
 con.setCallback(Status.Extend, () => {
+	$('#endCall-button').removeAttr('disabled');
+
 	$('#timer-count').css('color', 'red');
 	$('#timer-status').css('color', 'red');
 	$('#timer-status').text("延長時間");
