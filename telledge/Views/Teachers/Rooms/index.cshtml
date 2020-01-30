@@ -1,14 +1,27 @@
 @model IEnumerable<telledge.Models.Room>
-
 @{
 	Layout = "~/Views/Shared/teacherMenu.cshtml";
 }
 
-	
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="~/Scripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+<link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
 <link rel="stylesheet" href="~/StyleSheets/TeacherRoomsindex.css">
 <main>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".readOnlyTags").tagit({
+				readOnly: true
+			}).ready(function () {
+				$(this).find('.tagit-new').css('display', 'none')
+			});
+		});
+	</script>
 	@if (Model != null)
 	{
 		foreach (var item in Model)
@@ -24,7 +37,14 @@
 						<tbody>
 							<tr>
 								<td><h4>タグ</h4></td>
-								<td><h4 class="margin">@item.tag</h4></td>
+								<td class="tagFlex readOnlyTags">
+									<ul>
+										@foreach (var tag in item.tag.Split(',', '、'))
+										{
+											<li>@(tag)</li>
+										}
+									</ul>
+								</td>
 							</tr>
 							<tr>
 								<td><h4>獲得ポイント数</h4></td>
@@ -37,4 +57,3 @@
 		}
 	}
 </main>
-

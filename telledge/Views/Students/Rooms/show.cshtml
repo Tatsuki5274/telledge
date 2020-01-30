@@ -32,7 +32,7 @@
 					<h3>@(Model.roomName)</h3>
 				</p>
 				<ul class="tagFlex" id="readOnlyTags">
-					@foreach (var tag in Model.tag.Split(','))
+					@foreach (var tag in Model.tag.Split(',', '、'))
 					{
 						<li>@(tag)</li>
 					}

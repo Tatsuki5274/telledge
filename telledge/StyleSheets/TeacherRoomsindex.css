@@ -53,3 +53,11 @@ main {
 	display : flex;
 	flex-wrap : wrap;
 }
+
+hr {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.ui-widget-content {
+	border: 0px;
+}

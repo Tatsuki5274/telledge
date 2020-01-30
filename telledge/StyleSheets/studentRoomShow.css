@@ -16,6 +16,10 @@
     justify-content: center;
 }
 
+.ui-widget-content{
+	border: 0px;
+}
+
 #detail-table{
 	font-size: 18px;
 	width: 30%;
@@ -28,7 +32,6 @@ main hr
 	width: 70%;
 	margin: 0 auto;
 	background-color: #a7a7a7;
-	height: 1.5px;
 }
 #button-box{
 	margin: 20px 0;

@@ -6,6 +6,23 @@ Layout = "~/Views/Shared/studentMenu.cshtml";
 }
 
 <main>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="~/Scripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+	<link href="~/Content/jquery.tagit.css" rel="stylesheet" type="text/css">
+	<script src="~/Scripts/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="~/StyleSheets/studentRoomIndex.css" />
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".readOnlyTags").tagit({
+				readOnly: true
+			}).ready(function () {
+				$(this).find('.tagit-new').css('display', 'none')
+			});
+		});
+	</script>
 	@if (Model != null)
 	{
 		foreach (var item in Model)
@@ -26,7 +43,14 @@ Layout = "~/Views/Shared/studentMenu.cshtml";
 								</tr>
 								<tr>
 									<td>タグ</td>
-									<td>@(item.tag)</td>
+									<td class="tagFlex readOnlyTags">
+										<ul>
+											@foreach (var tag in item.tag.Split(',', '、'))
+											{
+												<li>@(tag)</li>
+											}
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td>料金</td>
