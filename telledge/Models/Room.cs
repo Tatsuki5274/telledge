@@ -380,8 +380,20 @@ namespace telledge.Models
 				try
 				{
 					connection.Open();
-					command.CommandText = "Update Room set endTime = @endTime Where id = @id";
+					command.CommandText = "Update Room set teacherId = @teacherId,roomName = @roomName,tag = @tag, " +
+											"description = @description,worstTime = @worstTime,extensionTime = @extensionTime, " +
+											 "point = @point,beginTime = @beginTime,endScheduleTime = @endScheduleTime,endTime = @endTime Where id = @id";
 					command.Parameters.Add(new SqlParameter("@id", id));
+					command.Parameters.Add(new SqlParameter("@teacherId", teacherId));
+					command.Parameters.Add(new SqlParameter("@roomName", roomName));
+					command.Parameters.Add(new SqlParameter("@tag", tag));
+					command.Parameters.Add(new SqlParameter("@description", description));
+					command.Parameters.Add(new SqlParameter("@worstTime", worstTime));
+					command.Parameters.Add(new SqlParameter("@extensionTime", extensionTime));
+					command.Parameters.Add(new SqlParameter("@point", point));
+					if(beginTime != null) command.Parameters.Add(new SqlParameter("@beginTime", beginTime));
+					else command.Parameters.Add(new SqlParameter("@beginTime", DBNull.Value));
+					command.Parameters.Add(new SqlParameter("@endScheduleTime", endScheduleTime));
 					command.Parameters.Add(new SqlParameter("@endTime", DateTime.Now));
 					int cnt = command.ExecuteNonQuery();
 					if (cnt != 0)
@@ -390,7 +402,7 @@ namespace telledge.Models
 					}
 					connection.Close();
 				}
-				catch (SqlException)
+				catch (SqlException e)
 				{
 					//エラー
 					connection.Close();
