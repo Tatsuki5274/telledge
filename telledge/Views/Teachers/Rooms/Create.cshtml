@@ -5,12 +5,16 @@
 
 <meta name="viewport" content="width=device-width" />
 <link rel="stylesheet" href="~/StyleSheets/TeacherRoomnew.css">
+<link rel="stylesheet" href="~/StyleSheets/common.css">
 <link rel="stylesheet" href="bootstrap.min.css">
 <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="bootstrap.min.js"></script>
 <main class="clearfix">
 	<div id="room-name" class="center example">
 		<span>ルーム作成</span>
+	</div>
+	<div class="center">
+		<span style="color:red">@ViewBag.ErrorMsg</span>
 	</div>
 	<form action="/teacher/Rooms/Create" method="post" name="Teacher">
 		<table class="example">
@@ -46,7 +50,7 @@
 				<td><input type="text" name="endScheduleTime" value=""></td>
 			</tr>
 			<tr>
-				<td id="margin-bottom"><input type="submit" class="Room-buttom" id="Room-buttom" name="submit" value="ルーム作成"></td>
+				<td id="margin-bottom"><input class="btn btn-default" type="submit" value="ルーム作成"></td>
 			</tr>
 		</table>
 	</form>
