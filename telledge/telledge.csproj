@@ -214,6 +214,8 @@
     <Content Include="Scripts\card\card.css" />
     <Content Include="Scripts\card\card.js" />
     <Content Include="Scripts\card\jquery.card.js" />
+    <Content Include="Scripts\wickedpicker\wickedpicker.min.css" />
+    <Content Include="Scripts\wickedpicker\wickedpicker.min.js" />
     <Content Include="Scripts\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Scripts\font-awesome\fonts\fontawesome-webfont.woff" />
