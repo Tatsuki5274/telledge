@@ -287,6 +287,7 @@
     <Content Include="Scripts\Timer.js" />
     <Content Include="StyleSheets\common.css" />
     <Content Include="StyleSheets\deactivate.css" />
+    <Content Include="StyleSheets\mypage.css" />
     <Content Include="StyleSheets\signin.css" />
     <Content Include="StyleSheets\studentHomeMypage.css" />
     <Content Include="StyleSheets\studentPointCreate.css" />

@@ -6,12 +6,13 @@
 	Layout = "~/Views/Shared/studentMenu.cshtml";
 }
 <link href="~/Scripts/lazeemenu/sass/lazeemenu.min.css" rel="stylesheet" />
+<link href="~/StyleSheets/mypage.css" rel="stylesheet" />
 <link href="~/StyleSheets/common.css" rel="stylesheet" />
 <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="~/Scripts/lazeemenu/lazeemenu-jquery.js"></script>
 <link href="~/StyleSheets/studentHomeMypage.css" rel="stylesheet" />
 
-<main class="col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6">
+<main class="mypage-width mypage-margin">
 	<h1>マイページ</h1>
 	<ul id="menu-1">
 		<li>
@@ -39,30 +40,30 @@
 			<h3><span>受講履歴</span></h3>
 			<ul>
 				<li>
-					@if (Model.GetSections() != null)
-					{
-						foreach (var item in Model.GetSections())
+					<table>
+						@if (Model.GetSections() != null)
 						{
-							<table>
-								<tr>
-									<td><span class="list-width">講師名</span></td>
-									<td><span class="list-width">ルーム名</span></td>
-									<td><span class="list-width">特徴タグ</span></td>
-								</tr>
+							<tr>
+								<td><span class="list-width">講師名</span></td>
+								<td><span class="list-width">ルーム名</span></td>
+								<td><span class="list-width">特徴タグ</span></td>
+							</tr>
+							foreach (var item in Model.GetSections())
+							{
 								<tr>
 									<td><span class="list-width">@item.getRoom().getTeacher().name</span>
 									<td><span class="list-width">@item.getRoom().roomName</span>
 									<td><span class="list-width">@item.getRoom().tag</span>
 								</tr>
-							</table>
-						}
-					}
-					else
-					{
-						<span class="list-width" style="text-align:center">受講履歴無し</span>
-					}
 
-				</li>
+							}
+						}
+						else
+						{
+							<span class="list-width" class="center">受講履歴無し</span>
+						}
+					</table>
+					</li>
 			</ul>
 		</li>
 		<li>
