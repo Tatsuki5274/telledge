@@ -35,6 +35,7 @@ class Timer{
 		}
 		else if (this.status == Status.AllDone) {
 			//すべての処理が完了したときの処理
+			clearInterval(this.interval);
 		}
 		else {
 			this.status = Status.Undefined;
