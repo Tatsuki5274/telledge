@@ -279,6 +279,7 @@
     <Content Include="Scripts\raty\jquery.raty.js" />
     <Content Include="Scripts\tag-it.js" />
     <Content Include="Scripts\tag-it.min.js" />
+    <Content Include="Scripts\Telledge\Autocomp.js" />
     <Content Include="Scripts\Telledge\deactivate.js" />
     <Content Include="Scripts\Telledge\top.js" />
     <Content Include="Scripts\Telledge\studentRoomsCall.js" />
