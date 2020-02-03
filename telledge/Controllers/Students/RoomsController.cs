@@ -134,6 +134,7 @@ namespace telledge.Controllers.Students
 			if (Student.currentUser() == null) return RedirectToAction("create", "sessions");
 			Room room = Room.find(id);
 			Section section = new Section();
+			section.beginTime = DateTime.Now;
 			section.roomId = id;
 			section.studentId = Student.currentUser().id;
 			section.request = request;
