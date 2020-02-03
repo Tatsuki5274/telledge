@@ -78,6 +78,10 @@ $(function () {
 		}
 	});
 
+	$("#raty img").click(() => {
+		$('#submit-review-button').removeAttr('disabled');
+	});
+
 	echo.on("endRoom", () => {
 		$("#end-room-modal").modal({
 			backdrop: "static"
