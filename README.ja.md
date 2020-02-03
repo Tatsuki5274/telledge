@@ -1,5 +1,5 @@
 # Telledge
-This is a English documentation for the project, look [here](./README.md) if you need English one.
+This is a Japanese documentation for the project, look [here](./README.md) if you need English one.
 
 ## 機能紹介
 このシステムを通して”知識”を学習する機会を提供します。
@@ -30,7 +30,7 @@ OS：Windows 10
     		<add name="Db" connectionString="Data Source=TypeYourDBHost;Initial Catalog= TypeYourCatalog;User ID = TypeYourId;Password=TypeYourPassword" />  
 		</connectionStrings>  
 	     
-	2-2. 新しく`App.config`をリポジトリルートのUnitTestディレクトリに作成.
+	2-2. 新しく`App.config`をリポジトリルートのUnitTestディレクトリに作成。  
 		以下に設定ファイルの例を示します。必要な項目を変更して保存してください。
 
 	<?xml version="1.0" encoding="utf-8" ?>

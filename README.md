@@ -31,7 +31,7 @@ Follow these steps.
     		<add name="Db" connectionString="Data Source=TypeYourDBHost;Initial Catalog= TypeYourCatalog;User ID = TypeYourId;Password=TypeYourPassword" />  
 		</connectionStrings>  
 	     
-	2-2. Create an `App.config` to your UnitTest directory at repository root.
+	2-2. Create an `App.config` to your UnitTest directory at repository root.  
 		This is example for you. So you have to change it with your environment.  
 	   
 	<?xml version="1.0" encoding="utf-8" ?>
