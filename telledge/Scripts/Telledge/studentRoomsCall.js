@@ -27,6 +27,12 @@ con.setCallback(Status.Extend, () => {
 	$('#timer-status').css('color', 'red');
 	$('#timer-status').text("延長時間");
 });
+con.setCallback(Status.AllDone, () => {
+	$("#expire-end-room-modal").modal({
+		backdrop: "static"
+	});
+	$("#expire-end-room-modal").modal('show');
+});
 
 
 
