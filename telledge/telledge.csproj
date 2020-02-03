@@ -199,6 +199,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery.raty.css" />
     <Content Include="Content\jquery.tagit.css" />
+    <Content Include="Content\JqueryUI\jquery-ui.min.css" />
     <Content Include="Content\tagit.ui-zendesk.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
