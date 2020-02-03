@@ -87,7 +87,7 @@ namespace telledge.Models
             string cstr = ConfigurationManager.ConnectionStrings["Db"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cstr))
             {
-                string sql = "select * from Room";
+                string sql = "select * from Room where endTime is null";
                 DataSet ds = new DataSet();
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
                 int cnt = adapter.Fill(ds, "Room");
