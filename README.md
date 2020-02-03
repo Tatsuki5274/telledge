@@ -1,5 +1,5 @@
 # Telledge
-これは英語版のドキュメントです。日本語版(不完全)が必要な場合は[こちら](./README.ja.md)を参照してください。  
+これは英語版のドキュメントです。日本語版が必要な場合は[こちら](./README.ja.md)を参照してください。  
 This is a English documentation for the project, look [here](./README.ja.md) if you need Japanese one.
 
 ## Introduction
@@ -20,7 +20,31 @@ Operation System :  Windows 10
 Envirnment : Visual Studio that 2017, or later.  
 
 ## Installation
-Open the solution in the folder after clone the repository from our Github!
+Follow these steps.
+1. Clone from our repository.
+2. Set up some setting files.  
+	2-1. Create an `Authentication.config` to your telledge directory at repository root.  
+		This is example for you. So you have to change it with your environment.  
+	   
+		<?xml version="1.0"?>  
+		<connectionStrings>  
+    		<add name="Db" connectionString="Data Source=TypeYourDBHost;Initial Catalog= TypeYourCatalog;User ID = TypeYourId;Password=TypeYourPassword" />  
+		</connectionStrings>  
+	     
+	2-2. Create an `App.config` to your UnitTest directory at repository root.
+		This is example for you. So you have to change it with your environment.  
+	   
+	<?xml version="1.0" encoding="utf-8" ?>
+	<configuration>
+		<appSettings>
+
+		</appSettings>
+
+		<connectionStrings>
+		  <add name="Db" connectionString="Data Source=TypeYourDBHost;Initial Catalog= TypeYourCatalog;User ID = TypeYourId;Password=TypeYourPassword" /> 
+		</connectionStrings>
+	</configuration>
+
 
 ## Usage for teacher
 Login as a teacher.  
