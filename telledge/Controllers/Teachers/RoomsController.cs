@@ -59,20 +59,22 @@ namespace telledge.Controllers.Teachers
 				return View("/Views/Teachers/Sessions/create.cshtml");
 			}
 		}
-		public ActionResult delete(int roomId)
+		public ActionResult delete(int id)
 		{
-			Room room = new Room();
-			room.id = roomId;
-			Section[] section = room.getSections();
-			for (int i = 0; i < section.Length; i++)
+			Room room = Room.find(id);
+			room.id = id;
+			Section[] sections = room.getSections();
+			if (sections != null)
 			{
-				if (section[i].talkTime == null)
+				foreach (Section section in sections)
 				{
-					section[i].delete();
+					if (section.talkTime == null)
+						section.delete();
 				}
 			}
 			room.close();
-			return View("/Views/Teachers/Homes/mypage.cshtml");
+			room.update();
+			return View("/Views/Teachers/Homes/mypage.cshtml", Teacher.currentUser());
 		}
 		[HttpGet]
 		public ActionResult show(int roomid)
