@@ -94,9 +94,8 @@
     border: 2px solid #ffff1a; /* 枠の指定 */
 }
 
-.password {
-    margin-left: 100px;
-    margin-top: 100px;
+#forget-passowrd{
+	text-align: center;
 }
 .span-width {
 	width: 100% !important;
