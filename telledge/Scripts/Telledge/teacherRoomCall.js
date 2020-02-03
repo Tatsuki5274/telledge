@@ -113,6 +113,7 @@ $(function () {
 	 * 1番目には次に待っている生徒が入っている状態
 	 */
 	echo.on("endCall", () => {
+		counter.stopTimer();
 		if (students.length >= 2) {
 			//次に待っている生徒がいる場合
 			$('.student-name').text(students[1].student.name);
