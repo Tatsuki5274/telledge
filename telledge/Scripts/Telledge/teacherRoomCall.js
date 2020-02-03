@@ -99,7 +99,7 @@ $(function () {
 
 	$('#room-end').click(() => {
 		echo.invoke("endRoom", roomId);
-		location.href ='/teacher/rooms/index';
+		location.href = '/teacher/rooms/delete/' + roomId;
 	});
 
 	//通話終了ボタンの入力を検知したときの処理
