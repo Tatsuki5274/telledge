@@ -36,6 +36,7 @@ timer.setCallback(Status.AllDone, () => {
 	$('#timer-title').text("通話時間終了");
 	$('#timer-title').css('color', 'red');
 	$('#timer-count').css('display', 'none');
+	callEnd();
 });
 
 let counter = new Counter();
@@ -43,6 +44,47 @@ counter.setState(Status.Restart);
 
 
 let students = [];
+
+function callEnd() {
+	counter.stopTimer();
+	if (students.length >= 2) {
+		//次に待っている生徒がいる場合
+		$('.student-name').text(students[1].student.name);
+		$('.student-request').text(students[1].section.request);
+		$("#break-modal").modal({
+			backdrop: "static"
+		});
+		// モーダルウィンドウを開く
+		$("#break-modal").modal('show');
+	} else if (students.length == 1) {
+		//次の生徒がいない場合の処理
+		$('.student-name').text("");
+		$('.student-request').text("");
+		$('#student-skype-id').text("");
+
+		$("#break-last-modal").modal({
+			backdrop: "static"
+		});
+		// モーダルウィンドウを開く
+		$("#break-last-modal").modal('show');
+	} else {
+		// 通話待ちが0人の状態で通話を終了することはありえない
+		throw students;
+	}
+
+	timer.deleteTimer();	//タイマーを削除する
+	$("#student-" + students[0].student.id).remove();	//先頭の生徒を削除する
+	students.shift();
+
+	$('#room-end').removeClass('hidden');
+	$('#call-end').addClass('hidden');
+
+	if (students.length != 0) {
+		$('#call-start').removeClass('hidden');
+	} else {
+		$('#call-start').addClass('hidden');
+	}
+}
 
 // WebSocketの処理
 $(function () {
@@ -112,46 +154,7 @@ $(function () {
 	 * students配列の0番目には対応中の生徒が入っている状態。
 	 * 1番目には次に待っている生徒が入っている状態
 	 */
-	echo.on("endCall", () => {
-		counter.stopTimer();
-		if (students.length >= 2) {
-			//次に待っている生徒がいる場合
-			$('.student-name').text(students[1].student.name);
-			$('.student-request').text(students[1].section.request);
-			$("#break-modal").modal({
-				backdrop: "static"
-			});
-			// モーダルウィンドウを開く
-			$("#break-modal").modal('show');
-		} else if (students.length == 1) {
-			//次の生徒がいない場合の処理
-			$('.student-name').text("");
-			$('.student-request').text("");
-			$('#student-skype-id').text("");
-
-			$("#break-last-modal").modal({
-				backdrop: "static"
-			});
-			// モーダルウィンドウを開く
-			$("#break-last-modal").modal('show');
-		} else {
-			// 通話待ちが0人の状態で通話を終了することはありえない
-			throw students;
-		}
-
-		timer.deleteTimer();	//タイマーを削除する
-		$("#student-" + students[0].student.id).remove();	//先頭の生徒を削除する
-		students.shift();
-
-		$('#room-end').removeClass('hidden');
-		$('#call-end').addClass('hidden');
-		
-		if (students.length != 0) {
-			$('#call-start').removeClass('hidden');
-		} else {
-			$('#call-start').addClass('hidden');
-		}
-	});
+	echo.on("endCall", () => callEnd());
 
 	//生徒リストのリジェクトボタンを押したときの処理
 	$(document).on("click", "#student-list button", function () {
